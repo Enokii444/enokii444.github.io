@@ -1,0 +1,60 @@
+<section id="projects">
+  <header>
+    <h2>Selected Work</h2>
+  </header>
+
+  <!-- Illustration -->
+  <article>
+    <h3>Digital Illustration</h3>
+    <p>Created in <strong>Procreate</strong> and <strong>IbisPaintX</strong>. 
+    This portrait explores expressive style and bold brushwork. I focus on character expression and stylized features.</p>
+
+    <figure>
+      <img src="a2595465-592c-498a-b7c1-f92c7c05f714.png" 
+           alt="Digital illustration portrait created in Procreate" width="320">
+      <figcaption>Expressive portrait illustration (Procreate).</figcaption>
+    </figure>
+  </article>
+  <hr>
+
+  <!-- Animation -->
+  <article>
+    <h3>2D Animation Practice</h3>
+    <p>A looping animation study created in <strong>Procreate</strong>. 
+    This exercise helped me practice timing, movement, and bringing static art to life.</p>
+
+    <figure>
+      <img src="animation.gif" alt="Looping 2D animation created in Procreate" width="320">
+      <figcaption>Short animation loop (Procreate).</figcaption>
+    </figure>
+  </article>
+  <hr>
+
+  <!-- Graphic Design 1 -->
+  <article>
+    <h3>Poster Design — The Devil Wears Prada</h3>
+    <p>Made in <strong>Canva</strong>, this poster experiments with collage, contrast, and bold text placement. 
+    The design balances surreal imagery with typography for an editorial feel.</p>
+
+    <figure>
+      <img src="6170348153321144609.jpg" 
+           alt="Collage-style poster design of The Devil Wears Prada created in Canva" width="320">
+      <figcaption>Collage poster design (Canva).</figcaption>
+    </figure>
+  </article>
+  <hr>
+
+  <!-- Graphic Design 2 -->
+  <article>
+    <h3>Poster Design — The Devil Wears Prada (Alternate)</h3>
+    <p>A second poster variation designed in <strong>Canva</strong>. 
+    This version leans toward modern minimalism, using monochrome elements and bold, oversized typography.</p>
+
+    <figure>
+      <img src="6170348153321144608.jpg" 
+           alt="Modern minimal poster design of The Devil Wears Prada created in Canva" width="320">
+      <figcaption>Minimalist poster design (Canva).</figcaption>
+    </figure>
+  </article>
+  <hr>
+</section>
