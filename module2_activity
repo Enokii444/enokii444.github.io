@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Me</title>
+</head>
+<body>
+  <!-- Header with title and navigation -->
+  <header>
+    <h1>About Me</h1>
+    <nav>
+      <a href="#intro">Intro</a> |
+      <a href="#hobbies">Hobbies</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>Hello! My name is Hailie Alberto. This is a simple webpage I made for my Module 2 activity.</p>
+    </section>
+
+    <section id="hobbies">
+      <h2>My Hobbies</h2>
+      <ul>
+        <li>Playing Guitar</li>
+        <li>Drawing</li>
+        <li>Gaming</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Favorites Table</h2>
+      <table border="1">
+        <tr>
+          <th>Category</th>
+          <th>Favorite</th>
+        </tr>
+        <tr>
+          <td>Food</td>
+          <td>Pasta</td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td>Blue</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>My Picture</h2>
+      <img src="https://via.placeholder.com/200" alt="Placeholder image">
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact me at: myemail@example.com</p>
+    <p>&copy; 2025 My Webpage</p>
+  </footer>
+</body>
+</html>
