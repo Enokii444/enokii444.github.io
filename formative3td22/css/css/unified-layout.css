@@ -1,0 +1,489 @@
+/* =============================================================================
+   UNIFIED 3-COLUMN LAYOUT SYSTEM
+   Stable grid with consistent 280px sidebars across all pages
+   ============================================================================= */
+
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #3a3a3a;
+    background-color: #faf9f9;
+}
+
+/* Page Container & Grid Structure */
+.page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header header"
+        "left main right"
+        "footer footer footer";
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.page__header {
+    grid-area: header;
+    width: 100%;
+}
+
+.page__header .header-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Main Grid Layout */
+.page__container {
+    grid-area: left / left / footer / right;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    grid-template-areas: "left main right";
+    gap: 2rem;
+    padding: 2rem 1rem;
+    min-height: calc(100vh - 200px); /* Account for header/footer */
+}
+
+/* Left Sidebar */
+.page__left {
+    grid-area: left;
+    background-color: rgba(248, 220, 226, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+/* Main Content Area */
+.page__main {
+    grid-area: main;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Right Sidebar */
+.page__right {
+    grid-area: right;
+    background-color: rgba(248, 220, 226, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+/* Footer */
+.page__footer {
+    grid-area: footer;
+    width: 100%;
+}
+
+.page__footer iframe {
+    width: 100%;
+    height: 80px;
+    border: none;
+    overflow: hidden;
+}
+
+/* =============================================================================
+   NAVIGATION STYLES
+   ============================================================================= */
+
+.sidebar-nav {
+    width: 100%;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #666;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #f8dce2;
+    color: #3a3a3a;
+    transform: translateX(4px);
+}
+
+/* =============================================================================
+   CONTENT TYPOGRAPHY
+   ============================================================================= */
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* =============================================================================
+   FILTER CHIPS/PILLS
+   ============================================================================= */
+
+.chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.chip {
+    padding: 0.5rem 1.2rem;
+    border: 2px solid #f8dce2;
+    background-color: transparent;
+    color: #666;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.chip:hover {
+    background-color: #f8dce2;
+    color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.chip.is-active {
+    background-color: #f8dce2;
+    color: #3a3a3a;
+    box-shadow: 0 4px 8px rgba(248, 220, 226, 0.4);
+}
+
+/* =============================================================================
+   GALLERY & CARDS
+   ============================================================================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card p {
+    padding: 1rem;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .page__container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "main"
+            "left"
+            "right";
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .page__left,
+    .page__right {
+        order: 2;
+    }
+    
+    .page__main {
+        order: 1;
+    }
+    
+    .chips {
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .page__container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .page__main,
+    .page__left,
+    .page__right {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .chips {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .chip {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.ad-box {
+    background-color: rgba(248, 220, 226, 0.3);
+    border: 2px dashed #f8dce2;
+    border-radius: 8px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.view-all-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #f8dce2;
+    color: #3a3a3a;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.view-all-btn:hover {
+    background-color: #f5c7d1;
+    transform: translateY(-2px);
+}
+
+/* =============================================================================
+   LEGACY COMPATIBILITY
+   ============================================================================= */
+
+/* Support for existing class names during migration */
+.container.page,
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.container.page header,
+.container header {
+    grid-area: header;
+}
+
+.container.page main,
+.container main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+
+.container.page footer,
+.container footer {
+    grid-area: footer;
+}
+
+/* Override broken layouts */
+.container.page .left,
+.container.page .mid,
+.container.page .right,
+.container .left,
+.container .mid,
+.container .right {
+    padding: 1.5rem;
+}
+
+.container.page .left,
+.container .left {
+    background-color: rgba(248, 220, 226, 0.3);
+    border-radius: 12px;
+}
+
+.container.page .mid,
+.container .mid {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.container.page .right,
+.container .right {
+    background-color: rgba(248, 220, 226, 0.2);
+    border-radius: 12px;
+}
+
+/* Mobile compatibility */
+@media (max-width: 1024px) {
+    .container.page main,
+    .container main {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "mid"
+            "left"
+            "right";
+        gap: 1.5rem;
+    }
+    
+    .container.page .left,
+    .container .left {
+        grid-area: left;
+        order: 2;
+    }
+    
+    .container.page .mid,
+    .container .mid {
+        grid-area: mid;
+        order: 1;
+    }
+    
+    .container.page .right,
+    .container .right {
+        grid-area: right;
+        order: 3;
+    }
+}
+
+/* === PATCH: extend left/right to footer across all pages, no middle changes === */
+
+/* 1) Make the grid container stretch so sidebars match center height */
+.page__container {
+    align-items: stretch !important;
+}
+
+/* 2) Sidebars keep their visible background and fill the full column height */
+.page__left,
+.page__right {
+    background-color: rgba(248, 220, 226, 0.3) !important;
+    min-height: 100% !important;
+    height: auto !important;
+    display: block !important;
+    float: none !important;
+    position: static !important;
+}
+
+.page__right {
+    background-color: rgba(248, 220, 226, 0.2) !important;
+}
+
+/* 3) Ensure wrapper width matches header container width (reuse existing max-width: 1200px) */
+.page {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* 4) Guardrails so no rule squeezes the middle or expands sidebars */
+.page__left, .page__right { 
+    width: auto !important;
+}
+
+.page__main { 
+    width: auto !important; 
+    max-width: 100% !important;
+}
+
+/* 5) Mobile: respect existing breakpoints; only ensure columns stack cleanly */
+@media (max-width: 1024px) {
+    .page__left, .page__main, .page__right { 
+        grid-column: auto !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+}

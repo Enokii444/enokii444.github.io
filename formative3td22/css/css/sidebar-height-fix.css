@@ -1,0 +1,50 @@
+/* =============================================================================
+   SIDEBAR HEIGHT FIX - Extend sidebars to match center column height
+   ============================================================================= */
+
+/* Ensure grid container stretches to full height */
+.page__container {
+    align-items: stretch !important;
+    min-height: calc(100vh - 200px) !important;
+}
+
+/* Make sidebars stretch to full height of the grid container */
+.page__left,
+.page__right {
+    height: auto !important; /* Override height: fit-content */
+    min-height: 100% !important;
+    align-self: stretch !important;
+    background-color: #ffffff !important; /* Match center column background */
+}
+
+/* Ensure the main page container uses full viewport height */
+.page {
+    min-height: 100vh !important;
+}
+
+/* Additional height support for full-page layouts */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* =============================================================================
+   RESPONSIVE ADJUSTMENTS - Maintain mobile behavior
+   ============================================================================= */
+
+/* On mobile/tablet, keep original stacked behavior */
+@media (max-width: 1024px) {
+    .page__left,
+    .page__right {
+        height: auto !important;
+        min-height: auto !important;
+        align-self: auto !important;
+        /* Keep original mobile background colors */
+        background-color: rgba(248, 220, 226, 0.3) !important;
+    }
+    
+    .page__right {
+        background-color: rgba(248, 220, 226, 0.2) !important;
+    }
+}

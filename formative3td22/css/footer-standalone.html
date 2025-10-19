@@ -3,75 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/unified-layout.css">
-<link rel="stylesheet" href="css/sidebar-height-fix.css">
-<link rel="stylesheet" href="css/style.css">
-<title>Basic page layout</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: transparent;
+}
+
+.footer-follow {
+    text-align: center;
+    padding: 16px 20px 14px;
+    background: rgba(248, 220, 226, 0.03);
+    margin: 0;
+}
+
+.footer-divider {
+    font-size: 16px;
+    color: #f8dce2;
+    margin: 0 0 12px 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.follow-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #3a3a3a;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    margin: 0;
+}
+
+.follow-btn.facebook {
+    background: rgba(174, 207, 242, 0.6);
+}
+
+.follow-btn.instagram {
+    background: rgba(248, 220, 226, 0.6);
+}
+
+.follow-btn.twitter {
+    background: rgba(187, 222, 251, 0.6);
+}
+
+.follow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(248, 220, 226, 0.4);
+    text-decoration: none;
+}
+
+.follow-btn.facebook:hover {
+    background: rgba(174, 207, 242, 0.8);
+}
+
+.follow-btn.instagram:hover {
+    background: rgba(248, 220, 226, 0.8);
+}
+
+.follow-btn.twitter:hover {
+    background: rgba(187, 222, 251, 0.8);
+}
+
+.follow-btn:focus {
+    outline: 2px solid #f8dce2;
+    outline-offset: 2px;
+}
+
+.follow-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .follow-buttons {
+        gap: 8px;
+    }
+    
+    .follow-btn {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    
+    .footer-follow {
+        padding: 14px 16px 12px;
+    }
+    
+    .footer-divider {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-follow {
+        padding: 12px 14px 10px;
+    }
+    
+    .footer-divider {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+}
+</style>
 </head>
 <body>
-<div class="container">
-<header>
-    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
-</header>
-<main>
-<section class="left">
-<nav class="sidebar-nav">
-  <ul class="nav-list">
-    <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
-    <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
-    <li><a href="page2.html" class="nav-link active">ARTWORKS</a></li>
-    <li><a href="page3.html" class="nav-link">RATES</a></li>
-  </ul>
-</nav>
-</section>
-<section class="mid">
-<div class="editorial-gallery">
-  <h1 class="editorial-title">My Artwork Collections</h1>
-  
-  <div class="collection-cards">
-    <a href="GRAPHICS.html" class="collection-card-link">
-      <div class="collection-card">
-        <div class="card-image-container">
-          <img src="images/GRAPHICS.png" alt="Graphics Collection" class="card-cover-image">
-          <div class="card-overlay">
-            <h2 class="card-title">Graphics</h2>
-            <p class="card-subtitle">Digital art and design work</p>
-          </div>
-        </div>
-      </div>
-    </a>
-    
-    <a href="ILLUSTRATION.html" class="collection-card-link">
-      <div class="collection-card">
-        <div class="card-image-container">
-          <img src="images/ILLUSTRATION.png" alt="Illustration Collection" class="card-cover-image">
-          <div class="card-overlay">
-            <h2 class="card-title">Illustration</h2>
-            <p class="card-subtitle">Hand-drawn illustrations and character art</p>
-          </div>
-        </div>
-      </div>
-    </a>
-    
-    <a href="Coming Soon.html" class="collection-card-link">
-      <div class="collection-card">
-        <div class="card-image-container">
-          <img src="images/COMING SOON.png" alt="Coming Soon Collection" class="card-cover-image">
-          <div class="card-overlay">
-            <h2 class="card-title">Coming Soon</h2>
-            <p class="card-subtitle">Upcoming projects and new services</p>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-</div>
-</section>
-<section class="right">
-<p>For ads here</p>
-</section>
-</main>
-<footer>
 <div class="footer-follow">
   <div class="footer-divider">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
   <div class="follow-buttons">
@@ -94,8 +148,6 @@
       X
     </a>
   </div>
-</div>
-</footer>
 </div>
 </body>
 </html>

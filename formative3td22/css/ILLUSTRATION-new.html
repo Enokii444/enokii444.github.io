@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/unified-layout.css">
+<link rel="stylesheet" href="css/sidebar-height-fix.css">
+<title>Illustrations Gallery - Creative Portfolio</title>
+</head>
+<body>
+
+<section class="page page--illustrations">
+  <!-- Header -->
+  <header class="page__header">
+    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
+  </header>
+
+  <!-- Main Content Container -->
+  <div class="page__container">
+    
+    <!-- Left Sidebar -->
+    <aside class="page__left">
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li><a href="page2.html" class="nav-link">← BACK TO ARTWORKS</a></li>
+          <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
+          <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
+          <li><a href="page3.html" class="nav-link">RATES</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="page__main">
+      <h1 class="page-title">Illustrations</h1>
+      <p class="page-subtitle">Character art, surreal portraits, and playful doodles</p>
+
+      <!-- Filter Chips -->
+      <div class="chips">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="portraits">Portraits</button>
+        <button class="chip" data-filter="surreal">Surreal</button>
+        <button class="chip" data-filter="doodles">Doodles</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery">
+        <!-- Brain Ribbons Girl -->
+        <article class="card" data-category="portraits surreal">
+          <img src="ILLUSTRATION/BRAIN.jpg" alt="Brain Ribbons Girl" />
+          <p>Brain Ribbons Girl — pink surreal portrait</p>
+        </article>
+
+        <!-- Soft Style Girl -->
+        <article class="card" data-category="portraits">
+          <img src="ILLUSTRATION/SOFT.jpg" alt="Soft Style Girl" />
+          <p>Soft Style Girl — pastel character with props</p>
+        </article>
+
+        <!-- Twirly -->
+        <article class="card" data-category="surreal doodles">
+          <img src="ILLUSTRATION/TWIRLY.jpg" alt="Twirly" />
+          <p>Twirly — abstract swirl character design</p>
+        </article>
+
+        <!-- Sweaty -->
+        <article class="card" data-category="portraits">
+          <img src="ILLUSTRATION/SWEATY.jpg" alt="Sweaty" />
+          <p>Sweaty — expressive character portrait</p>
+        </article>
+
+        <!-- Redhead -->
+        <article class="card" data-category="portraits">
+          <img src="ILLUSTRATION/REDHEAD.jpg" alt="Redhead" />
+          <p>Redhead — vibrant character illustration</p>
+        </article>
+
+        <!-- Beret -->
+        <article class="card" data-category="portraits">
+          <img src="ILLUSTRATION/BERET.jpg" alt="Beret" />
+          <p>Beret — stylish character with hat</p>
+        </article>
+
+        <!-- Add more cards as needed -->
+        <article class="card" data-category="doodles">
+          <img src="ILLUSTRATION/BRAIN.jpg" alt="Sample Doodle" />
+          <p>Sample Doodle — playful sketch style</p>
+        </article>
+
+        <article class="card" data-category="surreal">
+          <img src="ILLUSTRATION/SOFT.jpg" alt="Sample Surreal" />
+          <p>Sample Surreal — dreamlike composition</p>
+        </article>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="page__right">
+      <div class="ad-box">For ads here</div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="page__footer">
+    <iframe src="footer.html" frameborder="0" scrolling="no"></iframe>
+  </footer>
+
+</section>
+
+<!-- JavaScript for Filter Functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.card');
+
+    chips.forEach(chip => {
+        chip.addEventListener('click', function() {
+            // Remove active class from all chips
+            chips.forEach(c => c.classList.remove('is-active'));
+            
+            // Add active class to clicked chip
+            this.classList.add('is-active');
+            
+            // Get filter value
+            const filter = this.getAttribute('data-filter');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category');
+                    if (categories && categories.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+
+    // Card click for lightbox (placeholder)
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            console.log('Card clicked:', this.querySelector('p').textContent);
+            // Add lightbox functionality here
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -18,11 +18,12 @@ body {
         "footer";
     max-width: 1200px;
     min-height: 100vh;
+    margin: 0 auto; /* center the container horizontally in the viewport */
 }
 
 header {
     grid-area: header;
-    padding: 1rem;
+    /* remove default padding so header image can align edge-to-edge with the container */
 }
 
 main {

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/style.css">
+<title>Graphics Gallery - Creative Portfolio</title>
+</head>
+<body>
+<div class="container">
+<header>
+    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
+</header>
+<main>
+<section class="left">
+<nav class="sidebar-nav">
+  <ul class="nav-list">
+    <li><a href="page2.html" class="nav-link">← BACK TO ARTWORKS</a></li>
+    <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
+    <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
+    <li><a href="page3.html" class="nav-link">RATES</a></li>
+  </ul>
+</nav>
+</section>
+<section class="mid">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> → 
+    <a href="page2.html">Artworks</a> → 
+    <span>Graphics</span>
+  </nav>
+
+  <!-- Gallery Header -->
+  <div class="graphics-gallery">
+    <h1 class="gallery-title">Graphics</h1>
+    
+    <!-- Category Filter -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="posters">Posters</button>
+      <button class="filter-btn" data-filter="logos">Logos</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <!-- The Brain Eaters -->
+      <a href="#" class="gallery-item" data-category="posters" data-aspect="poster" 
+         data-lightbox="graphics" 
+         data-caption="The Brain Eaters — Horror poster study (halftone/bleed)"
+         aria-label="View The Brain Eaters poster">
+        <div class="item-container">
+          <img src="GRAPHICS/BRAIN EATER.jpg" 
+               alt="Retro horror poster 'The Brain Eaters' with halftone effect." 
+               loading="lazy" 
+               width="400" 
+               height="500">
+          <div class="item-overlay">
+            <span class="overlay-text">View Poster</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">The Brain Eaters</h3>
+          <p class="caption-desc">Horror poster study (halftone/bleed)</p>
+        </div>
+      </a>
+
+      <!-- Devil Wears Prada V1 -->
+      <a href="#" class="gallery-item" data-category="posters" data-aspect="poster"
+         data-lightbox="graphics"
+         data-caption="The Devil Wears Prada — Editorial poster V1 (serif/halftone collage)"
+         aria-label="View The Devil Wears Prada poster version 1">
+        <div class="item-container">
+          <img src="GRAPHICS/DEVIL WEARS PRADA 1.jpg" 
+               alt="Editorial collage poster 'The Devil Wears Prada' version one." 
+               loading="lazy" 
+               width="400" 
+               height="500">
+          <div class="item-overlay">
+            <span class="overlay-text">View Poster</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">The Devil Wears Prada</h3>
+          <p class="caption-desc">Editorial poster V1 (serif/halftone collage)</p>
+        </div>
+      </a>
+
+      <!-- Devil Wears Prada V2 -->
+      <a href="#" class="gallery-item" data-category="posters" data-aspect="poster"
+         data-lightbox="graphics"
+         data-caption="The Devil Wears Prada — Editorial poster V2 (surreal collage)"
+         aria-label="View The Devil Wears Prada poster version 2">
+        <div class="item-container">
+          <img src="GRAPHICS/DEVIL WEARS PRADA 2.jpg" 
+               alt="Surreal collage poster 'The Devil Wears Prada' version two." 
+               loading="lazy" 
+               width="400" 
+               height="500">
+          <div class="item-overlay">
+            <span class="overlay-text">View Poster</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">The Devil Wears Prada</h3>
+          <p class="caption-desc">Editorial poster V2 (surreal collage)</p>
+        </div>
+      </a>
+
+      <!-- Habi Logo -->
+      <a href="#" class="gallery-item" data-category="logos" data-aspect="poster"
+         data-lightbox="graphics"
+         data-caption="Habi Brewed — Logo explorations (hand-drawn marks)"
+         aria-label="View Habi Brewed logo explorations">
+        <div class="item-container">
+          <img src="GRAPHICS/HABI LOGO.jpg" 
+               alt="Habi Brewed hand-drawn logo explorations, three blue marks." 
+               loading="lazy" 
+               width="400" 
+               height="500">
+          <div class="item-overlay">
+            <span class="overlay-text">View Logos</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">Habi Brewed</h3>
+          <p class="caption-desc">Logo explorations (hand-drawn marks)</p>
+        </div>
+      </a>
+
+      <!-- Stop Procrastinating -->
+      <a href="#" class="gallery-item" data-category="posters" data-aspect="poster"
+         data-lightbox="graphics"
+         data-caption="Stop Procrastinating — Anti-procrastination collage poster"
+         aria-label="View Stop Procrastinating poster">
+        <div class="item-container">
+          <img src="GRAPHICS/STOP PROCASTINATING.jpg" 
+               alt="Collage poster 'Stop Procrastinating' with melting clock and bursts." 
+               loading="lazy" 
+               width="400" 
+               height="500">
+          <div class="item-overlay">
+            <span class="overlay-text">View Poster</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">Stop Procrastinating</h3>
+          <p class="caption-desc">Anti-procrastination collage poster</p>
+        </div>
+      </a>
+
+      <!-- Zenith Homepage -->
+      <a href="#" class="gallery-item" data-category="web" data-aspect="web"
+         data-lightbox="graphics"
+         data-caption="Zenith — Website mockup (homepage)"
+         aria-label="View Zenith homepage mockup">
+        <div class="item-container">
+          <img src="GRAPHICS/ZENITH HOME PAGE.jpg" 
+               alt="Zenith soda website mockup — homepage hero and promotion." 
+               loading="lazy" 
+               width="640" 
+               height="360">
+          <div class="item-overlay">
+            <span class="overlay-text">View Mockup</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">Zenith</h3>
+          <p class="caption-desc">Website mockup (homepage)</p>
+        </div>
+      </a>
+
+      <!-- Zenith Menu -->
+      <a href="#" class="gallery-item" data-category="web" data-aspect="web"
+         data-lightbox="graphics"
+         data-caption="Zenith — Website mockup (menu/collection)"
+         aria-label="View Zenith menu mockup">
+        <div class="item-container">
+          <img src="GRAPHICS/ZENITH MENU.jpg" 
+               alt="Zenith soda website mockup — menu layout with cans." 
+               loading="lazy" 
+               width="640" 
+               height="360">
+          <div class="item-overlay">
+            <span class="overlay-text">View Mockup</span>
+          </div>
+        </div>
+        <div class="item-caption">
+          <h3 class="caption-title">Zenith</h3>
+          <p class="caption-desc">Website mockup (menu/collection)</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<section class="right">
+<p>For ads here</p>
+</section>
+</main>
+<footer>
+<iframe src="footer.html" frameborder="0" scrolling="no" style="width: 100%; height: 80px; border: none; overflow: hidden;"></iframe>
+</footer>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-overlay" aria-label="Close lightbox"></div>
+  <div class="lightbox-content">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-next" aria-label="Next image">&#8250;</button>
+    <img id="lightbox-image" src="" alt="">
+    <div class="lightbox-caption">
+      <p id="lightbox-caption-text"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Graphics Gallery JavaScript
+class GraphicsGallery {
+  constructor() {
+    this.items = document.querySelectorAll('.gallery-item');
+    this.lightbox = document.getElementById('lightbox');
+    this.lightboxImage = document.getElementById('lightbox-image');
+    this.lightboxCaption = document.getElementById('lightbox-caption-text');
+    this.currentIndex = 0;
+    this.filteredItems = [...this.items];
+    
+    this.init();
+  }
+
+  init() {
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    // Gallery item clicks
+    this.items.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openLightbox(index);
+      });
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        this.filter(e.target.dataset.filter);
+        
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+      });
+    });
+
+    // Lightbox controls
+    document.querySelector('.lightbox-close').addEventListener('click', () => this.closeLightbox());
+    document.querySelector('.lightbox-overlay').addEventListener('click', () => this.closeLightbox());
+    document.querySelector('.lightbox-prev').addEventListener('click', () => this.prevImage());
+    document.querySelector('.lightbox-next').addEventListener('click', () => this.nextImage());
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (!this.lightbox.classList.contains('active')) return;
+      
+      switch(e.key) {
+        case 'Escape':
+          this.closeLightbox();
+          break;
+        case 'ArrowLeft':
+          this.prevImage();
+          break;
+        case 'ArrowRight':
+          this.nextImage();
+          break;
+      }
+    });
+  }
+
+  filter(category) {
+    this.items.forEach(item => {
+      if (category === 'all' || item.dataset.category === category) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Update filtered items for lightbox navigation
+    this.filteredItems = [...this.items].filter(item => 
+      category === 'all' || item.dataset.category === category
+    );
+  }
+
+  openLightbox(index) {
+    const item = this.filteredItems[index];
+    if (!item) return;
+
+    const img = item.querySelector('img');
+    const caption = item.dataset.caption;
+
+    this.lightboxImage.src = img.src;
+    this.lightboxImage.alt = img.alt;
+    this.lightboxCaption.textContent = caption;
+    this.currentIndex = index;
+
+    this.lightbox.classList.add('active');
+    this.lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Focus management
+    document.querySelector('.lightbox-close').focus();
+  }
+
+  closeLightbox() {
+    this.lightbox.classList.remove('active');
+    this.lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  prevImage() {
+    this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.filteredItems.length - 1;
+    this.updateLightboxImage();
+  }
+
+  nextImage() {
+    this.currentIndex = this.currentIndex < this.filteredItems.length - 1 ? this.currentIndex + 1 : 0;
+    this.updateLightboxImage();
+  }
+
+  updateLightboxImage() {
+    const item = this.filteredItems[this.currentIndex];
+    const img = item.querySelector('img');
+    const caption = item.dataset.caption;
+
+    this.lightboxImage.src = img.src;
+    this.lightboxImage.alt = img.alt;
+    this.lightboxCaption.textContent = caption;
+  }
+}
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new GraphicsGallery();
+});
+</script>
+
+</body>
+</html>
