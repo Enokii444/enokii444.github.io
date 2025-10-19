@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="css/unified-layout.css">
 <link rel="stylesheet" href="css/sidebar-height-fix.css">
 <link rel="stylesheet" href="css/style.css">
-<title>Basic page layout</title>
+<title>Hailie Felicia Alberto (Zakii) - Portfolio</title>
 </head>
 <body>
 <div class="container">
 <header>
-    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
+    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
 </header>
 <main>
 <section class="left">
@@ -40,7 +40,6 @@
     </section>
 </section>
 <section class="right">
-<p>For ads here</p>
 </section>
 </main>
 <footer>
@@ -49,253 +48,182 @@
 </div>
 
 <!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="lightbox-overlay" aria-label="Close lightbox"></div>
-  <div class="lightbox-content">
-    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <button class="lightbox-prev" aria-label="Previous image">&#8249;</button>
-    <button class="lightbox-next" aria-label="Next image">&#8250;</button>
-    <img id="lightbox-image" src="" alt="">
-    <div class="lightbox-caption">
-      <p id="lightbox-caption-text"></p>
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-image" src="" alt="">
+        <div class="lightbox-info">
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-description"></p>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-// Featured Works Gallery System
-class FeaturedWorksGallery {
-  constructor() {
-    this.imagePool = [
-      // Graphics Collection
-      {
-        src: 'GRAPHICS/BRAIN EATER.jpg',
-        alt: 'Brain Eater poster design',
-        caption: 'Brain Eater — Category: Graphics',
-        category: 'Graphics',
-        aspect: 'poster'
-      },
-      {
-        src: 'GRAPHICS/DEVIL WEARS PRADA 1.jpg',
-        alt: 'Devil Wears Prada poster design',
-        caption: 'Devil Wears Prada — Category: Graphics',
-        category: 'Graphics',
-        aspect: 'poster'
-      },
-      {
-        src: 'GRAPHICS/HABI LOGO.jpg',
-        alt: 'Habi brand logo design',
-        caption: 'Habi Logo — Category: Graphics',
-        category: 'Graphics',
-        aspect: 'web'
-      },
-      {
-        src: 'GRAPHICS/ZENITH HOME PAGE.jpg',
-        alt: 'Zenith website homepage mockup',
-        caption: 'Zenith Homepage — Category: Graphics',
-        category: 'Graphics',
-        aspect: 'web'
-      },
-      
-      // Illustrations Collection
-      {
-        src: 'ILLUSTRATION/BRAIN.jpg',
-        alt: 'Girl with exposed pink brain ribbons',
-        caption: 'Brain Ribbons Girl — Category: Illustration',
-        category: 'Illustration',
-        aspect: 'portrait'
-      },
-      {
-        src: 'ILLUSTRATION/GUMMY BEAR.jpg',
-        alt: 'Neon furry creature portrait with pink spikes',
-        caption: 'Gummy Beast — Category: Illustration',
-        category: 'Illustration',
-        aspect: 'portrait'
-      },
-      {
-        src: 'ILLUSTRATION/PIE BOY.jpg',
-        alt: 'Boy resting on a bleeding pie, moody lighting',
-        caption: 'Pie Boy — Category: Illustration',
-        category: 'Illustration',
-        aspect: 'portrait'
-      },
-      {
-        src: 'ILLUSTRATION/CUTE GIRL.jpg',
-        alt: 'Pastel stylized girl with doodle props',
-        caption: 'Soft Style Girl — Category: Illustration',
-        category: 'Illustration',
-        aspect: 'portrait'
-      },
-      
-      // Prints & Merch (Coming Soon)
-      {
-        src: 'COMING_SOON/CLAY.jpg',
-        alt: 'Clay sculpture artwork',
-        caption: 'Clay Sculpture — Category: Prints & Merch',
-        category: 'Prints & Merch',
-        aspect: 'square'
-      },
-      {
-        src: 'COMING_SOON/TATTOO1.jpg',
-        alt: 'Tattoo design artwork',
-        caption: 'Tattoo Design — Category: Prints & Merch',
-        category: 'Prints & Merch',
-        aspect: 'portrait'
-      }
-    ];
-    
-    this.lightbox = document.getElementById('lightbox');
-    this.lightboxImage = document.getElementById('lightbox-image');
-    this.lightboxCaption = document.getElementById('lightbox-caption-text');
-    this.currentImages = [];
-    this.currentIndex = 0;
-    
-    this.init();
-  }
-
-  init() {
-    this.generateFeaturedImages();
-    this.bindLightboxEvents();
-  }
-
-  // Randomly select 4 images with balanced distribution
-  selectRandomImages() {
-    const graphics = this.imagePool.filter(img => img.category === 'Graphics');
-    const illustrations = this.imagePool.filter(img => img.category === 'Illustration');
-    const prints = this.imagePool.filter(img => img.category === 'Prints & Merch');
-    
-    const selected = [];
-    
-    // Get 1-2 from Graphics
-    const graphicsCount = Math.random() > 0.5 ? 2 : 1;
-    for (let i = 0; i < graphicsCount; i++) {
-      const randomIndex = Math.floor(Math.random() * graphics.length);
-      const selected_img = graphics.splice(randomIndex, 1)[0];
-      if (selected_img) selected.push(selected_img);
+class FeaturedWorksManager {
+    constructor() {
+        this.imagePool = [
+            // Graphics
+            { src: 'GRAPHICS/3.png', title: 'Brand Identity Design', description: 'Professional branding package', category: 'Graphics' },
+            { src: 'GRAPHICS/4.png', title: 'Marketing Materials', description: 'Print and digital marketing designs', category: 'Graphics' },
+            { src: 'GRAPHICS/5.png', title: 'Logo Design', description: 'Creative logo concepts', category: 'Graphics' },
+            { src: 'GRAPHICS/6.png', title: 'Web Graphics', description: 'Digital interface elements', category: 'Graphics' },
+            { src: 'GRAPHICS/7.png', title: 'Poster Design', description: 'Event and promotional posters', category: 'Graphics' },
+            { src: 'GRAPHICS/8.png', title: 'Social Media Kit', description: 'Cohesive social media templates', category: 'Graphics' },
+            
+            // Illustrations
+            { src: 'ILLUSTRATION/1.png', title: 'Character Portrait', description: 'Digital character illustration', category: 'Illustration' },
+            { src: 'ILLUSTRATION/2.png', title: 'Fantasy Art', description: 'Mystical digital painting', category: 'Illustration' },
+            { src: 'ILLUSTRATION/3.png', title: 'Anime Style', description: 'Manga-inspired artwork', category: 'Illustration' },
+            { src: 'ILLUSTRATION/4.png', title: 'Concept Art', description: 'Creative concept designs', category: 'Illustration' },
+            { src: 'ILLUSTRATION/5.png', title: 'Digital Portrait', description: 'Stylized character design', category: 'Illustration' },
+            { src: 'ILLUSTRATION/6.png', title: 'Illustration Series', description: 'Part of ongoing art series', category: 'Illustration' },
+            { src: 'ILLUSTRATION/7.png', title: 'Original Character', description: 'Custom character creation', category: 'Illustration' },
+            { src: 'ILLUSTRATION/8.png', title: 'Art Study', description: 'Style exploration piece', category: 'Illustration' },
+            
+            // Prints & Merch (from COMING_SOON folder)
+            { src: 'COMING_SOON/1.png', title: 'Art Print Collection', description: 'Limited edition prints', category: 'Prints & Merch' },
+            { src: 'COMING_SOON/2.png', title: 'Sticker Pack', description: 'Cute character stickers', category: 'Prints & Merch' },
+            { src: 'COMING_SOON/3.png', title: 'Merch Design', description: 'Apparel and accessories', category: 'Prints & Merch' },
+            { src: 'COMING_SOON/4.png', title: 'Custom Pins', description: 'Enamel pin designs', category: 'Prints & Merch' }
+        ];
+        
+        this.displayedImages = new Set();
+        this.init();
     }
-    
-    // Get 1 from Illustrations
-    if (illustrations.length > 0) {
-      const randomIndex = Math.floor(Math.random() * illustrations.length);
-      selected.push(illustrations[randomIndex]);
+
+    init() {
+        this.generateFeaturedTiles();
+        this.setupLightbox();
+        
+        // Refresh featured works every 30 seconds
+        setInterval(() => {
+            this.refreshFeaturedWorks();
+        }, 30000);
     }
-    
-    // Get 1 from Prints & Merch
-    if (prints.length > 0) {
-      const randomIndex = Math.floor(Math.random() * prints.length);
-      selected.push(prints[randomIndex]);
+
+    generateFeaturedTiles() {
+        const container = document.querySelector('.featured-grid');
+        if (!container) return;
+
+        // Clear existing content
+        container.innerHTML = '';
+        this.displayedImages.clear();
+
+        // Generate 6 diverse tiles
+        const selectedImages = this.selectDiverseImages(6);
+        
+        selectedImages.forEach((image, index) => {
+            const tile = this.createTile(image, index);
+            container.appendChild(tile);
+            this.displayedImages.add(image.src);
+        });
     }
-    
-    // If we need more images to reach 4, fill from remaining
-    while (selected.length < 4 && this.imagePool.length > selected.length) {
-      const remaining = this.imagePool.filter(img => !selected.includes(img));
-      if (remaining.length === 0) break;
-      
-      const randomIndex = Math.floor(Math.random() * remaining.length);
-      selected.push(remaining[randomIndex]);
+
+    selectDiverseImages(count) {
+        const graphics = this.imagePool.filter(img => img.category === 'Graphics');
+        const illustrations = this.imagePool.filter(img => img.category === 'Illustration');
+        const prints = this.imagePool.filter(img => img.category === 'Prints & Merch');
+        
+        const selected = [];
+        
+        // Ensure at least one from each category
+        if (graphics.length > 0) selected.push(this.getRandomItem(graphics));
+        if (illustrations.length > 0) selected.push(this.getRandomItem(illustrations));
+        if (prints.length > 0) selected.push(this.getRandomItem(prints));
+        
+        // Fill remaining slots with random selection
+        const remaining = this.imagePool.filter(img => 
+            !selected.some(s => s.src === img.src)
+        );
+        
+        while (selected.length < count && remaining.length > 0) {
+            const randomIndex = Math.floor(Math.random() * remaining.length);
+            selected.push(remaining.splice(randomIndex, 1)[0]);
+        }
+        
+        return selected.slice(0, count);
     }
-    
-    // Shuffle the final selection
-    return selected.sort(() => Math.random() - 0.5);
-  }
 
-  generateFeaturedImages() {
-    this.currentImages = this.selectRandomImages();
-    const grid = document.querySelector('.featured-grid');
-    
-    grid.innerHTML = this.currentImages.map((image, index) => `
-      <a href="#" class="featured-tile" data-index="${index}" data-aspect="${image.aspect}"
-         aria-label="View ${image.alt}">
-        <div class="featured-container">
-          <img src="${image.src}" 
-               alt="${image.alt}" 
-               loading="lazy">
-          <div class="featured-overlay">
-            <span class="overlay-text">View Artwork</span>
-          </div>
-        </div>
-      </a>
-    `).join('');
-    
-    // Bind click events to tiles
-    document.querySelectorAll('.featured-tile').forEach(tile => {
-      tile.addEventListener('click', (e) => {
-        e.preventDefault();
-        const index = parseInt(tile.dataset.index);
-        this.openLightbox(index);
-      });
-    });
-  }
+    getRandomItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
 
-  bindLightboxEvents() {
-    // Lightbox controls
-    document.querySelector('.lightbox-close').addEventListener('click', () => this.closeLightbox());
-    document.querySelector('.lightbox-overlay').addEventListener('click', () => this.closeLightbox());
-    document.querySelector('.lightbox-prev').addEventListener('click', () => this.prevImage());
-    document.querySelector('.lightbox-next').addEventListener('click', () => this.nextImage());
+    createTile(image, index) {
+        const tile = document.createElement('div');
+        tile.className = `featured-tile tile-${index + 1}`;
+        tile.innerHTML = `
+            <img src="${image.src}" alt="${image.title}" loading="lazy">
+            <div class="tile-overlay">
+                <h3>${image.title}</h3>
+                <p>${image.description}</p>
+                <span class="category-tag">${image.category}</span>
+            </div>
+        `;
+        
+        // Add click handler for lightbox
+        tile.addEventListener('click', () => {
+            this.openLightbox(image);
+        });
+        
+        return tile;
+    }
 
-    // Keyboard controls
-    document.addEventListener('keydown', (e) => {
-      if (!this.lightbox.classList.contains('active')) return;
-      
-      switch(e.key) {
-        case 'Escape':
-          this.closeLightbox();
-          break;
-        case 'ArrowLeft':
-          this.prevImage();
-          break;
-        case 'ArrowRight':
-          this.nextImage();
-          break;
-      }
-    });
-  }
+    refreshFeaturedWorks() {
+        const container = document.querySelector('.featured-grid');
+        if (!container) return;
+        
+        // Add fade out effect
+        container.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            this.generateFeaturedTiles();
+            container.style.opacity = '1';
+        }, 500);
+    }
 
-  openLightbox(index) {
-    const image = this.currentImages[index];
-    if (!image) return;
+    setupLightbox() {
+        // Close lightbox when clicking outside
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeLightbox();
+            }
+        });
+    }
 
-    this.lightboxImage.src = image.src;
-    this.lightboxImage.alt = image.alt;
-    this.lightboxCaption.textContent = image.caption;
-    this.currentIndex = index;
+    openLightbox(image) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDescription = document.getElementById('lightbox-description');
+        
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.title;
+        lightboxTitle.textContent = image.title;
+        lightboxDescription.textContent = image.description;
+        
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-    this.lightbox.classList.add('active');
-    this.lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    // Focus management
-    document.querySelector('.lightbox-close').focus();
-  }
-
-  closeLightbox() {
-    this.lightbox.classList.remove('active');
-    this.lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  prevImage() {
-    this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.currentImages.length - 1;
-    this.updateLightboxImage();
-  }
-
-  nextImage() {
-    this.currentIndex = this.currentIndex < this.currentImages.length - 1 ? this.currentIndex + 1 : 0;
-    this.updateLightboxImage();
-  }
-
-  updateLightboxImage() {
-    const image = this.currentImages[this.currentIndex];
-    this.lightboxImage.src = image.src;
-    this.lightboxImage.alt = image.alt;
-    this.lightboxCaption.textContent = image.caption;
-  }
+    closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
-// Initialize featured works gallery when DOM is loaded
+// Global function for lightbox close button
+function closeLightbox() {
+    const manager = window.featuredWorksManager;
+    if (manager) {
+        manager.closeLightbox();
+    }
+}
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  new FeaturedWorksGallery();
+    window.featuredWorksManager = new FeaturedWorksManager();
 });
 </script>
 
