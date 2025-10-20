@@ -65,34 +65,45 @@
       <!-- Commission Gallery -->
       <div class="commission-gallery">
         <div class="gallery-grid">
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/KAERUII COMMISSION.jpg', 'Kaeruii')">
             <img src="RATES/KAERUII COMMISSION.jpg" alt="Kaeruii Commission" class="commission-image">
             <p class="commission-name">Kaeruii</p>
           </div>
           
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/TRISHA COMMISSION 2.jpg', 'Trisha 2')">
             <img src="RATES/TRISHA COMMISSION 2.jpg" alt="Trisha Commission 2" class="commission-image">
             <p class="commission-name">Trisha 2</p>
           </div>
           
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/TRISHA COMMISSION 1.jpg', 'Trisha')">
             <img src="RATES/TRISHA COMMISSION 1.jpg" alt="Trisha Commission 1" class="commission-image">
             <p class="commission-name">Trisha</p>
           </div>
           
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/XI 1 COMMISSION.jpg', 'Xi')">
             <img src="RATES/XI 1 COMMISSION.jpg" alt="Xi Commission 1" class="commission-image">
             <p class="commission-name">Xi</p>
           </div>
           
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/XI 2 COMMISSION.jpg', 'Xi Ver. 2')">
             <img src="RATES/XI 2 COMMISSION.jpg" alt="Xi Commission 2" class="commission-image">
             <p class="commission-name">Xi Ver. 2</p>
           </div>
           
-          <div class="commission-card">
+          <div class="commission-card" onclick="openLightbox('RATES/ZIGGY COMMISSION.jpg', 'Ziggy')">
             <img src="RATES/ZIGGY COMMISSION.jpg" alt="Ziggy Commission" class="commission-image">
             <p class="commission-name">Ziggy</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox for viewing images -->
+      <div id="commission-lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+          <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+          <img id="lightbox-image" src="" alt="">
+          <div class="lightbox-caption">
+            <p id="lightbox-text"></p>
           </div>
         </div>
       </div>
@@ -194,6 +205,40 @@
   </footer>
 
 </section>
+
+<script>
+function openLightbox(imageSrc) {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  
+  lightboxImg.src = imageSrc;
+  lightbox.style.display = 'flex';
+  
+  // Add escape key listener
+  document.addEventListener('keydown', handleEscape);
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'none';
+  
+  // Remove escape key listener
+  document.removeEventListener('keydown', handleEscape);
+}
+
+function handleEscape(event) {
+  if (event.key === 'Escape') {
+    closeLightbox();
+  }
+}
+
+// Close lightbox when clicking outside the image
+document.getElementById('lightbox').addEventListener('click', function(event) {
+  if (event.target === this) {
+    closeLightbox();
+  }
+});
+</script>
 
 </body>
 </html>

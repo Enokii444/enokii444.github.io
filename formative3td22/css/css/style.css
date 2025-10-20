@@ -931,6 +931,47 @@ footer iframe {
     }
 }
 
+/* ===== ILLUSTRATIONS GALLERY ENHANCED LAYOUT ===== */
+.illustrations-gallery .masonry-grid {
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .illustrations-gallery .masonry-grid {
+        gap: 28px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .illustrations-gallery .masonry-grid {
+        gap: 32px;
+    }
+}
+
+/* Enhanced tile sizing for illustrations */
+.illustrations-gallery .gallery-tile {
+    width: 100%;
+}
+
+.illustrations-gallery .tile-container {
+    aspect-ratio: 4/5;
+    min-height: 300px;
+}
+
+@media (min-width: 768px) {
+    .illustrations-gallery .tile-container {
+        min-height: 350px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .illustrations-gallery .tile-container {
+        min-height: 400px;
+    }
+}
+
 /* ===== UNIFIED CARD SYSTEM ===== */
 .collection-card-link,
 .gallery-item,
@@ -1080,19 +1121,7 @@ footer iframe {
         grid-column: span 2;
     }
     
-    /* Specific positioning for Illustrations page */
-    .illustrations-gallery .gallery-tile:nth-child(5), /* Pie Boy */
-    .illustrations-gallery .gallery-tile:nth-child(6) { /* Spider Boy */
-        grid-column: span 1;
-        justify-self: center;
-        max-width: 85%;
-    }
-    
-    .illustrations-gallery .gallery-tile:nth-child(7) { /* Squiggly Paradise */
-        grid-column: span 2;
-        justify-self: end;
-        max-width: 75%;
-    }
+    /* Clean 3-column layout for illustrations - no special positioning */
 }
 
 /* ===== FOOTER FOLLOW ME STYLING ===== */
