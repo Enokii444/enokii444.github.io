@@ -1727,6 +1727,27 @@ footer iframe {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
+  margin: 2rem 0;
+  justify-items: center;
+}
+
+/* Specific grid layouts for different categories */
+.henna-grid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.clay-grid {
+  grid-template-columns: 1fr;
+  max-width: 300px;
+  margin: 2rem auto;
+}
+
+.merch-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 500px;
+  margin: 2rem auto;
 }
 
 .image-item {
@@ -1735,6 +1756,8 @@ footer iframe {
   overflow: hidden;
   border: 1px solid rgba(248, 220, 226, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  aspect-ratio: 1/1; /* Make all images square for consistency */
 }
 
 .image-item:hover {
@@ -1744,9 +1767,52 @@ footer iframe {
 
 .service-image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-item:hover .service-image {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .henna-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 400px;
+  }
+  
+  .clay-grid {
+    grid-template-columns: 1fr;
+    max-width: 250px;
+  }
+  
+  .merch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .henna-grid,
+  .clay-grid,
+  .merch-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
 }
 
 /* Coming Soon page footer overlap */

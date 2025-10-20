@@ -78,66 +78,76 @@
 <script>
 class FeaturedWorksManager {
     constructor() {
-        this.works = [
-            {
-                title: "Brain Eater",
-                image: "GRAPHICS/BRAIN EATER.jpg",
-                category: "Graphics",
-                link: "GRAPHICS.html"
-            },
-            {
-                title: "Cute Girl",
-                image: "ILLUSTRATION/CUTE GIRL.jpg", 
-                category: "Illustration",
-                link: "ILLUSTRATION.html"
-            },
-            {
-                title: "Devil Wears Prada",
-                image: "GRAPHICS/DEVIL WEARS PRADA 1.jpg",
-                category: "Graphics", 
-                link: "GRAPHICS.html"
-            },
-            {
-                title: "Gummy Bear",
-                image: "ILLUSTRATION/GUMMY BEAR.jpg",
-                category: "Illustration",
-                link: "ILLUSTRATION.html"
-            },
-            {
-                title: "Habi Logo",
-                image: "GRAPHICS/HABI LOGO.jpg",
-                category: "Graphics",
-                link: "GRAPHICS.html"
-            },
-            {
-                title: "Coming Soon Preview",
-                image: "COMING_SOON/1.png",
-                category: "Coming Soon",
-                link: "Coming Soon.html"
-            }
+        // All available artworks from your collections
+        this.allArtworks = [
+            // Graphics Collection
+            "GRAPHICS/BRAIN EATER.jpg",
+            "GRAPHICS/DEVIL WEARS PRADA 1.jpg",
+            "GRAPHICS/DEVIL WEARS PRADA 2.jpg",
+            "GRAPHICS/HABI LOGO.jpg",
+            "GRAPHICS/STOP PROCASTINATING.jpg",
+            "GRAPHICS/ZENITH HOME PAGE.jpg",
+            "GRAPHICS/ZENITH MENU.jpg",
+            
+            // Illustrations Collection
+            "ILLUSTRATION/BRAIN.jpg",
+            "ILLUSTRATION/CUTE GIRL.jpg",
+            "ILLUSTRATION/GUMMY BEAR.jpg",
+            "ILLUSTRATION/MEAT GIRL BLUE.png",
+            "ILLUSTRATION/PIE BOY.jpg",
+            "ILLUSTRATION/SPIDER BOY.jpg",
+            "ILLUSTRATION/SQUIGGLY.jpg",
+            
+            // Coming Soon Collection
+            "COMING_SOON/1.png",
+            "COMING_SOON/2.png",
+            "COMING_SOON/3.png",
+            "COMING_SOON/4.png",
+            "COMING_SOON/CLAY.jpg",
+            "COMING_SOON/TATTOO 2.jpg",
+            "COMING_SOON/TATTOO 3.jpg",
+            "COMING_SOON/TATTOO1.jpg",
+            
+            // Commission Examples
+            "RATES/CHIBI COMMISSION.jpg",
+            "RATES/KAERUII COMMISSION.jpg",
+            "RATES/TRISHA COMMISSION 1.jpg",
+            "RATES/TRISHA COMMISSION 2.jpg",
+            "RATES/XI 1 COMMISSION.jpg",
+            "RATES/XI 2 COMMISSION.jpg",
+            "RATES/ZIGGY COMMISSION.jpg"
         ];
+        
         this.init();
     }
 
     init() {
-        this.renderFeaturedWorks();
+        this.renderRandomShowcase();
+        // Refresh the showcase every 8 seconds for dynamic feel
+        setInterval(() => this.renderRandomShowcase(), 8000);
     }
 
-    renderFeaturedWorks() {
+    getRandomArtworks(count = 6) {
+        const shuffled = [...this.allArtworks].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    renderRandomShowcase() {
         const container = document.querySelector('.featured-grid');
         if (!container) return;
 
-        container.innerHTML = this.works.map(work => `
+        const randomArtworks = this.getRandomArtworks(6);
+        
+        container.innerHTML = randomArtworks.map(artwork => `
             <div class="featured-tile">
-                <a href="${work.link}" class="tile-link">
+                <div class="tile-link">
                     <div class="tile-image-container">
-                        <img src="${work.image}" alt="${work.title}" class="tile-image" loading="lazy">
+                        <img src="${artwork}" alt="Featured Artwork" class="tile-image" loading="lazy">
                         <div class="tile-overlay">
-                            <span class="tile-category">${work.category}</span>
+                            <span class="tile-category">✨</span>
                         </div>
                     </div>
-                    <h3 class="tile-title">${work.title}</h3>
-                </a>
+                </div>
             </div>
         `).join('');
     }

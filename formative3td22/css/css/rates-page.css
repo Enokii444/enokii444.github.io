@@ -210,21 +210,28 @@
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  justify-items: center;
 }
 
 .commission-card {
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 1.5rem;
+  border-radius: 15px;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(249, 205, 211, 0.3);
+  box-shadow: 0 6px 20px rgba(249, 205, 211, 0.3);
   border: 2px solid #f9cdd3;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .commission-card::before {
@@ -246,8 +253,8 @@
 }
 
 .commission-card:hover {
-  transform: translateY(-15px) rotate(3deg) scale(1.05);
-  box-shadow: 0 20px 50px rgba(249, 205, 211, 0.6);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(249, 205, 211, 0.5);
   border-color: #e91e63;
   z-index: 10;
   position: relative;
@@ -265,12 +272,13 @@
 
 .commission-image {
   width: 100%;
-  height: 180px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
   border: 2px solid rgba(249, 205, 211, 0.5);
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .commission-card:hover .commission-image {
@@ -280,7 +288,7 @@
 
 .commission-name {
   font-family: 'Handlee', cursive;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #e91e63;
   margin: 0;
   font-weight: bold;
@@ -520,12 +528,17 @@
   }
   
   .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    max-width: 400px;
   }
   
   .commission-image {
-    height: 140px;
+    height: 100px;
+  }
+  
+  .commission-name {
+    font-size: 0.85rem;
   }
   
   .chibi-title {
@@ -544,7 +557,21 @@
   }
   
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-width: 320px;
+  }
+  
+  .commission-card {
+    padding: 0.75rem;
+  }
+  
+  .commission-image {
+    height: 80px;
+  }
+  
+  .commission-name {
+    font-size: 0.8rem;
   }
   
   .details-item {
