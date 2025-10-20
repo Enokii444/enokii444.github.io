@@ -3,27 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/unified-layout.css">
+<link rel="stylesheet" href="css/sidebar-height-fix.css">
 <link rel="stylesheet" href="css/style.css">
-<title>Basic page layout</title>
+<title>Coming Soon - Creative Portfolio</title>
 </head>
 <body>
-<div class="container">
-<header>
-    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
-</header>
-<main>
-<section class="left">
-<nav class="sidebar-nav">
-  <ul class="nav-list">
-    <li><a href="page2.html" class="nav-link">← BACK TO ARTWORKS</a></li>
-    <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
-    <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
-    <li><a href="page3.html" class="nav-link">RATES</a></li>
-  </ul>
-</nav>
-</section>
-<section class="mid">
+
+<section class="page page--coming-soon">
+  <!-- Header -->
+  <header class="page__header">
+    <img src="images/creative-portfolio-header.png" alt="Creative Portfolio by Hailie Alberto" class="header-img">
+  </header>
+
+  <!-- Main Content Container -->
+  <div class="page__container">
+    
+    <!-- Left Sidebar -->
+    <aside class="page__left">
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li><a href="page2.html" class="nav-link">← BACK TO ARTWORKS</a></li>
+          <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
+          <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
+          <li><a href="page3.html" class="nav-link">RATES</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="page__main">
 <div class="coming-soon-container">
   <div class="coming-soon-header">
     <h1 class="coming-soon-title">Coming Soon</h1>
@@ -74,15 +83,28 @@
       </div>
     </div>
   </div>
-</div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="page__right">
+      <div class="quick-nav">
+        <h4>Quick Navigation</h4>
+        <div class="nav-links">
+          <a href="GRAPHICS.html">View Graphics →</a>
+          <a href="ILLUSTRATION.html">View Illustrations →</a>
+          <a href="page3.html">Commission Rates →</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="page__footer">
+    <iframe src="footer.html" frameborder="0" scrolling="no"></iframe>
+  </footer>
+
 </section>
-<section class="right">
-<p>For ads here</p>
-</section>
-</main>
-<footer>
-<iframe src="footer.html" frameborder="0" scrolling="no" style="width: 100%; height: 80px; border: none; overflow: hidden;"></iframe>
-</footer>
-</div>
+
 </body>
 </html>

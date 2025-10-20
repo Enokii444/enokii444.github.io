@@ -1,0 +1,384 @@
+/* ===================================
+   ABOUT THE ARTIST PAGE STYLES
+   =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Page-specific styling */
+.page--about {
+  font-family: 'Inter', sans-serif;
+}
+
+.page--about .page__main {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Profile Header Card */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(248, 220, 226, 0.1);
+  border-radius: 16px;
+  border: 1px solid rgba(248, 220, 226, 0.3);
+  margin-bottom: 3rem;
+  box-shadow: 0 2px 12px rgba(248, 220, 226, 0.2);
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 3px solid rgba(248, 220, 226, 0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.profile-aka {
+  font-size: 1.1rem;
+  color: #e91e63;
+  font-weight: 500;
+  margin: 0 0 0.75rem 0;
+}
+
+.profile-descriptor {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.4;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(248, 220, 226, 0.2);
+  color: #e91e63;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(248, 220, 226, 0.3);
+}
+
+.social-link:hover {
+  background: rgba(248, 220, 226, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+}
+
+/* Section Headings */
+.page--about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 2.5rem 0 1.5rem 0;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.page--about h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #e91e63, rgba(248, 220, 226, 0.6));
+  border-radius: 2px;
+}
+
+/* About Me Section */
+.about-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 65ch;
+  margin-bottom: 2rem;
+}
+
+/* My Craft Section */
+.craft-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 65ch;
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.service-card {
+  padding: 1.5rem;
+  background: rgba(248, 220, 226, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(248, 220, 226, 0.2);
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  background: rgba(248, 220, 226, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(248, 220, 226, 0.3);
+}
+
+.service-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1rem;
+  color: #e91e63;
+}
+
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0 0 0.5rem 0;
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Current Role Section */
+.role-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 65ch;
+  margin-bottom: 1.5rem;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(248, 220, 226, 0.2) 0%, rgba(233, 30, 99, 0.1) 100%);
+  border: 1px solid rgba(248, 220, 226, 0.4);
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e91e63;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.role-badge:hover {
+  background: linear-gradient(135deg, rgba(248, 220, 226, 0.3) 0%, rgba(233, 30, 99, 0.15) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+}
+
+/* CTA Section */
+.cta-section {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(248, 220, 226, 0.3);
+}
+
+.cta-button {
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-primary {
+  background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+}
+
+.cta-primary:hover {
+  background: linear-gradient(135deg, #c2185b 0%, #880e4f 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(233, 30, 99, 0.4);
+}
+
+.cta-secondary {
+  background: rgba(248, 220, 226, 0.2);
+  color: #e91e63;
+  border: 1px solid rgba(248, 220, 226, 0.4);
+}
+
+.cta-secondary:hover {
+  background: rgba(248, 220, 226, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(248, 220, 226, 0.4);
+}
+
+/* Quick Facts Card (Right Sidebar) */
+.quick-facts {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(248, 220, 226, 0.3);
+  box-shadow: 0 2px 10px rgba(248, 220, 226, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.quick-facts h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.fact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(248, 220, 226, 0.2);
+}
+
+.fact-item:last-child {
+  border-bottom: none;
+}
+
+.fact-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.fact-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e91e63;
+  text-align: right;
+}
+
+/* Availability Chip */
+.availability-chip {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-name {
+    font-size: 1.75rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .cta-section {
+    flex-direction: column;
+  }
+  
+  .page--about .page__main {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  
+  .page--about h2 {
+    font-size: 1.5rem;
+  }
+  
+  .service-card {
+    padding: 1rem;
+  }
+}
+
+/* ====================================
+   ABOUT PAGE FOOTER OVERLAP
+   ==================================== */
+
+.page--about .page__footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 10 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 182, 193, 0.3) !important;
+  box-shadow: 0 -4px 20px rgba(255, 182, 193, 0.2) !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.page--about .page__footer .footer__content {
+  padding: 1rem 2rem !important;
+  text-align: center !important;
+  color: #666 !important;
+}
+
+/* Add bottom padding to main content to prevent overlap with fixed footer */
+.page--about .page__main {
+  padding-bottom: 120px !important;
+}

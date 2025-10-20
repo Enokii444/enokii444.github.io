@@ -3,344 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/unified-layout.css">
+<link rel="stylesheet" href="css/sidebar-height-fix.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="illustrations-layout-fix.css">
-<title>Illustrations Gallery - Creative Portfolio</title>
+<title>Illustrations Collection - Hailie Felicia Alberto (Zakii)</title>
 </head>
 <body>
-<div class="container illustrations-page">
-<header>
-    <img src="images/Screenshot 2025-10-19 at 1.43.19 AM.png" alt="Creative Portfolio Header" class="header-img">
-</header>
-<main>
-<section class="left illustrations-sidebar">
-<nav class="sidebar-nav">
-  <ul class="nav-list">
-    <li><a href="page2.html" class="nav-link">← BACK TO ARTWORKS</a></li>
-    <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
-    <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
-    <li><a href="page3.html" class="nav-link">RATES</a></li>
-  </ul>
-</nav>
-</section>
-<section class="mid illustrations-content">
-  <!-- Gallery Header -->
-  <div class="illustrations-gallery">
-    <h1 class="gallery-title">Illustrations</h1>
-    <p class="gallery-subtitle">Character art, surreal portraits, and playful doodles</p>
+
+<section class="page page--illustrations">
+  <!-- Header -->
+  <header class="page__header">
+    <img src="images/creative-portfolio-header.png" alt="Creative Portfolio by Hailie Alberto" class="header-img">
+  </header>
+
+  <!-- Main Content Container -->
+  <div class="page__container">
     
-    <!-- Filter Pills -->
-    <div class="filter-pills">
-      <button class="pill-btn active" data-filter="all">All</button>
-      <button class="pill-btn" data-filter="portraits">Portraits</button>
-      <button class="pill-btn" data-filter="surreal">Surreal</button>
-      <button class="pill-btn" data-filter="doodles">Doodles</button>
-    </div>
+    <!-- Left Sidebar -->
+    <aside class="page__left">
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">HOME PAGE</a></li>
+          <li><a href="page1.html" class="nav-link">ABOUT THE ARTIST</a></li>
+          <li><a href="page2.html" class="nav-link">ARTWORKS</a></li>
+          <li><a href="page3.html" class="nav-link">RATES</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-    <!-- Masonry Gallery Grid -->
-    <div class="masonry-grid gallery">
-      <!-- Brain Ribbons Girl -->
-      <a href="#" class="gallery-tile standard-tile" data-category="portraits surreal" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Brain Ribbons Girl — pink surreal portrait"
-         aria-label="View Brain Ribbons Girl illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/BRAIN.jpg" 
-               alt="Girl with exposed pink brain ribbons." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Brain Ribbons Girl</h3>
-          <p class="caption-desc">pink surreal portrait</p>
-        </div>
-      </a>
-
-      <!-- Soft Style Girl -->
-      <a href="#" class="gallery-tile standard-tile" data-category="portraits" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Soft Style Girl — pastel character with props"
-         aria-label="View Soft Style Girl illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/CUTE GIRL.jpg" 
-               alt="Pastel stylized girl with doodle props." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Soft Style Girl</h3>
-          <p class="caption-desc">pastel character with props</p>
-        </div>
-      </a>
-
-      <!-- Gummy Beast - Feature Tile -->
-      <a href="#" class="gallery-tile feature-tile" data-category="portraits surreal" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Gummy Beast — neon creature portrait"
-         aria-label="View Gummy Beast illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/GUMMY BEAR.jpg" 
-               alt="Neon furry creature portrait with pink spikes." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Gummy Beast</h3>
-          <p class="caption-desc">neon creature portrait</p>
-        </div>
-      </a>
-
-      <!-- Reaching Out -->
-      <a href="#" class="gallery-tile standard-tile" data-category="portraits" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Reaching Out — close character POV"
-         aria-label="View Reaching Out illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/MEAT GIRL BLUE.png" 
-               alt="Close-up girl reaching hands forward on blue background." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Reaching Out</h3>
-          <p class="caption-desc">close character POV</p>
-        </div>
-      </a>
-
-      <!-- Pie Boy -->
-      <a href="#" class="gallery-tile standard-tile" data-category="portraits surreal" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Pie Boy — moody vignette"
-         aria-label="View Pie Boy illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/PIE BOY.jpg" 
-               alt="Boy resting on a bleeding pie, moody lighting." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Pie Boy</h3>
-          <p class="caption-desc">moody vignette</p>
-        </div>
-      </a>
-
-      <!-- Spider Boy -->
-      <a href="#" class="gallery-tile standard-tile" data-category="surreal" data-aspect="portrait"
-         data-lightbox="illustrations"
-         data-caption="Spider Boy — surreal duo composition"
-         aria-label="View Spider Boy illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/SPIDER BOY.jpg" 
-               alt="Two characters in surreal loop pose with spikes." 
-               loading="lazy" 
-               width="400" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Spider Boy</h3>
-          <p class="caption-desc">surreal duo composition</p>
-        </div>
-      </a>
-
-      <!-- Squiggly Paradise - Feature Tile -->
-      <a href="#" class="gallery-tile feature-tile" data-category="doodles" data-aspect="square"
-         data-lightbox="illustrations"
-         data-caption="Squiggly Paradise — chaotic doodle sheet"
-         aria-label="View Squiggly Paradise illustration">
-        <div class="tile-container">
-          <img src="ILLUSTRATION/SQUIGGLY.jpg" 
-               alt="Colorful chaotic doodle composition with stars and icons." 
-               loading="lazy" 
-               width="500" 
-               height="500">
-          <div class="tile-overlay">
-            <span class="overlay-text">View Art</span>
-          </div>
-        </div>
-        <div class="tile-caption">
-          <h3 class="caption-title">Squiggly Paradise</h3>
-          <p class="caption-desc">chaotic doodle sheet</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-<section class="right illustrations-right">
-<p>For ads here</p>
-</section>
-</main>
-<footer>
-<iframe src="footer.html" frameborder="0" scrolling="no" style="width: 100%; height: 80px; border: none; overflow: hidden;"></iframe>
-</footer>
-</div>
-
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="lightbox-overlay" aria-label="Close lightbox"></div>
-  <div class="lightbox-content">
-    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-    <button class="lightbox-prev" aria-label="Previous image">&#8249;</button>
-    <button class="lightbox-next" aria-label="Next image">&#8250;</button>
-    <img id="lightbox-image" src="" alt="">
-    <div class="lightbox-caption">
-      <p id="lightbox-caption-text"></p>
-    </div>
-  </div>
-</div>
-
-<script>
-// Illustrations Gallery JavaScript
-class IllustrationsGallery {
-  constructor() {
-    this.tiles = document.querySelectorAll('.gallery-tile');
-    this.lightbox = document.getElementById('lightbox');
-    this.lightboxImage = document.getElementById('lightbox-image');
-    this.lightboxCaption = document.getElementById('lightbox-caption-text');
-    this.currentIndex = 0;
-    this.filteredTiles = [...this.tiles];
-    
-    this.init();
-  }
-
-  init() {
-    this.bindEvents();
-  }
-
-  bindEvents() {
-    // Gallery tile clicks
-    this.tiles.forEach((tile, index) => {
-      tile.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.openLightbox(index);
-      });
-    });
-
-    // Filter pills
-    document.querySelectorAll('.pill-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        this.filter(e.target.dataset.filter);
+    <!-- Main Content -->
+    <main class="page__main">
+      <div class="illustrations-gallery">
+        <h1 class="gallery-title">Illustrations Collection</h1>
+        <p class="gallery-subtitle">Hand-drawn character art, concept designs, and digital paintings</p>
         
-        // Update active pill
-        document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-      });
-    });
+        <div class="masonry-grid">
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/BRAIN.jpg" alt="Brain Illustration" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Brain</h3>
+              <p>Creative anatomical illustration</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/CUTE GIRL.jpg" alt="Cute Girl Character" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Cute Girl</h3>
+              <p>Adorable character illustration</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/GUMMY BEAR.jpg" alt="Gummy Bear Character" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Gummy Bear</h3>
+              <p>Playful character design</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/MEAT GIRL BLUE.png" alt="Meat Girl Blue" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Meat Girl Blue</h3>
+              <p>Stylized character artwork</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/PIE BOY.jpg" alt="Pie Boy Character" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Pie Boy</h3>
+              <p>Food-themed character design</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/SPIDER BOY.jpg" alt="Spider Boy Character" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Spider Boy</h3>
+              <p>Creative character concept</p>
+            </div>
+          </div>
+          
+          <div class="gallery-tile">
+            <div class="tile-container">
+              <img src="ILLUSTRATION/SQUIGGLY.jpg" alt="Squiggly Character" loading="lazy">
+            </div>
+            <div class="tile-caption">
+              <h3>Squiggly</h3>
+              <p>Whimsical character illustration</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="gallery-navigation">
+          <a href="GRAPHICS.html" class="nav-btn">← Previous: Graphics</a>
+          <a href="page2.html" class="nav-btn">Back to Collections</a>
+          <a href="Coming Soon.html" class="nav-btn">Next: Coming Soon →</a>
+        </div>
+      </div>
+    </main>
 
-    // Lightbox controls
-    document.querySelector('.lightbox-close').addEventListener('click', () => this.closeLightbox());
-    document.querySelector('.lightbox-overlay').addEventListener('click', () => this.closeLightbox());
-    document.querySelector('.lightbox-prev').addEventListener('click', () => this.prevImage());
-    document.querySelector('.lightbox-next').addEventListener('click', () => this.nextImage());
-
-    // Keyboard controls
-    document.addEventListener('keydown', (e) => {
-      if (!this.lightbox.classList.contains('active')) return;
+    <!-- Right Sidebar -->
+    <aside class="page__right">
+      <div class="collection-info">
+        <h3>Illustration Collection</h3>
+        <div class="info-item">
+          <span class="info-label">Total Pieces</span>
+          <span class="info-value">7</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Style</span>
+          <span class="info-value">Hand-drawn & Digital</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Focus</span>
+          <span class="info-value">Character Art</span>
+        </div>
+      </div>
       
-      switch(e.key) {
-        case 'Escape':
-          this.closeLightbox();
-          break;
-        case 'ArrowLeft':
-          this.prevImage();
-          break;
-        case 'ArrowRight':
-          this.nextImage();
-          break;
-      }
-    });
-  }
+      <div class="back-nav">
+        <a href="page2.html" class="back-to-artworks">← Back to Artworks</a>
+      </div>
+      
+      <div class="quick-nav">
+        <h4>Quick Navigation</h4>
+        <div class="nav-links">
+          <a href="GRAPHICS.html">View Graphics →</a>
+          <a href="Coming Soon.html">Coming Soon Works →</a>
+          <a href="page3.html">Commission Rates →</a>
+        </div>
+      </div>
+    </aside>
 
-  filter(category) {
-    this.tiles.forEach(tile => {
-      if (category === 'all' || tile.dataset.category.includes(category)) {
-        tile.style.display = 'block';
-      } else {
-        tile.style.display = 'none';
-      }
-    });
+  </div>
 
-    // Update filtered tiles for lightbox navigation
-    this.filteredTiles = [...this.tiles].filter(tile => 
-      category === 'all' || tile.dataset.category.includes(category)
-    );
-  }
+  <!-- Footer -->
+  <footer class="page__footer">
+    <iframe src="footer.html" frameborder="0" scrolling="no"></iframe>
+  </footer>
 
-  openLightbox(index) {
-    const tile = this.filteredTiles[index];
-    if (!tile) return;
-
-    const img = tile.querySelector('img');
-    const caption = tile.dataset.caption;
-
-    this.lightboxImage.src = img.src;
-    this.lightboxImage.alt = img.alt;
-    this.lightboxCaption.textContent = caption;
-    this.currentIndex = index;
-
-    this.lightbox.classList.add('active');
-    this.lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
-    // Focus management
-    document.querySelector('.lightbox-close').focus();
-  }
-
-  closeLightbox() {
-    this.lightbox.classList.remove('active');
-    this.lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  prevImage() {
-    this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.filteredTiles.length - 1;
-    this.updateLightboxImage();
-  }
-
-  nextImage() {
-    this.currentIndex = this.currentIndex < this.filteredTiles.length - 1 ? this.currentIndex + 1 : 0;
-    this.updateLightboxImage();
-  }
-
-  updateLightboxImage() {
-    const tile = this.filteredTiles[this.currentIndex];
-    const img = tile.querySelector('img');
-    const caption = tile.dataset.caption;
-
-    this.lightboxImage.src = img.src;
-    this.lightboxImage.alt = img.alt;
-    this.lightboxCaption.textContent = caption;
-  }
-}
-
-// Initialize gallery when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new IllustrationsGallery();
-});
-</script>
+</section>
 
 </body>
 </html>
