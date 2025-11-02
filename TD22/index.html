@@ -3,14 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>User Registration</title>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg: #f8f9fa;
+            --fg: #212529;
+            --card: #ffffff;
+            --accent: #007bff;
+            --accent-hover: #0056b3;
+            --border: #dee2e6;
+            --success: #28a745;
+            --error: #dc3545;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --hover-bg: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --fg: #e9ecef;
+            --card: #2d2d2d;
+            --accent: #4dabf7;
+            --accent-hover: #339af0;
+            --border: #495057;
+            --success: #51cf66;
+            --error: #ff6b6b;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --hover-bg: #3d3d3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        main {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            background: var(--card);
+            color: var(--fg);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        input:hover, select:hover {
+            border-color: var(--accent);
+        }
+
+        .required {
+            color: var(--error);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.success {
+            background: var(--success);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--card);
+            color: var(--fg);
+        }
+
+        .filter-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        th {
+            background: var(--accent);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--hover-bg);
+        }
+
+        tbody tr:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 14px;
+            }
+        }
+
+        .save-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .save-feedback.show {
+            transform: translateX(0);
+        }
+
+        .validation-error {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: var(--error);
+        }
+
+        .form-group.error .validation-error {
+            display: block;
+        }
+    </style>
 </head>
-<body>
-    <div>
-        <h1>Welcome to my page</h1>
+<body data-theme="light">
+    <div class="container">
+        <header>
+            <h1>User Registration</h1>
+            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>Sign Up Form</h2>
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="idNumber">ID Number <span class="required">*</span></label>
+                        <input type="text" id="idNumber" name="idNumber" required>
+                        <div class="validation-error">ID Number is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="validation-error">First Name is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" id="middleName" name="middleName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="validation-error">Last Name is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <div class="validation-error">Gender selection is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Birthday <span class="required">*</span></label>
+                        <input type="date" id="birthday" name="birthday" required>
+                        <div class="validation-error">Birthday is required</div>
+                    </div>
+
+                    <button type="submit" class="btn" id="saveBtn">Save User</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Registered Users</h2>
+                <div class="filter-section">
+                    <label for="filterInput">Filter by Name:</label>
+                    <input type="text" id="filterInput" class="filter-input" placeholder="Search by first or last name...">
+                </div>
+                
+                <div class="table-container">
+                    <table id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID Number</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Last Name</th>
+                                <th>Gender</th>
+                                <th>Birthday</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr class="empty-state">
+                                <td colspan="6">No users registered yet. Add your first user!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
     </div>
-    <div>
-        <p>QUINN BALUT, HAYDEN DWARFISM BAKTOL</p>
+
+    <div class="save-feedback" id="saveFeedback" aria-live="polite">
+        ✅ User saved successfully!
     </div>
+
+    <script>
+        // Data storage - array to hold user objects
+        let users = [];
+        
+        // DOM elements
+        const form = document.getElementById('userForm');
+        const saveBtn = document.getElementById('saveBtn');
+        const tableBody = document.getElementById('tableBody');
+        const filterInput = document.getElementById('filterInput');
+        const themeToggle = document.getElementById('themeToggle');
+        const saveFeedback = document.getElementById('saveFeedback');
+
+        // Initialize theme from localStorage
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+        }
+
+        // Apply theme and update UI
+        function applyTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            themeToggle.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+            localStorage.setItem('theme', theme);
+        }
+
+        // Toggle between light and dark themes
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        }
+
+        // Validate form inputs
+        function validateForm() {
+            const requiredFields = ['idNumber', 'firstName', 'lastName', 'gender', 'birthday'];
+            let isValid = true;
+
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                const formGroup = field.closest('.form-group');
+                
+                if (!field.value.trim()) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    formGroup.classList.remove('error');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Add user function - handles form submission
+        function addUser(evt) {
+            evt.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            // Get form data and trim whitespace
+            const formData = new FormData(form);
+            const newUser = {
+                idNumber: formData.get('idNumber').trim(),
+                firstName: formData.get('firstName').trim(),
+                middleName: formData.get('middleName').trim(),
+                lastName: formData.get('lastName').trim(),
+                gender: formData.get('gender'),
+                birthday: formData.get('birthday')
+            };
+
+            // Add to users array
+            users.push(newUser);
+            
+            // Update table display
+            renderTable();
+            
+            // Reset form
+            resetForm();
+            
+            // Show save feedback
+            showSaveFeedback();
+        }
+
+        // Reset form to initial state
+        function resetForm() {
+            form.reset();
+            
+            // Remove any error states
+            document.querySelectorAll('.form-group.error').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Focus first input
+            document.getElementById('idNumber').focus();
+        }
+
+        // Show save confirmation feedback
+        function showSaveFeedback() {
+            saveFeedback.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                saveFeedback.classList.remove('show');
+            }, 3000);
+        }
+
+        // Filter users based on search query
+        function filterUsers(query) {
+            if (!query.trim()) {
+                return users;
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            return users.filter(user => 
+                user.firstName.toLowerCase().includes(searchTerm) ||
+                user.lastName.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        // Render table with current users (applying filter if active)
+        function renderTable() {
+            const filterQuery = filterInput.value;
+            const filteredUsers = filterUsers(filterQuery);
+            
+            if (filteredUsers.length === 0) {
+                const emptyMessage = filterQuery ? 
+                    `No users found matching "${filterQuery}"` : 
+                    'No users registered yet. Add your first user!';
+                    
+                tableBody.innerHTML = `
+                    <tr class="empty-state">
+                        <td colspan="6">${emptyMessage}</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            // Build table rows
+            const rows = filteredUsers.map(user => `
+                <tr>
+                    <td>${user.idNumber}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.middleName || '-'}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.gender}</td>
+                    <td>${user.birthday}</td>
+                </tr>
+            `).join('');
+
+            tableBody.innerHTML = rows;
+        }
+
+        // Event listeners
+        form.addEventListener('submit', addUser);
+        filterInput.addEventListener('input', renderTable);
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Add input event listeners for real-time validation clearing
+        document.querySelectorAll('input[required], select[required]').forEach(field => {
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.closest('.form-group').classList.remove('error');
+                }
+            });
+        });
+
+        // Initialize the page
+        initializeTheme();
+        document.getElementById('idNumber').focus();
+    </script>
 </body>
 </html>
