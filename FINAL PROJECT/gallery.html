@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - ArtVista Online Art Catalog</title>
+    <meta name="description" content="Browse our complete art collection featuring digital illustrations, traditional paintings, and contemporary artwork from talented artists worldwide.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <strong>ArtVista</strong>
+                </a>
+                <button class="navbar-toggler" type="button" id="navToggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary ms-2" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Page Header -->
+        <section class="page-header py-5 bg-primary text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="display-4 fw-bold mb-3">Art Collection</h1>
+                        <p class="lead">
+                            Browse artworks by different artists and categories. 
+                            Discover unique pieces that inspire creativity and imagination.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section py-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="filter-buttons text-center">
+                            <button class="btn btn-outline-primary me-2 mb-2 filter-btn active" data-filter="all">All</button>
+                            <button class="btn btn-outline-primary me-2 mb-2 filter-btn" data-filter="digital">Digital</button>
+                            <button class="btn btn-outline-primary me-2 mb-2 filter-btn" data-filter="traditional">Traditional</button>
+                            <button class="btn btn-outline-primary me-2 mb-2 filter-btn" data-filter="character">Character Art</button>
+                            <button class="btn btn-outline-primary me-2 mb-2 filter-btn" data-filter="graphic">Graphic Design</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-grid py-5">
+            <div class="container">
+                <div class="row g-4" id="artworkGrid">
+                    <!-- Digital Illustrations -->
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/BRAIN.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Brain - Creative anatomical digital illustration">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Digital Illustration</span>
+                                    <h5 class="card-title">Brain</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Creative anatomical illustration showcasing detailed brain structure with artistic digital techniques.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/CUTE GIRL.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Cute Girl - Adorable character digital illustration">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Digital Illustration</span>
+                                    <h5 class="card-title">Cute Girl</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Adorable character illustration with soft digital colors and endearing expression.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/GUMMY BEAR.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Gummy Bear - Playful character design">
+                                <div class="card-body">
+                                    <span class="badge bg-success mb-2">Character Art</span>
+                                    <h5 class="card-title">Gummy Bear</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Playful character design with vibrant colors and whimsical digital style.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/MEAT GIRL BLUE.png" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Meat Girl Blue - Stylized character artwork">
+                                <div class="card-body">
+                                    <span class="badge bg-warning mb-2">Stylized Art</span>
+                                    <h5 class="card-title">Meat Girl Blue</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Stylized character artwork with unique color palette and contemporary digital techniques.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/PIE BOY.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Pie Boy - Food-themed character design">
+                                <div class="card-body">
+                                    <span class="badge bg-success mb-2">Character Art</span>
+                                    <h5 class="card-title">Pie Boy</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Food-themed character design with creative concept and appealing digital execution.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="digital character">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/ILLUSTRATION/SPIDER BOY.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Spider Boy - Creative character concept">
+                                <div class="card-body">
+                                    <span class="badge bg-danger mb-2">Concept Art</span>
+                                    <h5 class="card-title">Spider Boy</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Creative character concept with unique design elements and imaginative storytelling.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Graphic Design Works -->
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="graphic digital">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/GRAPHICS/BRAIN EATER.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Brain Eater - Horror-themed graphic design">
+                                <div class="card-body">
+                                    <span class="badge bg-dark mb-2">Graphic Design</span>
+                                    <h5 class="card-title">Brain Eater</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Creative horror-themed graphic design with bold typography and striking visual elements.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="graphic digital">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/GRAPHICS/BRUH.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Bruh - Contemporary graphic design">
+                                <div class="card-body">
+                                    <span class="badge bg-dark mb-2">Graphic Design</span>
+                                    <h5 class="card-title">Bruh</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Contemporary graphic design with modern typography and minimalist approach.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 artwork-item" data-category="graphic traditional">
+                        <article class="gallery-card">
+                            <div class="card h-100 shadow-sm">
+                                <img src="../formative3td22/css/GRAPHICS/ZENITH MENU.jpg" 
+                                     class="card-img-top gallery-image" 
+                                     alt="Zenith Menu - Restaurant menu design">
+                                <div class="card-body">
+                                    <span class="badge bg-primary mb-2">Menu Design</span>
+                                    <h5 class="card-title">Zenith Menu</h5>
+                                    <p class="card-text text-muted mb-2">by Hailie Alberto</p>
+                                    <p class="card-text">Professional restaurant menu design layout with elegant typography and organized structure.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- No results message -->
+                <div id="noResults" class="text-center py-5 d-none">
+                    <h3 class="text-muted">No artworks found</h3>
+                    <p class="text-muted">Try selecting a different category filter.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-1">&copy; 2025 ArtVista - Online Art Catalog. All rights reserved.</p>
+                    <p class="mb-0 small text-muted">
+                        Images are for educational purposes. Original artists credited on each artwork.
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <p class="mb-0 small">Built with ❤️ for Web Development</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
