@@ -8,13 +8,15 @@ A modern, responsive online art catalog website showcasing digital illustrations
 
 ArtVista is a comprehensive web application that demonstrates the integration of all concepts learned throughout the Web Development course (F1–F7). It serves as an online platform for showcasing and discovering artistic works while providing an interactive user experience.
 
-### 🎯 Project Requirements Met
+### 🎯 Project Requirements Met (F1-F7)
 
-- ✅ **HTML & CSS (F1–F2)**: Multi-page responsive website with semantic HTML
-- ✅ **JavaScript (F3–F4)**: Interactive features including form validation and dynamic content
-- ✅ **Web Technologies (F5)**: Design principles and SEO optimization
-- ✅ **Version Control (F6)**: Git repository with meaningful commits and branching
-- ✅ **Deployment (F7)**: Ready for deployment to GitHub Pages/Netlify/Vercel
+- ✅ **F1 - Multi-page Website**: 5 pages with semantic HTML5 structure
+- ✅ **F2 - Responsive Design**: Bootstrap 5 + custom CSS, mobile-first approach
+- ✅ **F3 - JavaScript Interactivity**: Form validation, mobile navigation, dynamic content
+- ✅ **F4 - Advanced JS Features**: Time-based greetings, layout fixes, error handling
+- ✅ **F5 - Design Principles**: Clean UI/UX, consistent branding, accessibility features
+- ✅ **F6 - SEO Optimization**: Meta descriptions, alt text, semantic markup, proper titles
+- ✅ **F7 - Version Control & Deployment**: Git workflow ready for GitHub Pages/Netlify
 
 ## 🌟 Features
 
