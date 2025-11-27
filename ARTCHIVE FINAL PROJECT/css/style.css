@@ -1,6 +1,6 @@
 /* ==========================================
-   ZAKII_.404 - ONLINE ART CATALOG STYLES
-   Cutesy-Elegant Personal Portfolio Theme
+   ARTCHIVES - ONLINE ART CATALOG STYLES
+   Neutral Cream Elegant Theme
    ========================================== */
 
 /* Import Google Fonts */
@@ -24,24 +24,24 @@ body {
     font-family: 'Nunito', sans-serif;
     line-height: 1.6;
     color: #2d2d2d;
-    background-color: #fef9f7;
+    background-color: #faf8f6;
 }
 
 /* ==========================================
-   CUSTOM COLOR VARIABLES - CUTESY ELEGANT
+   CUSTOM COLOR VARIABLES - NEUTRAL CREAM
    ========================================== */
 
 :root {
-    --primary-color: #e8a5b5;        /* Soft pink */
-    --secondary-color: #c8a5d8;      /* Lilac */
-    --accent-color: #f5c6d6;         /* Light pink accent */
-    --background-color: #fef9f7;     /* Light cream */
+    --primary-color: #c4a484;        /* Warm taupe */
+    --secondary-color: #d4c2a8;      /* Light cream */
+    --accent-color: #e8dcc7;         /* Pale cream accent */
+    --background-color: #faf8f6;     /* Off-white cream */
     --text-dark: #2d2d2d;            /* Dark charcoal */
     --text-light: #5a5a5a;           /* Medium gray */
-    --border-color: #f0e5e3;         /* Soft border */
-    --hover-color: #d994a6;          /* Darker pink for hover */
-    --success-color: #a8d5a8;        /* Soft green */
-    --error-color: #e8a5a5;          /* Soft red */
+    --border-color: #f0ede8;         /* Soft cream border */
+    --hover-color: #a68b6a;          /* Darker taupe for hover */
+    --success-color: #a8b5a8;        /* Soft sage */
+    --error-color: #d4a5a5;          /* Soft dusty rose */
 }
 
 /* ==========================================
@@ -106,7 +106,7 @@ a:hover {
     border-color: var(--hover-color);
     color: white;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(233, 165, 181, 0.3);
+    box-shadow: 0 4px 12px rgba(196, 164, 132, 0.3);
 }
 
 .btn-outline-primary {
@@ -142,7 +142,7 @@ a:hover {
 
 .navbar {
     background-color: white !important;
-    box-shadow: 0 2px 15px rgba(232, 165, 181, 0.1);
+    box-shadow: 0 2px 15px rgba(196, 164, 132, 0.1);
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
@@ -173,7 +173,7 @@ a:hover {
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--primary-color) !important;
-    background-color: rgba(232, 165, 181, 0.1);
+    background-color: rgba(196, 164, 132, 0.1);
 }
 
 .navbar-toggler {
@@ -183,11 +183,11 @@ a:hover {
 }
 
 .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.2rem rgba(232, 165, 181, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(196, 164, 132, 0.25);
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232, 165, 181, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28196, 164, 132, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ==========================================
@@ -269,7 +269,7 @@ a:hover {
 .hero-image img {
     max-width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(232, 165, 181, 0.25);
+    box-shadow: 0 10px 30px rgba(196, 164, 132, 0.25);
     transition: transform 0.3s ease;
 }
 
@@ -285,7 +285,7 @@ a:hover {
     display: block;
     margin: 0 auto;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(232, 165, 181, 0.25);
+    box-shadow: 0 10px 30px rgba(196, 164, 132, 0.25);
     transition: transform 0.3s ease;
 }
 
@@ -313,7 +313,7 @@ a:hover {
 .card {
     border: none;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(232, 165, 181, 0.15);
+    box-shadow: 0 5px 20px rgba(196, 164, 132, 0.15);
     transition: all 0.3s ease;
     overflow: hidden;
     background-color: white;
@@ -321,7 +321,7 @@ a:hover {
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(232, 165, 181, 0.25);
+    box-shadow: 0 15px 35px rgba(196, 164, 132, 0.25);
 }
 
 .card-img-top {
@@ -367,14 +367,14 @@ a:hover {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(232, 165, 181, 0.15);
+    box-shadow: 0 5px 20px rgba(196, 164, 132, 0.15);
     transition: all 0.3s ease;
     position: relative;
 }
 
 .artwork-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(232, 165, 181, 0.25);
+    box-shadow: 0 15px 35px rgba(196, 164, 132, 0.25);
 }
 
 .artwork-item img {
@@ -442,7 +442,7 @@ a:hover {
 
 .form-control:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(232, 165, 181, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(196, 164, 132, 0.25);
     background-color: white;
 }
 
@@ -470,7 +470,7 @@ a:hover {
 
 .form-check-input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(232, 165, 181, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(196, 164, 132, 0.25);
 }
 
 .form-check-label {
@@ -539,7 +539,7 @@ a:hover {
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(232, 165, 181, 0.1);
+    box-shadow: 0 5px 20px rgba(196, 164, 132, 0.1);
 }
 
 .filter-buttons .btn {
@@ -711,7 +711,7 @@ footer .text-muted {
 }
 
 .shadow-cute {
-    box-shadow: 0 8px 25px rgba(232, 165, 181, 0.2);
+    box-shadow: 0 8px 25px rgba(196, 164, 132, 0.2);
 }
 
 .rounded-cute {
