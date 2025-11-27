@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Artchives – Online Art Catalog</title>
+    <meta name="description" content="Browse Zakii_.404's complete art collection featuring digital illustrations, character designs, and graphic projects. Discover whimsical characters and creative visual stories.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" href="index.html">
+                    🎨 Artchives.
+                </a>
+                <button class="navbar-toggler" type="button" id="navToggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-semibold" href="gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-primary ms-2 px-3" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="page-header py-5 bg-primary text-white">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="display-4 fw-bold mb-3">🎨Art Gallery</h1>
+                    <p class="lead">A collection of characters, colors, and creative experiments from the digital sketchbook</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="py-4 bg-light">
+            <div class="container">
+                <div class="search-section">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <input type="text" id="artworkSearch" class="form-control" placeholder="🔍 Search the artworks..." onkeyup="filterArtworks()">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="filter-buttons text-md-end">
+                                <button class="btn btn-outline-secondary active" onclick="filterByCategory('all')">All</button>
+                                <button class="btn btn-outline-secondary" onclick="filterByCategory('illustration')">Illustrations</button>
+                                <button class="btn btn-outline-secondary" onclick="filterByCategory('character')">Characters</button>
+                                <button class="btn btn-outline-secondary" onclick="filterByCategory('graphic')">Graphics</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artworks Grid -->
+        <section class="py-5">
+            <div class="container">
+                <div class="artwork-grid" id="artworkGrid">
+                    <!-- Digital Illustrations -->
+                    <div class="artwork-item" data-category="illustration" data-title="brain anatomical illustration">
+                        <img src="img/BRAIN.jpg" alt="Brain – creative anatomical digital illustration by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Brain ✨</h3>
+                            <p class="artwork-description">When science meets art! This anatomical illustration explores the beauty of the human mind through dreamy pastels and organic shapes.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Digital Art</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="cute girl character design">
+                        <img src="img/CUTE GIRL.jpg" alt="Cute Girl – adorable character digital illustration by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Cute Girl 💕</h3>
+                            <p class="artwork-description">Soft eyes, gentle colors, and that perfect balance between simplicity and expression. She represents those peaceful, cozy moments.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Character</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="gummy bear playful design">
+                        <img src="img/GUMMY BEAR.jpg" alt="Gummy Bear – playful character design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Gummy Bear 🧸</h3>
+                            <p class="artwork-description">Squishy, sweet, and absolutely huggable! This little guy brings back childhood candy memories with a contemporary twist.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Character</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="meat girl blue stylized artwork">
+                        <img src="img/MEAT GIRL BLUE.png" alt="Meat Girl Blue – stylized character artwork by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Meat Girl Blue 💙</h3>
+                            <p class="artwork-description">Bold, quirky, and unapologetically unique! This character explores weird beauty and unconventional charm.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Character</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="pie boy food character">
+                        <img src="img/PIE BOY.jpg" alt="Pie Boy – food-themed character design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Pie Boy 🥧</h3>
+                            <p class="artwork-description">Born from a midnight dessert craving! Sweet, warm, and comfort-giving – like art should be.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Food Art</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="spider boy superhero concept">
+                        <img src="img/SPIDER BOY.jpg" alt="Spider Boy – creative character concept by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Spider Boy 🕷️</h3>
+                            <p class="artwork-description">What happens when superhero comics meet sketchbook doodles? Eight eyes full of curiosity and heroic dreams.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Concept Art</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="character" data-title="squiggly abstract character">
+                        <img src="img/SQUIGGLY.jpg" alt="Squiggly – whimsical abstract character by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Squiggly 🌊</h3>
+                            <p class="artwork-description">Pure creative energy in character form! Sometimes the best art can't be defined – it just has to be felt.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Abstract</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graphics Section -->
+                    <div class="artwork-item" data-category="graphic" data-title="brain eater horror graphic">
+                        <img src="img/BRAIN EATER.jpg" alt="Brain Eater – horror-themed graphic design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Brain Eater 🧠</h3>
+                            <p class="artwork-description">Sometimes I explore the darker side of creativity. Bold typography meets horror aesthetic in this experimental piece.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Typography</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="devil wears prada fashion graphic">
+                        <img src="img/DEVIL WEARS PRADA 1.jpg" alt="Devil Wears Prada 1 – fashion-inspired graphic design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Devil Wears Prada ✨</h3>
+                            <p class="artwork-description">Fashion meets graphic design! Inspired by iconic style and the power of bold visual statements.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Fashion</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="zenith menu restaurant design">
+                        <img src="img/ZENITH MENU.jpg" alt="Zenith Menu – restaurant menu design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Zenith Menu 🍽️</h3>
+                            <p class="artwork-description">Clean, elegant, and mouth-watering! This menu design balances readability with visual appetite appeal.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Menu Design</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="devil wears prada 2 fashion graphic">
+                        <img src="img/DEVIL WEARS PRADA 2.jpg" alt="Devil Wears Prada 2 – fashion-inspired graphic design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Devil Wears Prada 2 💅</h3>
+                            <p class="artwork-description">The sequel to my fashion series! Continuing the exploration of style, attitude, and bold visual statements.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Fashion</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="habi logo brand design">
+                        <img src="img/HABI LOGO.jpg" alt="Habi Logo – brand identity design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Habi Logo 🏠</h3>
+                            <p class="artwork-description">A warm and inviting logo design that captures the essence of home and belonging. Clean typography meets symbolic storytelling.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Branding</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="stop procrastinating motivational design">
+                        <img src="img/STOP PROCASTINATING.jpg" alt="Stop Procrastinating – motivational graphic design by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Stop Procrastinating ⚡</h3>
+                            <p class="artwork-description">Sometimes we all need a creative kick in the pants! Bold typography meets motivational energy in this reminder piece.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Typography</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="artwork-item" data-category="graphic" data-title="zenith home page web design">
+                        <img src="img/ZENITH HOME PAGE.jpg" alt="Zenith Home Page – web design layout by Zakii_.404">
+                        <div class="artwork-info">
+                            <h3 class="artwork-title">Zenith Home Page 💻</h3>
+                            <p class="artwork-description">Web design meets restaurant branding! A complete homepage layout that balances visual appeal with user experience.</p>
+                            <div class="artwork-meta">
+                                <span class="artwork-category">Web Design</span>
+                                <span class="text-muted">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="text-center py-5 d-none">
+                    <div class="mb-4">
+                        <div class="display-1 text-muted">🔍</div>
+                    </div>
+                    <h3 class="text-muted">No artworks found</h3>
+                    <p class="text-muted">Try adjusting your search or filter criteria</p>
+                    <button class="btn btn-primary" onclick="clearFilters()">Show All Artworks</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artist Statement -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h3 class="display-6 fw-bold text-primary mb-4">🎨 About This Collection</h3>
+                        <p class="lead mb-3">
+                            Each piece in this gallery represents a moment of creative curiosity – from late-night character sketches 
+                            to experimental graphic designs that push our comfort zone.
+                        </p>
+                        <a href="about.html" class="btn btn-primary btn-lg me-3">The Artists' Journey</a>
+                        <a href="signup.html" class="btn btn-outline-primary btn-lg">Connect with Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-1">&copy; 2025 Artchives. Online Art Catalog. All rights reserved.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <p class="mb-0 small">✨ Built with love for Web Dev Course ✨</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

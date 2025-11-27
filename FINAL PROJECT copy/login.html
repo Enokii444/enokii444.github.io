@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Artchives – Online Art Catalog</title>
+    <meta name="description" content="Log in to your Zakii_.404 account to comment on artworks, connect with the artist, and be part of the creative community. Secure access to your art catalog.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" href="index.html">
+                    🎨 Artchives.
+                </a>
+                <button class="navbar-toggler" type="button" id="navToggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-semibold btn btn-primary text-white px-3" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="page-header py-5 bg-primary text-white">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="display-4 fw-bold mb-3">Welcome Back! ✨</h1>
+                    <p class="lead">Log in to reconnect with our art community</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-7">
+                        <!-- Error Messages Container -->
+                        <div id="error-messages" class="alert alert-danger d-none" role="alert">
+                            <h6 class="alert-heading">Login Error</h6>
+                            <p id="error-message" class="mb-0"></p>
+                        </div>
+
+                        <!-- Success Message Container -->
+                        <div id="success-message" class="alert alert-success d-none" role="alert">
+                            <h6 class="alert-heading">Welcome back! 🎉</h6>
+                            <p class="mb-0">You're now logged in and ready to explore the art community.</p>
+                        </div>
+
+                        <div class="card border-0 shadow">
+                            <div class="card-body p-4">
+                                <form id="loginForm" novalidate>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" 
+                                               class="form-control form-control-lg" 
+                                               id="email" 
+                                               name="email" 
+                                               required
+                                               placeholder="Enter your email address">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password *</label>
+                                        <input type="password" 
+                                               class="form-control form-control-lg" 
+                                               id="password" 
+                                               name="password" 
+                                               required
+                                               placeholder="Enter your password">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                        <a href="#" class="text-primary text-decoration-none small">Forgot password?</a>
+                                    </div>
+
+                                    <div class="d-grid mb-3">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            Log In 🎨
+                                        </button>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <p class="mb-0">
+                                            New to the community? 
+                                            <a href="signup.html" class="text-primary fw-bold">Sign up</a>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Features Preview -->
+                        <div class="mt-3">
+                            <div class="card border-0 bg-white">
+                                <div class="card-body p-4 text-center">
+                                    <h6 class="text-primary mb-3">🎨 Community Features</h6>
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <div class="mb-2">💬</div>
+                                            <p class="small mb-0">Comment on<br>Artworks</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="mb-2">❤️</div>
+                                            <p class="small mb-0">Save<br>Favorites</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="mb-2">✨</div>
+                                            <p class="small mb-0">Connect with<br>Artist</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-1">&copy; 2025 Artchives. Online Art Catalog. All rights reserved.</p>
+                <div class="col-md-4 text-md-end">
+                    <p class="mb-0 small">✨ Built with love for Web Dev Course ✨</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
