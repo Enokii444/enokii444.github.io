@@ -9,35 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/quiz-styles.css">
-    <style>
-        .option {
-            padding: 15px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .option:hover {
-            background: #e9ecef;
-            border-color: #6c757d;
-        }
-        .option.selected {
-            border-color: #007bff;
-            background: #e3f2fd;
-        }
-        .option.correct {
-            background: #d4edda;
-            border-color: #28a745;
-            color: #155724;
-        }
-        .option.incorrect {
-            background: #f8d7da;
-            border-color: #dc3545;
-            color: #721c24;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -61,6 +32,10 @@
             <div class="quiz-header">
                 <h2>Module 3: Squash & Stretch Quiz</h2>
                 <p class="text-muted">Master deformation, weight, and flexibility in animation</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize" onchange="toggleRandomize()"> Randomize Questions</label>
+                </div>
             </div>
 
             <div id="quiz-content">
@@ -68,11 +43,13 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 30</div>
+                    <div class="question-number" id="question-number">Question 1 of 5</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
-                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+                        Next Question →
+                    </button>
                 </div>
             </div>
 
@@ -95,7 +72,7 @@
     </div>
 
     <script>
-        const module3Quiz = [
+        const originalQuiz = [
             {q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
             {q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
             {q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
@@ -103,9 +80,34 @@
             {q:"In squash and stretch principle the constant is volume of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2}
         ];
 
+        let module3Quiz = [...originalQuiz];
         let currentQuestion = 0;
         let score = 0;
         let answered = false;
+        let isRandomized = false;
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function toggleRandomize() {
+            isRandomized = document.getElementById('randomize').checked;
+            module3Quiz = isRandomized ? shuffleArray(originalQuiz) : [...originalQuiz];
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            loadQuestion();
+        }
+
+        function updateNavigation() {
+            const progress = ((currentQuestion + 1) / module3Quiz.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
 
         function loadQuestion() {
             if (currentQuestion >= module3Quiz.length) {
@@ -125,6 +127,7 @@
             document.getElementById('feedback').style.display = 'none';
             document.getElementById('next-btn').style.display = 'none';
             answered = false;
+            updateNavigation();
         }
 
         function selectOption(selectedIndex) {
@@ -148,11 +151,13 @@
             });
             
             answered = true;
-            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('next-btn').style.display = 'inline-block';
         }
 
         function nextQuestion() {
             currentQuestion++;
+            answered = false;
+            document.getElementById('next-btn').style.display = 'none';
             loadQuestion();
         }
 

@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/quiz-styles.css">\n    <style>\n        .option {\n            padding: 15px;\n            margin: 10px 0;\n            background: #f8f9fa;\n            border: 2px solid #dee2e6;\n            border-radius: 8px;\n            cursor: pointer;\n            transition: all 0.3s ease;\n        }\n        .option:hover {\n            background: #e9ecef;\n            border-color: #6c757d;\n        }\n        .option.selected {\n            border-color: #007bff;\n            background: #e3f2fd;\n        }\n        .option.correct {\n            background: #d4edda;\n            border-color: #28a745;\n            color: #155724;\n        }\n        .option.incorrect {\n            background: #f8d7da;\n            border-color: #dc3545;\n            color: #721c24;\n        }\n    </style>
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -32,6 +33,10 @@
             <div class="quiz-header">
                 <h2>Module 2: Physics & Motion Quiz</h2>
                 <p class="text-muted">Master timing, spacing, momentum, and Newton's laws in animation</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize" onchange="toggleRandomize()"> Randomize Questions</label>
+                </div>
             </div>
 
             <div id="quiz-content">
@@ -39,11 +44,13 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 31</div>
+                    <div class="question-number" id="question-number">Question 1 of 5</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
-                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+                        Next Question →
+                    </button>
                 </div>
             </div>
 
@@ -66,7 +73,7 @@
     </div>
 
     <script>
-        const module2Quiz = [
+        const originalQuiz = [
             {q:"Acceleration happened when spacing change.", options:["True","False"], answer:0},
             {q:"It is the main culprit to change the character's momentum.", options:["Inertia","Kinetics","Unbalanced force","Balanced force"], answer:2},
             {q:"The bigger the force, the quicker the momentum changes.", options:["True","False"], answer:0},
@@ -74,9 +81,34 @@
             {q:"Odd rule is for straight ahead animation.", options:["True","False"], answer:0}
         ];
 
+        let module2Quiz = [...originalQuiz];
         let currentQuestion = 0;
         let score = 0;
         let answered = false;
+        let isRandomized = false;
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function toggleRandomize() {
+            isRandomized = document.getElementById('randomize').checked;
+            module2Quiz = isRandomized ? shuffleArray(originalQuiz) : [...originalQuiz];
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            loadQuestion();
+        }
+
+        function updateNavigation() {
+            const progress = ((currentQuestion + 1) / module2Quiz.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
 
         function loadQuestion() {
             if (currentQuestion >= module2Quiz.length) {
@@ -96,6 +128,7 @@
             document.getElementById('feedback').style.display = 'none';
             document.getElementById('next-btn').style.display = 'none';
             answered = false;
+            updateNavigation();
         }
 
         function selectOption(selectedIndex) {
@@ -119,11 +152,13 @@
             });
             
             answered = true;
-            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('next-btn').style.display = 'inline-block';
         }
 
         function nextQuestion() {
             currentQuestion++;
+            answered = false;
+            document.getElementById('next-btn').style.display = 'none';
             loadQuestion();
         }
 
