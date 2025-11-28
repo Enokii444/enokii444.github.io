@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Squash & Stretch | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Academy</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🎈 Squash & Stretch</h1>
+            <p class="hero-subtitle">Module 3: The First Principle of Animation</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 3: Squash & Stretch Quiz</h2>
+                <p class="text-muted">Master deformation, weight, and flexibility in animation</p>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 30</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 3 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">30</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 3</button>
+                    <a href="../modules/module4.html" class="btn-secondary">Next: Module 4</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module3Quiz = [
+            {q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
+            {q:"On bouncing ball: As the ball impacts the ground it squashes from the force of", options:["Acceleration","Momentum","Speed","Gravity"], answer:3},
+            {q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
+            {q:"For every action there is an equal and opposite reaction.", options:["True","False"], answer:0},
+            {q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
+            {q:"Any reaction is strengthened by being preceded by its opposite.", options:["True","False"], answer:0},
+            {q:"Animating is a precise craft that requires practice, perseverance, and a certain amount of natural flair.", options:["True","False"], answer:0},
+            {q:"On bouncing ball: as gravity pulls the ball back down the ball repeats its acceleration to the ground and", options:["Bounces","Losing speed","Squashes","Stretches"], answer:0},
+            {q:"More drawings mean faster action.", options:["True","False"], answer:1},
+            {q:"In squash and stretch principle the constant is of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2},
+            {q:"It is a way of deforming an object such that it shows how rigid the object is.", options:["Squash and stretch","Anticipation","Losing weight","Gaining weight"], answer:0},
+            {q:"Anticipation is the termination of the action.", options:["True","False"], answer:1},
+            {q:"Ultimately, the animator must have a sense of what makes an inanimate character alive.", options:["True","False"], answer:0},
+            {q:"On bouncing ball: once the ball reaches its peak it begins to _ and return to its original form.", options:["Stretch","Gaining weight","Slow down","Losing weight"], answer:0},
+            {q:"Any action can be enhanced if there is anticipation before the action.", options:["True","False"], answer:0},
+            {q:"On bouncing ball: as the ball propels it __ causing the ball to distort by stretching.", options:["Losing weight","Accelerates","Gaining weight","Speeding down"], answer:1},
+            {q:"The anticipation is always in the opposite direction to where the main action is going to go.", options:["True","False"], answer:0},
+            {q:"As the ball bounces it loses its", options:["Volume","Momentum","Speed","Energy"], answer:3},
+            {q:"An object that squashes and stretches, before it settles it goes for the natural ending.", options:["Deform","Anticipation","Overshoot","Losing speed"], answer:2},
+            {q:"On bouncing ball: the squash of the ball emphasizes a pre bounce as", options:["Weight less","Losing speed","Flattening","Anticipation"], answer:2},
+            {q:"Through the classes of Frank Thomas and Ollie Johnston where the fundamentals of animation principles started.", options:["True","False"], answer:0},
+            {q:"In the application of squash and stretch always consider the _ and mass of the object.", options:["Color","Form","Weight","Size"], answer:2},
+            {q:"Stretch is used to prepare the audience for an action, and to make the action appear more realistic.", options:["True","False"], answer:0},
+            {q:"Reaction is the preparation for the action.", options:["True","False"], answer:1},
+            {q:"Flatten an object or character by pressure or by its own power.", options:["Straight ahead","Squash","Timing","Anticipation"], answer:1},
+            {q:"On bouncing ball: once the ball hits the ground it tends to _.", options:["Flatten to anticipate","Flatten as squash","Anticipate","Flatten as stretch"], answer:1},
+            {q:"It was the Disney classes of animators under ___ where principles of animation started after the 1930's.", options:["Don Graham","Frank Thomas","Ollie Johnston","Preston Blaire"], answer:0},
+            {q:"Less drawings mean faster action.", options:["True","False"], answer:0},
+            {q:"Squash and stretch principle should be applied on the whole head of the character.", options:["True","False"], answer:1},
+            {q:"This principle gives weight and flexibility to drawn objects.", options:["Squash and stretch","Anticipation","Timing","Straight ahead"], answer:0}
+        ];
+
+        window.onload = function() {
+            quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch");
+        };
+    </script>
+</body>
+</html>

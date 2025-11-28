@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Arcs & Timing | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Academy</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🌊 Arcs & Timing</h1>
+            <p class="hero-subtitle">Module 5: Natural Motion and Slow In/Slow Out</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 5: Arcs & Timing Quiz</h2>
+                <p class="text-muted">Master natural motion paths and timing principles</p>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 30</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 5 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">30</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 5</button>
+                    <a href="../modules/module6.html" class="btn-secondary">Next: Module 6</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module5Quiz = [
+            {q:"Arcs are visible in both human and animal motion.", options:["True","False"], answer:0},
+            {q:"Which part of a motion typically uses more frames in 'Slow In and Slow Out'?", options:["Beginning and end","Middle","Only the beginning","Only the end"], answer:0},
+            {q:"What does 'Slow In and Slow Out' refer to in animation?", options:["Gradual acceleration and deceleration of motion","Speeding up and slowing down music","Zooming in and out","Changing colors slowly"], answer:0},
+            {q:"Straight-line motion is more natural than arc motion.", options:["True","False"], answer:1},
+            {q:"Arc motion is only used in 2D animation.", options:["True","False"], answer:1},
+            {q:"Using slow-in and slow-out principle can make animations feel more lifelike.", options:["True","False"], answer:0},
+            {q:"Which type of motion typically follows an arc?", options:["Static poses","Mechanical motion","Digital transitions","Natural motion"], answer:3},
+            {q:"Ignoring arcs can make animation look mechanical.", options:["True","False"], answer:0},
+            {q:"The arc principle is based on how things move in real life.", options:["True","False"], answer:0},
+            {q:"Which animation principle is most closely related to 'Slow In and Slow Out'?", options:["Staging","Timing","Squash and Stretch","Anticipation"], answer:1},
+            {q:"The slow-in and slow-out principle is based on real-world physics.", options:["True","False"], answer:0},
+            {q:"Which of the following is an example of arc motion?", options:["A hand waving","A door opening linearly","A blinking cursor","A static pose"], answer:0},
+            {q:"Arcs can be visualized using motion paths.", options:["True","False"], answer:0},
+            {q:"Arcs are often used in character animation.", options:["True","False"], answer:0},
+            {q:"What happens if arc motion is ignored?", options:["Motion appears stiff or unnatural","Motion becomes too slow","Motion becomes invisible","Motion appears fluid"], answer:0},
+            {q:"Slow-in, slow-out is also known as 'ease-in/ease-out' in digital animation.", options:["True","False"], answer:0},
+            {q:"Arcs are irrelevant in walk cycles.", options:["True","False"], answer:1},
+            {q:"Arcs are most visible in:", options:["Character limbs","Textures","Lighting","Backgrounds"], answer:0},
+            {q:"Which tool helps visualize arcs in animation software?", options:["Motion path","Timeline","Onion skinning","Color palette"], answer:0},
+            {q:"Why is the arc principle important?", options:["It adds randomness","It simplifies rigging","It speeds up animation","It makes motion more natural"], answer:3},
+            {q:"Which of the following best illustrates arc motion?", options:["A rotating cube","A blinking light","A bouncing ball","A static image"], answer:2},
+            {q:"What happens if 'Slow In and Slow Out' is not used?", options:["Motion appears stiff or mechanical","Motion appears smooth","Motion becomes invisible","Motion becomes too fast"], answer:0},
+            {q:"What kind of curve represents 'Slow In and Slow Out' in a graph editor?", options:["Zigzag","Ease-in/ease-out curve","Linear","Stepped"], answer:1},
+            {q:"Arcs help make movement appear more organic.", options:["True","False"], answer:0},
+            {q:"Which animation principle complements the arc principle?", options:["Timing","All of the above","Follow Through","Squash and Stretch"], answer:1},
+            {q:"The arc principle is one of the 12 principles of animation.", options:["True","False"], answer:0},
+            {q:"It is best avoided in action scenes.", options:["True","False"], answer:1},
+            {q:"'Slow In and Slow Out' is most noticeable in:", options:["Character movements","Background transitions","Fast action scenes","Static images"], answer:0},
+            {q:"'Slow In and Slow Out' is irrelevant in character animation.", options:["True","False"], answer:1},
+            {q:"What does the 'Arc Principle' refer to in animation?", options:["Circular motion paths","Frame skipping","Lighting effects","Sound waves"], answer:0}
+        ];
+
+        window.onload = function() {
+            quizInstance = new AnimationQuiz(module5Quiz, "Module 5: Arcs & Timing");
+        };
+    </script>
+</body>
+</html>
