@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6: Follow Through & Overlapping | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Reviewer</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🎭 Follow Through & Overlapping</h1>
+            <p class="hero-subtitle">Module 6: Secondary Motion and Realistic Movement</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 6: Follow Through & Overlapping Quiz</h2>
+                <p class="text-muted">Master secondary motion and overlapping action principles</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+                </div>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 40</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 6 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">40</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
+                    <h3>Review Wrong Answers:</h3>
+                    <div id="wrong-answers-list"></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 6</button>
+                    <button class="btn-secondary" onclick="showWrongAnswers()" id="review-btn" style="display: none;">Review Wrong Answers</button>
+                    <a href="../modules/module7.html" class="btn-secondary">Next: Module 7</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module6Quiz = [
+            {q:"Follow through is based on real-world physics.", options:["True","False"], answer:0},
+            {q:"Overlapping action can be used in facial animation.", options:["True","False"], answer:0},
+            {q:"What does 'Follow Through' refer to in animation?", options:["The start of the movement","The main action of a character","The continuation of motion after the main action stops","A character's facial expression"], answer:2},
+            {q:"Overlapping action can be seen in:", options:["A blinking eye","A character's hair moving after a jump","A door opening","A character standing still"], answer:1},
+            {q:"Follow through is not necessary in short animations.", options:["True","False"], answer:1},
+            {q:"Overlapping action helps to:", options:["Reduce frame count","Add realism and fluidity","Simplify animation","Make motion more robotic"], answer:1},
+            {q:"What is the difference between follow through and overlapping action?", options:["Follow through is after the main action; overlapping is during","They are the same","Follow through is before the main action","Overlapping is only used in 3D animation"], answer:0},
+            {q:"Overlapping action is the same as anticipation.", options:["True","False"], answer:1},
+            {q:"Overlapping action means different parts of the body move at different times.", options:["True","False"], answer:0},
+            {q:"A character's hair moving after they stop running is an example of follow through.", options:["True","False"], answer:0},
+            {q:"Overlapping action is important for:", options:["Static scenes","Character animation","Background design","Lighting"], answer:1},
+            {q:"What happens if follow through is not used?", options:["Motion appears natural","Motion becomes too slow","Motion appears stiff or abrupt","Motion becomes invisible"], answer:2},
+            {q:"Which of these is NOT an example of follow through?", options:["A scarf fluttering after a stop","A coat flapping after a turn","A ponytail swinging after a jump","A character blinking"], answer:3},
+            {q:"Overlapping action is most noticeable in:", options:["Fast, complex movements","Lighting effects","Static poses","Backgrounds"], answer:0},
+            {q:"Overlapping action is not useful in walk cycles.", options:["True","False"], answer:1},
+            {q:"Follow through can be applied to clothing, hair, and accessories.", options:["True","False"], answer:0},
+            {q:"Which tool helps visualize overlapping motion?", options:["Timeline","Motion path","Graph editor","All of the above"], answer:3},
+            {q:"Overlapping action is only used in fast movements.", options:["True","False"], answer:1},
+            {q:"Overlapping action makes animation look more mechanical.", options:["True","False"], answer:1},
+            {q:"Which principle is closely related to follow through?", options:["Arcs","Timing","Squash and Stretch","Secondary Action"], answer:3},
+            {q:"Which of the following is an example of overlapping action?", options:["A character's arms swinging after the body turns","A character teleporting","A character blinking","A character standing still"], answer:0},
+            {q:"Overlapping action helps avoid stiff animation.", options:["True","False"], answer:0},
+            {q:"Follow through can be subtle or exaggerated depending on the style.", options:["True","False"], answer:0},
+            {q:"Which of the following best describes overlapping action?", options:["No motion at all","All parts move together","Parts move at different times","Only facial expressions move"], answer:2},
+            {q:"Follow through is only visible in the main body of a character.", options:["True","False"], answer:1},
+            {q:"Follow through adds:", options:["Confusion","Delay","Realism","Speed"], answer:2},
+            {q:"Follow through is only used in 2D animation.", options:["True","False"], answer:1},
+            {q:"What part of a character often shows follow through?", options:["Hands","Eyes","Hair or clothing","Feet"], answer:2},
+            {q:"Which principle helps show that different parts of the body move at different rates?", options:["Staging","Overlapping Action","Anticipation","Arcs"], answer:1},
+            {q:"What is a common mistake when animating follow through?", options:["Ignoring timing","Using too much squash","Making all parts stop at the same time","Adding too many frames"], answer:2},
+            {q:"Follow through happens before the main action.", options:["True","False"], answer:1},
+            {q:"Which of the following best illustrates 'Follow Through'?", options:["A character jumping","A character standing still","A cape continuing to move after the character stops","A character blinking"], answer:2},
+            {q:"Follow through helps show the effects of inertia.", options:["True","False"], answer:0},
+            {q:"Follow through and overlapping action are used to:", options:["Control lighting","Add sound effects","Create more believable motion","Make animation faster"], answer:2},
+            {q:"Follow through is most effective when:", options:["The character is idle","The character is in motion","The scene is static","The background is moving"], answer:1},
+            {q:"Overlapping action is irrelevant in stylized animation.", options:["True","False"], answer:1},
+            {q:"Overlapping action can be used to show weight and flexibility.", options:["True","False"], answer:0},
+            {q:"What is 'Overlapping Action'?", options:["Actions that occur at the same time","Actions that are repeated","Actions that are mirrored","Actions that start and stop at different times"], answer:3},
+            {q:"Follow through adds realism to motion.", options:["True","False"], answer:0},
+            {q:"Overlapping action helps avoid stiff animation.", options:["True","False"], answer:0}
+        ];
+
+        window.onload = function() {
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module6Quiz, "Module 6: Follow Through & Overlapping", randomize);
+        };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module6Quiz, "Module 6: Follow Through & Overlapping", randomize);
+        });
+    </script>
+</body>
+</html>

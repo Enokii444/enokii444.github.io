@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7: Secondary Action & Exaggeration | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Reviewer</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🎪 Secondary Action & Exaggeration</h1>
+            <p class="hero-subtitle">Module 7: Supporting Actions and Expressive Animation</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 7: Secondary Action & Exaggeration Quiz</h2>
+                <p class="text-muted">Master supporting actions and expressive techniques</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+                </div>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 40</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 7 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">40</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
+                    <h3>Review Wrong Answers:</h3>
+                    <div id="wrong-answers-list"></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 7</button>
+                    <button class="btn-secondary" onclick="showWrongAnswers()" id="review-btn" style="display: none;">Review Wrong Answers</button>
+                    <a href="../modules/module8.html" class="btn-secondary">Next: Module 8</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module7Quiz = [
+            {q:"Exaggeration should always be used in every frame.", options:["True","False"], answer:1},
+            {q:"Exaggeration can be applied to:", options:["Only background elements","Only body movements","Only facial expressions","Any aspect of animation"], answer:3},
+            {q:"Secondary actions should never distract from the main action.", options:["True","False"], answer:0},
+            {q:"Exaggeration can make an animation more expressive.", options:["True","False"], answer:0},
+            {q:"Which principle would help make a punch look more powerful?", options:["Staging","Arcs","Exaggeration","Timing"], answer:2},
+            {q:"What is the relationship between primary and secondary actions?", options:["Secondary actions replace primary actions","They are unrelated","Secondary actions support and enhance primary actions","Primary actions follow secondary actions"], answer:2},
+            {q:"Which principle helps to show a character's internal thoughts or emotions?", options:["Timing","Secondary action","Solid drawing","Arcs"], answer:1},
+            {q:"A character blinking while talking is a secondary action.", options:["True","False"], answer:0},
+            {q:"Which of the following is a good example of exaggeration?", options:["A realistic blink","A character's eyes popping out in surprise","A subtle smile","A character walking normally"], answer:1},
+            {q:"Secondary actions are optional but can add depth to a scene.", options:["True","False"], answer:0},
+            {q:"A character's hair moving in the wind is a secondary action.", options:["True","False"], answer:0},
+            {q:"Which principle would you use to make a sad character's frown more noticeable?", options:["Timing","Arcs","Exaggeration","Staging"], answer:2},
+            {q:"A character nervously biting their nails while waiting is an example of:", options:["Follow-through","Secondary action","Squash and stretch","Exaggeration"], answer:1},
+            {q:"Secondary actions are the same as follow-through actions.", options:["True","False"], answer:1},
+            {q:"Secondary actions should always be more noticeable than the main action.", options:["True","False"], answer:1},
+            {q:"A character's hair bouncing as they run is an example of:", options:["Secondary action","Primary action","Exaggeration"], answer:0},
+            {q:"What is a poor use of secondary action?", options:["A character tapping their foot while waiting","A character scratching their head while thinking","A character dancing while explaining a serious topic","A character blinking while talking"], answer:2},
+            {q:"Exaggeration is most effective when:", options:["Applied to every frame","Used randomly","Avoided in realistic animation","Used to emphasize key emotions or actions"], answer:3},
+            {q:"Which principle helps to enrich the main action without stealing focus?", options:["Squash and stretch","Staging","Secondary action","Appeal"], answer:2},
+            {q:"A character's sigh after a long day is a secondary action.", options:["True","False"], answer:0},
+            {q:"Exaggeration is only useful in comedic scenes.", options:["True","False"], answer:1},
+            {q:"A character slamming a door and then sighing is an example of:", options:["Secondary action","Anticipation","Timing","Follow-through"], answer:0},
+            {q:"Exaggeration is most commonly used in:", options:["Realistic documentaries","Technical drawings","Cartoons and stylized animations","Architectural animations"], answer:2},
+            {q:"What happens if secondary actions are too prominent?", options:["They confuse the viewer","They enhance the scene","They add realism","They improve timing"], answer:0},
+            {q:"Exaggeration should always be extreme to be effective.", options:["True","False"], answer:1},
+            {q:"Exaggeration should be:", options:["Avoided in serious animations","Overused in every scene","Balanced with believability","Used only in cartoons"], answer:2},
+            {q:"Exaggeration can be applied to timing, poses, and expressions.", options:["True","False"], answer:0},
+            {q:"Exaggeration means ignoring the laws of physics completely.", options:["True","False"], answer:1},
+            {q:"Which of the following is NOT a goal of exaggeration?", options:["To enhance storytelling","To make the animation more expressive","To clarify the action","To confuse the viewer"], answer:3},
+            {q:"Which of the following is NOT a secondary action?", options:["A character's hand gesture while talking","A character's eyebrow raise during a conversation","A character's main walking motion","A character's foot tapping while sitting"], answer:2},
+            {q:"What is the main purpose of a secondary action in animation?", options:["To create confusion","To slow down the animation","To add realism and support the main action","To distract from the main action"], answer:2},
+            {q:"Exaggeration helps make actions more readable to the audience.", options:["True","False"], answer:0},
+            {q:"Secondary actions are not important in dialogue scenes.", options:["True","False"], answer:1},
+            {q:"Exaggeration can help communicate a character's emotions more clearly.", options:["True","False"], answer:0},
+            {q:"Secondary actions can reveal personality traits.", options:["True","False"], answer:0},
+            {q:"Exaggeration should be used sparingly in realistic animations.", options:["True","False"], answer:0},
+            {q:"A character's foot tapping while waiting is a primary action.", options:["True","False"], answer:1},
+            {q:"Which of the following best describes exaggeration in animation?", options:["Making movements more subtle","Ignoring physics","Copying real-life motion exactly","Enhancing actions for clarity and emotion"], answer:3},
+            {q:"Exaggeration can help:", options:["Make characters less believable","Reduce animation time","Confuse the audience","Emphasize emotions and actions"], answer:3},
+            {q:"Secondary actions work best when they complement the main story.", options:["True","False"], answer:0}
+        ];
+
+        window.onload = function() {
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module7Quiz, "Module 7: Secondary Action & Exaggeration", randomize);
+        };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module7Quiz, "Module 7: Secondary Action & Exaggeration", randomize);
+        });
+    </script>
+</body>
+</html>

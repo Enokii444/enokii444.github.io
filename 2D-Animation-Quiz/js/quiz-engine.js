@@ -1,11 +1,63 @@
 class AnimationQuiz {
-    constructor(quizData, moduleTitle = "Animation Quiz") {
-        this.quiz = quizData;
+    constructor(quizData, moduleTitle = "Animation Quiz", randomize = false) {
+        this.originalQuiz = [...quizData];
+        this.quiz = randomize ? this.shuffleArray([...quizData]) : [...quizData];
         this.currentQuestion = 0;
         this.score = 0;
         this.answered = false;
         this.moduleTitle = moduleTitle;
+        this.wrongAnswers = [];
+        this.randomized = randomize;
+        this.wrongAttempts = 0;
+        this.selectedAnswer = null;
         this.init();
+    }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    
+    updateNavigation() {
+        const navigationHtml = `
+            <div class="question-navigation">
+                <button class="nav-btn" id="prev-btn" onclick="quizInstance.previousQuestion()" ${this.currentQuestion === 0 ? 'disabled' : ''}>
+                    ← Previous
+                </button>
+                <span class="question-counter">${this.currentQuestion + 1} / ${this.quiz.length}</span>
+                <button class="nav-btn" id="forward-btn" onclick="quizInstance.nextQuestionNav()">
+                    Next →
+                </button>
+            </div>
+        `;
+        
+        // Insert navigation after options
+        const optionsContainer = document.getElementById("options");
+        let navContainer = document.getElementById("navigation-container");
+        if (!navContainer) {
+            navContainer = document.createElement("div");
+            navContainer.id = "navigation-container";
+            optionsContainer.parentNode.insertBefore(navContainer, optionsContainer.nextSibling);
+        }
+        navContainer.innerHTML = navigationHtml;
+    }
+    
+    previousQuestion() {
+        if (this.currentQuestion > 0) {
+            this.currentQuestion--;
+            this.loadQuestion();
+        }
+    }
+    
+    nextQuestionNav() {
+        if (this.selectedAnswer === null && !this.answered) {
+            alert("Please select an answer before proceeding to the next question.");
+            return;
+        }
+        this.nextQuestion();
     }
 
     init() {
@@ -14,6 +66,8 @@ class AnimationQuiz {
 
     loadQuestion() {
         this.answered = false;
+        this.wrongAttempts = 0;
+        this.selectedAnswer = null;
         document.getElementById("feedback").style.display = "none";
         document.getElementById("next-btn").style.display = "none";
         
@@ -35,39 +89,122 @@ class AnimationQuiz {
             btn.onclick = () => this.checkAnswer(i);
             optionsDiv.appendChild(btn);
         });
+        
+        // Add navigation
+        this.updateNavigation();
     }
 
     checkAnswer(selected) {
-        if (this.answered) return;
-        this.answered = true;
-        
         const q = this.quiz[this.currentQuestion];
         const buttons = document.querySelectorAll(".option-btn");
         const feedback = document.getElementById("feedback");
         
-        buttons.forEach((btn, i) => {
-            btn.onclick = null;
-            if (i === q.answer) {
-                btn.classList.add("correct");
-            } else if (i === selected && i !== q.answer) {
-                btn.classList.add("wrong");
+        // Allow reselection if not answered correctly yet
+        if (!this.answered) {
+            // Remove previous selections
+            buttons.forEach(btn => {
+                btn.classList.remove("selected", "correct", "wrong");
+            });
+            
+            // Mark selected option
+            buttons[selected].classList.add("selected");
+            this.selectedAnswer = selected;
+            
+            if (selected === q.answer) {
+                // Correct answer
+                buttons[selected].classList.add("correct");
+                feedback.innerHTML = "✅ Excellent! That's correct.";
+                feedback.className = "feedback correct";
+                this.score++;
+                this.answered = true;
+                feedback.style.display = "block";
+                document.getElementById("next-btn").style.display = "inline-block";
+                
+                // Disable all buttons
+                buttons.forEach(btn => btn.onclick = null);
+            } else {
+                // Wrong answer
+                this.wrongAttempts++;
+                buttons[selected].classList.add("wrong");
+                
+                if (this.wrongAttempts >= 2) {
+                    // Show correct answer after 2nd wrong attempt
+                    buttons[q.answer].classList.add("correct");
+                    feedback.innerHTML = `❌ Not quite right. The correct answer is: ${q.options[q.answer]}`;
+                    feedback.className = "feedback wrong";
+                    this.answered = true;
+                    document.getElementById("next-btn").style.display = "inline-block";
+                    
+                    // Store wrong answer for review
+                    this.wrongAnswers.push({
+                        question: q.q,
+                        userAnswer: q.options[selected],
+                        correctAnswer: q.options[q.answer],
+                        questionNumber: this.currentQuestion + 1
+                    });
+                    
+                    // Disable all buttons
+                    buttons.forEach(btn => btn.onclick = null);
+                } else {
+                    // First wrong attempt - don't reveal answer
+                    feedback.innerHTML = "❌ Incorrect. Try again!";
+                    feedback.className = "feedback wrong";
+                }
+                
+                feedback.style.display = "block";
             }
-        });
-        
-        if (selected === q.answer) {
-            feedback.innerHTML = "✅ Excellent! That's correct.";
-            feedback.className = "feedback correct";
-            this.score++;
-        } else {
-            feedback.innerHTML = `❌ Not quite right. The correct answer is: ${q.options[q.answer]}`;
-            feedback.className = "feedback wrong";
         }
+    }
+    
+    updateNavigation() {
+        const navigationHtml = `
+            <div class="question-navigation" style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                <button class="nav-btn" onclick="quizInstance.previousQuestion()" ${this.currentQuestion === 0 ? 'disabled' : ''} 
+                        style="padding: 8px 16px; border: none; border-radius: 6px; background: ${this.currentQuestion === 0 ? '#e9ecef' : '#6c5ce7'}; color: ${this.currentQuestion === 0 ? '#6c757d' : 'white'}; cursor: ${this.currentQuestion === 0 ? 'not-allowed' : 'pointer'};">
+                    ← Previous
+                </button>
+                <span class="question-counter" style="font-weight: 500; color: #495057;">
+                    ${this.currentQuestion + 1} / ${this.quiz.length}
+                </span>
+                <button class="nav-btn" onclick="quizInstance.nextQuestionNav()" 
+                        style="padding: 8px 16px; border: none; border-radius: 6px; background: #6c5ce7; color: white; cursor: pointer;">
+                    Next →
+                </button>
+            </div>
+        `;
         
-        feedback.style.display = "block";
-        document.getElementById("next-btn").style.display = "inline-block";
+        // Insert navigation after options
+        const optionsContainer = document.getElementById("options");
+        let navContainer = document.getElementById("navigation-container");
+        if (!navContainer) {
+            navContainer = document.createElement("div");
+            navContainer.id = "navigation-container";
+            optionsContainer.parentNode.insertBefore(navContainer, optionsContainer.nextSibling);
+        }
+        navContainer.innerHTML = navigationHtml;
+    }
+    
+    previousQuestion() {
+        if (this.currentQuestion > 0) {
+            this.currentQuestion--;
+            this.loadQuestion();
+        }
+    }
+    
+    nextQuestionNav() {
+        if (this.selectedAnswer === null && !this.answered) {
+            alert("Please select an answer before proceeding to the next question.");
+            return;
+        }
+        this.nextQuestion();
     }
 
     nextQuestion() {
+        if (this.selectedAnswer === null && !this.answered) {
+            alert("Please select an answer before proceeding to the next question.");
+            return;
+        }
+        
         this.currentQuestion++;
         if (this.currentQuestion >= this.quiz.length) {
             this.showResults();
@@ -100,13 +237,75 @@ class AnimationQuiz {
         }
         
         document.getElementById("score-message").innerText = message;
+        
+        // Show review button if there are wrong answers
+        if (this.wrongAnswers.length > 0) {
+            const reviewBtn = document.getElementById("review-btn");
+            if (reviewBtn) {
+                reviewBtn.style.display = "inline-block";
+            }
+        }
+    }
+
+    showWrongAnswers() {
+        const wrongSection = document.getElementById("wrong-answers-section");
+        const wrongList = document.getElementById("wrong-answers-list");
+        
+        if (!wrongSection || !wrongList) return;
+        
+        wrongList.innerHTML = "";
+        
+        this.wrongAnswers.forEach((wrong, index) => {
+            const wrongCard = document.createElement("div");
+            wrongCard.className = "wrong-answer-card";
+            wrongCard.style.cssText = `
+                background: #fef2f2; 
+                border: 1px solid #fecaca; 
+                border-radius: 10px; 
+                padding: 20px; 
+                margin: 15px 0;
+            `;
+            
+            wrongCard.innerHTML = `
+                <h5 style="color: #dc2626; margin-bottom: 10px;">Question ${wrong.questionNumber}</h5>
+                <p style="font-weight: 600; margin-bottom: 10px;">${wrong.question}</p>
+                <p style="color: #dc2626; margin: 5px 0;"><strong>Your Answer:</strong> ${wrong.userAnswer}</p>
+                <p style="color: #059669; margin: 5px 0;"><strong>Correct Answer:</strong> ${wrong.correctAnswer}</p>
+            `;
+            
+            wrongList.appendChild(wrongCard);
+        });
+        
+        wrongSection.style.display = "block";
+        wrongSection.scrollIntoView({ behavior: 'smooth' });
     }
 
     restartQuiz() {
         this.currentQuestion = 0;
         this.score = 0;
+        this.wrongAnswers = [];
+        
+        // Re-randomize if randomization was enabled
+        if (this.randomized) {
+            const randomizeCheck = document.getElementById('randomize');
+            if (randomizeCheck && randomizeCheck.checked) {
+                this.quiz = this.shuffleArray([...this.originalQuiz]);
+            }
+        }
+        
         document.getElementById("quiz-content").style.display = "block";
         document.getElementById("quiz-complete").style.display = "none";
+        
+        const wrongSection = document.getElementById("wrong-answers-section");
+        if (wrongSection) {
+            wrongSection.style.display = "none";
+        }
+        
+        const reviewBtn = document.getElementById("review-btn");
+        if (reviewBtn) {
+            reviewBtn.style.display = "none";
+        }
+        
         this.loadQuestion();
     }
 }
@@ -123,5 +322,11 @@ function nextQuestion() {
 function restartQuiz() {
     if (quizInstance) {
         quizInstance.restartQuiz();
+    }
+}
+
+function showWrongAnswers() {
+    if (quizInstance) {
+        quizInstance.showWrongAnswers();
     }
 }

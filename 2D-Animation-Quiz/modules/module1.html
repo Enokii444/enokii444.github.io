@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
-                🎬 Animation Academy
+                🎬 Animation Reviewer
             </a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="../index.html">← Back to Modules</a>
@@ -36,6 +36,10 @@
             <div class="quiz-header">
                 <h2>Module 1: Animation History Quiz</h2>
                 <p class="text-muted">Test your knowledge of animation's origins and early pioneers</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+                </div>
             </div>
 
             <div id="quiz-content">
@@ -44,7 +48,7 @@
                 </div>
 
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 25</div>
+                    <div class="question-number" id="question-number">Question 1 of 18</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -69,7 +73,7 @@
                         <div class="stat-label">Accuracy</div>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number" id="total-questions">25</span>
+                        <span class="stat-number" id="total-questions">18</span>
                         <div class="stat-label">Total Questions</div>
                     </div>
                 </div>
@@ -93,31 +97,31 @@
             {q:"The Background layer is the most bottom layer in animation.", options:["True","False"], answer:0},
             {q:"It is the rapid succession of sequential images that minimally differ from each other.", options:["Movement","Actions","Illusion","Animation"], answer:3},
             {q:"The longest running Animated American sitcom.", options:["Big Hero","Family Guy","The Flinstones","The Simpsons"], answer:3},
-            {q:"Walt Disney Studios developed celluloid used in layers of compositing.", options:["True","False"], answer:0},
+            {q:"Walt Disney Studios developed celluloid used in layers of compositing.", options:["True","False"], answer:1},
             {q:"It is a series of equally spaced radial slits and invented by Joseph Plateau.", options:["Thaumatrope","Praxinoscope","Zoetrope","Phenakistoscope"], answer:3},
-            {q:"Animation started during the Industrial Revolution.", options:["True","False"], answer:1},
+            {q:"Animation started during the Industrial Revolution.", options:["True","False"], answer:0},
             {q:"Kineograph is the other name for a Flip Book.", options:["True","False"], answer:0},
-            {q:"What relies on the phi phenomenon and beta movement?", options:["Animation","Movement","Actions","Illusion"], answer:0},
+            {q:"What relies on the phi phenomenon and beta movement?", options:["Animation","Movement","Actions","Illusion"], answer:3},
             {q:"It is a series of images with minimal differences and makes it move with the overturn of images.", options:["Phenakistoscope","Zoetrope","Praxinoscope","Thaumatrope"], answer:0},
             {q:"A hollow drum that housed images on long interchangeable strips that spins and made the images appear to move.", options:["Phenakistoscope","Praxinoscope","Zoetrope","Thaumatrope"], answer:2},
             {q:"The Flintstones by Hanna-Barbera is the 1st animated series on prime time television.", options:["True","False"], answer:0},
             {q:"Bray Studios helped the animators launch Looney Tunes.", options:["True","False"], answer:0},
             {q:"Steamboat Willie is the 1st cartoon with audio printed on the film.", options:["True","False"], answer:0},
-            {q:"Snow White and the Seven Dwarfs was shown in the USA in 1930.", options:["True","False"], answer:1},
+            {q:"Snow White and the Seven Dwarfs was shown in the USA in 1930.", options:["True","False"], answer:0},
             {q:"It is a series of photographs taken in 1865.", options:["Muybridge","Murraybridge","Camera Obscura","Movieola"], answer:0},
-            {q:"Zoetrope is the other name for Praxinoscope.", options:["True","False"], answer:1},
-            {q:"The Thaumatrope was invented before the Phenakistoscope.", options:["True","False"], answer:0},
-            {q:"Émile Reynaud invented the Praxinoscope in 1877.", options:["True","False"], answer:0},
-            {q:"The first animated film was created by Émile Cohl.", options:["True","False"], answer:0},
-            {q:"Max Fleischer created the rotoscoping technique.", options:["True","False"], answer:0},
-            {q:"The Golden Age of American Animation lasted from the 1930s to the 1950s.", options:["True","False"], answer:0},
-            {q:"Computer animation completely replaced traditional hand-drawn animation.", options:["True","False"], answer:1}
+            {q:"Zoetrope is the other name for Praxinoscope.", options:["True","False"], answer:1}
         ];
 
         // Initialize quiz when page loads
         window.onload = function() {
-            quizInstance = new AnimationQuiz(module1Quiz, "Module 1: Animation History");
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module1Quiz, "Module 1: Animation History", randomize);
         };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module1Quiz, "Module 1: Animation History", randomize);
+        });
     </script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">🎬 Animation Academy</a>
+            <a class="navbar-brand" href="../index.html">🎬 Animation Reviewer</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="../index.html">← Back to Modules</a>
             </div>
@@ -32,6 +32,10 @@
             <div class="quiz-header">
                 <h2>Module 5: Arcs & Timing Quiz</h2>
                 <p class="text-muted">Master natural motion paths and timing principles</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+                </div>
             </div>
 
             <div id="quiz-content">
@@ -101,8 +105,14 @@
         ];
 
         window.onload = function() {
-            quizInstance = new AnimationQuiz(module5Quiz, "Module 5: Arcs & Timing");
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module5Quiz, "Module 5: Arcs & Timing", randomize);
         };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module5Quiz, "Module 5: Arcs & Timing", randomize);
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 9: Appeal & Design | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Reviewer</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">✨ Appeal & Design</h1>
+            <p class="hero-subtitle">Module 9: Creating Charming and Engaging Characters</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 9: Appeal & Design Quiz</h2>
+                <p class="text-muted">Master the art of creating appealing and memorable characters</p>
+                
+                <div class="quiz-options">
+                    <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+                </div>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 25</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 9 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">25</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
+                    <h3>Review Wrong Answers:</h3>
+                    <div id="wrong-answers-list"></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 9</button>
+                    <button class="btn-secondary" onclick="showWrongAnswers()" id="review-btn" style="display: none;">Review Wrong Answers</button>
+                    <a href="../index.html" class="btn-secondary">Complete All Modules! 🏆</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module9Quiz = [
+            {q:"Appeal in animation refers only to making characters physically attractive.", options:["True","False"], answer:1},
+            {q:"What makes a character appealing?", options:["Complex design","Clear silhouette and personality","Realistic proportions","Muted colors"], answer:1},
+            {q:"Appeal is the same for all audiences and cultures.", options:["True","False"], answer:1},
+            {q:"Which contributes most to character appeal?", options:["Number of details","Clear design and personality","Realistic anatomy","Complex backstory"], answer:1},
+            {q:"Appeal can be achieved in villainous characters too.", options:["True","False"], answer:0},
+            {q:"A character's silhouette should be easily recognizable.", options:["True","False"], answer:0},
+            {q:"Appeal is only important for main characters.", options:["True","False"], answer:1},
+            {q:"Which design principle enhances appeal?", options:["Symmetry in all elements","Contrast and variation","Uniform shapes","Minimal personality"], answer:1},
+            {q:"Appeal in character design involves making every character cute.", options:["True","False"], answer:1},
+            {q:"What role does personality play in character appeal?", options:["No role","Minor role","Central role","Only in dialogue"], answer:2},
+            {q:"Appeal can be enhanced through:", options:["Adding more details","Clear shapes and strong poses","Realistic textures","Complex patterns"], answer:1},
+            {q:"Character appeal is purely subjective with no guidelines.", options:["True","False"], answer:1},
+            {q:"Which helps create appealing character proportions?", options:["Perfect realism","Stylized and clear shapes","Complex geometry","Random sizing"], answer:1},
+            {q:"Appeal in animation design should serve the story.", options:["True","False"], answer:0},
+            {q:"What makes a character design timeless?", options:["Following current trends","Strong fundamental appeal","Complex details","Photorealistic rendering"], answer:1},
+            {q:"Appeal can be conveyed through character movement and acting.", options:["True","False"], answer:0},
+            {q:"Which is most important for character appeal?", options:["Detailed background","Clear, strong design","Complex animation","Realistic proportions"], answer:1},
+            {q:"Appeal in design should be consistent throughout the character's appearances.", options:["True","False"], answer:0},
+            {q:"What enhances the appeal of a character's facial design?", options:["Symmetrical features","Expressive and clear features","Realistic proportions","Complex details"], answer:1},
+            {q:"Appeal is only about visual design, not personality.", options:["True","False"], answer:1},
+            {q:"Which color approach typically enhances character appeal?", options:["Monochromatic schemes","Clear, contrasting colors","Muted, realistic tones","Random color choices"], answer:1},
+            {q:"Appeal should be considered in every aspect of character creation.", options:["True","False"], answer:0},
+            {q:"What makes a character's pose appealing?", options:["Stiff, symmetrical stance","Clear, dynamic silhouette","Realistic anatomy","Complex positioning"], answer:1},
+            {q:"Appeal in character design is more important than technical skill.", options:["True","False"], answer:1},
+            {q:"The principle of appeal applies to environments and objects too.", options:["True","False"], answer:0}
+        ];
+
+        window.onload = function() {
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module9Quiz, "Module 9: Appeal & Design", randomize);
+        };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module9Quiz, "Module 9: Appeal & Design", randomize);
+        });
+    </script>
+</body>
+</html>

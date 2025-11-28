@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">🎬 Animation Academy</a>
+            <a class="navbar-brand" href="../index.html">🎬 Animation Reviewer</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="../index.html">← Back to Modules</a>
             </div>
@@ -91,8 +91,14 @@
         ];
 
         window.onload = function() {
-            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion");
+            const randomize = document.getElementById('randomize').checked;
+            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
         };
+
+        document.getElementById('randomize').addEventListener('change', function() {
+            const randomize = this.checked;
+            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
+        });
     </script>
 </body>
 </html>
