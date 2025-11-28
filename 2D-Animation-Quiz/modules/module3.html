@@ -9,6 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/quiz-styles.css">
+    <style>
+        .option {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            background: #e9ecef;
+            border-color: #6c757d;
+        }
+        .option.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -65,62 +94,97 @@
         </div>
     </div>
 
-    <script src="../js/quiz-engine.js"></script>
     <script>
         const module3Quiz = [
             {q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
-            {q:"On bouncing ball: As the ball impacts the ground it squashes from the force of gravity.", options:["Acceleration","Momentum","Speed","Gravity"], answer:3},
             {q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
-            {q:"For every action there is an equal and opposite reaction.", options:["True","False"], answer:0},
             {q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
-            {q:"Any reaction is strengthened by being preceded by its opposite.", options:["True","False"], answer:0},
-            {q:"Animating is a precise craft that requires practice, perseverance, and a certain amount of natural flair.", options:["True","False"], answer:0},
-            {q:"On bouncing ball: as gravity pulls the ball back down the ball repeats its acceleration to the ground and bounces.", options:["Bounces","Losing speed","Squashes","Stretches"], answer:0},
             {q:"More drawings mean faster action.", options:["True","False"], answer:1},
-            {q:"In squash and stretch principle the constant is volume of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2},
-            {q:"It is a way of deforming an object such that it shows how rigid the object is.", options:["Squash and stretch","Anticipation","Losing weight","Gaining weight"], answer:0},
-            {q:"Anticipation is the termination of the action.", options:["True","False"], answer:1},
-            {q:"Ultimately, the animator must have a sense of what makes an inanimate character alive.", options:["True","False"], answer:0},
-            {q:"On bouncing ball: once the ball reaches its peak it begins to stretch and return to its original form.", options:["Stretch","Gaining weight","Slow down","Losing weight"], answer:0},
-            {q:"Any action can be enhanced if there is anticipation before the action.", options:["True","False"], answer:0},
-            {q:"On bouncing ball: as the ball propels it accelerates causing the ball to distort by stretching.", options:["Losing weight","Accelerates","Gaining weight","Speeding down"], answer:1},
-            {q:"The anticipation is always in the opposite direction to where the main action is going to go.", options:["True","False"], answer:0},
-            {q:"As the ball bounces it loses its", options:["Volume","Momentum","Speed","Energy"], answer:3},
-            {q:"An object that squashes and stretches, before it settles it goes overshoot for the natural ending.", options:["Deform","Anticipation","Overshoot","Losing speed"], answer:2},
-            {q:"On bouncing ball: the squash of the ball emphasizes a pre bounce as", options:["Weight less","Losing speed","Flattening","Anticipation"], answer:2},
-            {q:"Through the classes of Frank Thomas and Ollie Johnston where the fundamentals of animation principles started.", options:["True","False"], answer:0},
-            {q:"In the application of squash and stretch always consider the weight and mass of the object.", options:["Color","Form","Weight","Size"], answer:2},
-            {q:"Stretch is used to prepare the audience for an action, and to make the action appear more realistic.", options:["True","False"], answer:1},
-            {q:"Reaction is the preparation for the action.", options:["True","False"], answer:1},
-            {q:"Flatten an object or character by pressure or by its own power.", options:["Straight ahead","Squash","Timing","Anticipation"], answer:1},
-            {q:"On bouncing ball: once the ball hits the ground it tends to flatten as squash.", options:["Flatten to anticipate","Flatten as squash","Anticipate","Flatten as stretch"], answer:1},
-            {q:"It was the Disney classes of animators under Don Graham where principles of animation started after the 1930s.", options:["Don Graham","Frank Thomas","Ollie Johnston","Preston Blaire"], answer:0},
-            {q:"Less drawings mean faster action.", options:["True","False"], answer:0},
-            {q:"Squash and stretch principle should be applied on the whole head of the character.", options:["True","False"], answer:1},
-            {q:"This principle gives weight and flexibility to drawn objects.", options:["Squash and stretch","Anticipation","Timing","Straight ahead"], answer:0}
+            {q:"In squash and stretch principle the constant is volume of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2}
         ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuestion() {
+            if (currentQuestion >= module3Quiz.length) {
+                showResults();
+                return;
+            }
+            
+            const question = module3Quiz[currentQuestion];
+            document.getElementById('question-number').textContent = `Question ${currentQuestion + 1} of ${module3Quiz.length}`;
+            document.getElementById('question').textContent = question.q;
+            
+            const optionsHtml = question.options.map((option, index) => 
+                `<div class="option" onclick="selectOption(${index})">${option}</div>`
+            ).join('');
+            
+            document.getElementById('options').innerHTML = optionsHtml;
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            answered = false;
+        }
+
+        function selectOption(selectedIndex) {
+            if (answered) return;
+            
+            const question = module3Quiz[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, index) => {
+                if (index === selectedIndex) {
+                    option.classList.add('selected');
+                    if (index === question.answer) {
+                        option.classList.add('correct');
+                        score++;
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                } else if (index === question.answer) {
+                    option.classList.add('correct');
+                }
+            });
+            
+            answered = true;
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            loadQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('quiz-complete').style.display = 'block';
+            document.getElementById('final-score').textContent = `${score} / ${module3Quiz.length}`;
+            document.getElementById('correct-answers').textContent = score;
+            document.getElementById('accuracy').textContent = Math.round((score / module3Quiz.length) * 100) + '%';
+            document.getElementById('total-questions').textContent = module3Quiz.length;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            document.getElementById('quiz-content').style.display = 'block';
+            document.getElementById('quiz-complete').style.display = 'none';
+            loadQuestion();
+        }
 
         window.onload = function() {
             try {
-                console.log('Module 3 loading...');
-                console.log('Quiz data length:', module3Quiz.length);
-                const randomize = document.getElementById('randomize').checked;
-                quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
-                console.log('Module 3 loaded successfully');
+                console.log('Loading Module 3 with simple quiz engine...');
+                loadQuestion();
+                console.log('Module 3 loaded successfully!');
             } catch (error) {
-                console.error('Error loading Module 3:', error);
+                console.error('Error:', error);
                 document.getElementById('quiz-content').innerHTML = '<div class="alert alert-danger">Error loading quiz. Please refresh the page.</div>';
             }
         };
-
-        document.getElementById('randomize').addEventListener('change', function() {
-            try {
-                const randomize = this.checked;
-                quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
-            } catch (error) {
-                console.error('Error reloading Module 3:', error);
-            }
-        });
+    </script>
     </script>
 </body>
 </html>
