@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Animation History | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                🎬 Animation Academy
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">📚 Animation History</h1>
+            <p class="hero-subtitle">Module 1: Foundations and Origins of Animation</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 1: Animation History Quiz</h2>
+                <p class="text-muted">Test your knowledge of animation's origins and early pioneers</p>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 25</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+                        Next Question →
+                    </button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 1 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" id="correct-answers">0</span>
+                        <div class="stat-label">Correct Answers</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="accuracy">0%</span>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="total-questions">25</span>
+                        <div class="stat-label">Total Questions</div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 1</button>
+                    <a href="../modules/module2.html" class="btn-secondary">Next: Module 2</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module1Quiz = [
+            // Animation History & Fundamentals
+            {q:"Star of theatrical Panther series.", options:["Yellow","Jetsons","Smith","Pink Phink"], answer:3},
+            {q:"A bronze-age pottery bowl depicts goats leaping.", options:["Shahr-e Sukhteh","Shre-s Shukt","Sahre- Sukteh","Shar-e Shukteh"], answer:0},
+            {q:"It is the star bear of the Yellowstone Park.", options:["Yogi Bear","Brother Bear","Bubu Bear","Luther"], answer:0},
+            {q:"The Background layer is the most bottom layer in animation.", options:["True","False"], answer:0},
+            {q:"It is the rapid succession of sequential images that minimally differ from each other.", options:["Movement","Actions","Illusion","Animation"], answer:3},
+            {q:"The longest running Animated American sitcom.", options:["Big Hero","Family Guy","The Flinstones","The Simpsons"], answer:3},
+            {q:"Walt Disney Studios developed celluloid used in layers of compositing.", options:["True","False"], answer:0},
+            {q:"It is a series of equally spaced radial slits and invented by Joseph Plateau.", options:["Thaumatrope","Praxinoscope","Zoetrope","Phenakistoscope"], answer:3},
+            {q:"Animation started during the Industrial Revolution.", options:["True","False"], answer:1},
+            {q:"Kineograph is the other name for a Flip Book.", options:["True","False"], answer:0},
+            {q:"What relies on the phi phenomenon and beta movement?", options:["Animation","Movement","Actions","Illusion"], answer:0},
+            {q:"It is a series of images with minimal differences and makes it move with the overturn of images.", options:["Phenakistoscope","Zoetrope","Praxinoscope","Thaumatrope"], answer:0},
+            {q:"A hollow drum that housed images on long interchangeable strips that spins and made the images appear to move.", options:["Phenakistoscope","Praxinoscope","Zoetrope","Thaumatrope"], answer:2},
+            {q:"The Flintstones by Hanna-Barbera is the 1st animated series on prime time television.", options:["True","False"], answer:0},
+            {q:"Bray Studios helped the animators launch Looney Tunes.", options:["True","False"], answer:0},
+            {q:"Steamboat Willie is the 1st cartoon with audio printed on the film.", options:["True","False"], answer:0},
+            {q:"Snow White and the Seven Dwarfs was shown in the USA in 1930.", options:["True","False"], answer:1},
+            {q:"It is a series of photographs taken in 1865.", options:["Muybridge","Murraybridge","Camera Obscura","Movieola"], answer:0},
+            {q:"Zoetrope is the other name for Praxinoscope.", options:["True","False"], answer:1},
+            {q:"The Thaumatrope was invented before the Phenakistoscope.", options:["True","False"], answer:0},
+            {q:"Émile Reynaud invented the Praxinoscope in 1877.", options:["True","False"], answer:0},
+            {q:"The first animated film was created by Émile Cohl.", options:["True","False"], answer:0},
+            {q:"Max Fleischer created the rotoscoping technique.", options:["True","False"], answer:0},
+            {q:"The Golden Age of American Animation lasted from the 1930s to the 1950s.", options:["True","False"], answer:0},
+            {q:"Computer animation completely replaced traditional hand-drawn animation.", options:["True","False"], answer:1}
+        ];
+
+        // Initialize quiz when page loads
+        window.onload = function() {
+            quizInstance = new AnimationQuiz(module1Quiz, "Module 1: Animation History");
+        };
+    </script>
+</body>
+</html>

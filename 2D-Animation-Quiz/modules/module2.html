@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Physics & Motion | 2D Animation Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">🎬 Animation Academy</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">← Back to Modules</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">⚡ Physics & Motion</h1>
+            <p class="hero-subtitle">Module 2: Understanding Forces and Movement in Animation</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Module 2: Physics & Motion Quiz</h2>
+                <p class="text-muted">Master timing, spacing, momentum, and Newton's laws in animation</p>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 20</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question →</button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Module 2 Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <div class="score-message" id="score-message"></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
+                    <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">20</span><div class="stat-label">Total Questions</div></div>
+                </div>
+                <div class="btn-group">
+                    <button class="next-btn" onclick="restartQuiz()">Retake Module 2</button>
+                    <a href="../modules/module3.html" class="btn-secondary">Next: Module 3</a>
+                    <a href="../index.html" class="btn-secondary">All Modules</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-engine.js"></script>
+    <script>
+        const module2Quiz = [
+            {q:"Acceleration happened when spacing change.", options:["True","False"], answer:0},
+            {q:"It is the main culprit to change the character's momentum.", options:["Inertia","Kinetics","Unbalanced force","Balanced force"], answer:2},
+            {q:"Momentum also depends on the direction of the motion so deflecting a moving object is considered a change of momentum.", options:["True","False"], answer:0},
+            {q:"The bigger the force, the quicker the momentum changes.", options:["True","False"], answer:0},
+            {q:"Timing and spacing indicates _.", options:["Height","Speed","Weight","Acceleration"], answer:1},
+            {q:"When spacing change, there is", options:["Speed","Weight","Height","Acceleration"], answer:3},
+            {q:"The change in momentum could be slowing or increasing a character's speed or it could be a change in direction.", options:["Newton's 2nd law of motion","Law of inertia","1st law of motion","Odd Rule"], answer:0},
+            {q:"If the character is carrying a heavy load on his back, he has to lean forward to achieve balance.", options:["True","False"], answer:0},
+            {q:"The human's center of balance is in the navel.", options:["True","False"], answer:0},
+            {q:"Animating the scene and will use pose-to-pose, the useful is", options:["Fourth Down at Half Time","Odd Rule","1st Law of Motion","2nd Law of Motion"], answer:1},
+            {q:"It is the resistance of any physical object to any change in its state of motion.", options:["Odd Rule","Kinetics","Fourth Down at Half Time","Inertia"], answer:3},
+            {q:"If the character is moving downward and gaining speed, he", options:["Lose weight","none","Speeding up","Gain weight"], answer:2},
+            {q:"For every 'action' force there's an instantaneous 'reaction' force that's equal in magnitude and opposite in direction.", options:["none","1st Law of Motion","Newton's 2nd law of motion","Newton's 3rd law of motion"], answer:3},
+            {q:"They were the one who developed the 12 Principles of Animation.", options:["Frank Thomas ans Ellie Johnston","Frank Thomas ans Ollie Johnston","Frank Thomas ans Ollie Johnstone","Frankie Thomas ans Ollie Johnston"], answer:1},
+            {q:"Odd rule is for straight ahead animation.", options:["True","False"], answer:0},
+            {q:"In animating straight ahead action, this rule is very helpful.", options:["Odd Rule","1st Law of Motion","2nd Law of Motion","Law of Motion"], answer:0},
+            {q:"Newton's 1st law of motion is the law of speed.", options:["True","False"], answer:1},
+            {q:"A 150 lbs. character can run faster than a 300 lbs. body.", options:["True","False"], answer:0},
+            {q:"Odd rule is the 1st law of motion by Newton.", options:["True","False"], answer:1},
+            {q:"It is the average location of an object's weight.", options:["Middle of the body","Center of gravity","Torso","Balance force"], answer:1}
+        ];
+
+        window.onload = function() {
+            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion");
+        };
+    </script>
+</body>
+</html>

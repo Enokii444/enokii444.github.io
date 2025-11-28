@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>2D Animation Flashcard Quiz</title>
+
+<style>
+
+  body { font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; }
+
+  .card { background:#fff; padding:20px; margin:20px auto; border-radius:8px; max-width:700px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+
+  h2 { font-size:18px; }
+
+  .options { margin-top:10px; }
+
+  button { display:block; margin:8px 0; padding:10px; width:100%; border:none; border-radius:5px; cursor:pointer; }
+
+  button:hover { background:#ddd; }
+
+  .feedback { margin-top:15px; font-weight:bold; }
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="card">
+
+  <h2 id="question">Loading question...</h2>
+
+  <div class="options" id="options"></div>
+
+  <div class="feedback" id="feedback"></div>
+
+  <button onclick="nextQuestion()">Next Question ➡️</button>
+
+</div>
+
+
+
+<script>
+
+const quiz = [
+
+  // FORMATIVE ASSESSMENT 1
+
+  {q:"Star of theatrical Panther series.", options:["Yellow","Jetsons","Smith","Pink Phink"], answer:3},
+
+  {q:"A bronze-age pottery bowl depicts goats leaping.", options:["Shahr-e Sukhteh","Shre-s Shukt","Sahre- Sukteh","Shar-e Shukteh"], answer:0},
+
+  {q:"It is the star bear of the Yellowstone Park.", options:["Yogi Bear","Brother Bear","Bubu Bear","Luther"], answer:0},
+
+  {q:"The Background layer is the most bottom layer in animation.", options:["True","False"], answer:0},
+
+  {q:"It is the rapid succession of sequential images that minimally differ from each other.", options:["Movement","Actions","Illusion","Animation"], answer:3},
+
+  {q:"The longest running Animated American sitcom.", options:["Big Hero","Family Guy","The Flinstones","The Simpsons"], answer:3},
+
+  {q:"Walt Disney Studios developed celluloid used in layers of compositing.", options:["True","False"], answer:0},
+
+  {q:"It is a series of equally spaced radial slits and invented by Joseph Plateau.", options:["Thaumatrope","Praxinoscope","Zoetrope","Phenakistoscope"], answer:3},
+
+  {q:"Animation started during the Industrial Revolution.", options:["True","False"], answer:1},
+
+  {q:"Kineograph is the other name for a Flip Book.", options:["True","False"], answer:0},
+
+  {q:"What relies on the phi phenomenon and beta movement?", options:["Animation","Movement","Actions","Illusion"], answer:0},
+
+  {q:"It is a series of images with minimal differences and makes it move with the overturn of images.", options:["Phenakistoscope","Zoetrope","Praxinoscope","Thaumatrope"], answer:0},
+
+  {q:"A hollow drum that housed images on long interchangeable strips that spins and made the images appear to move.", options:["Phenakistoscope","Praxinoscope","Zoetrope","Thaumatrope"], answer:2},
+
+  {q:"The Flintstones by Hanna-Barbera is the 1st animated series on prime time television.", options:["True","False"], answer:0},
+
+  {q:"Bray Studios helped the animators launch Looney Tunes.", options:["True","False"], answer:0},
+
+  {q:"Steamboat Willie is the 1st cartoon with audio printed on the film.", options:["True","False"], answer:0},
+
+  {q:"Snow White and the Seven Dwarfs was shown in the USA in 1930.", options:["True","False"], answer:1},
+
+  {q:"It is a series of photographs taken in 1865.", options:["Muybridge","Murraybridge","Camera Obscura","Movieola"], answer:0},
+
+  {q:"Zoetrope is the other name for Praxinoscope.", options:["True","False"], answer:1},
+
+
+
+  // FORMATIVE ASSESSMENT 2
+
+  {q:"Acceleration happened when spacing change.", options:["True","False"], answer:0},
+
+  {q:"It is the main culprit to change the character's momentum.", options:["Inertia","Kinetics","Unbalanced force","Balanced force"], answer:2},
+
+  {q:"Momentum also depends on the direction of the motion so deflecting a moving object is considered a change of momentum.", options:["True","False"], answer:0},
+
+  {q:"The bigger the force, the quicker the momentum changes.", options:["True","False"], answer:0},
+
+  {q:"Timing and spacing indicates _.", options:["Height","Speed","Weight","Acceleration"], answer:1},
+
+  {q:"When spacing change, there is", options:["Speed","Weight","Height","Acceleration"], answer:0},
+
+  {q:"The change in momentum could be slowing or increasing a character's speed or it could be a change in direction.", options:["Newton's 2nd law of motion","Law of inertia","1st law of motion","Odd Rule"], answer:0},
+
+  {q:"If the character is carrying a heavy load on his back, he has to lean forward to achieve balance.", options:["True","False"], answer:0},
+
+  {q:"The human's center of balance is in the navel.", options:["True","False"], answer:0},
+
+  {q:"Animating the scene and will use pose-to-pose, the useful is", options:["Fourth Down at Half Time","Odd Rule","1st Law of Motion","2nd Law of Motion"], answer:1},
+
+  {q:"It is the resistance of any physical object to any change in its state of motion.", options:["Odd Rule","Kinetics","Fourth Down at Half Time","Inertia"], answer:3},
+
+  {q:"If the character is moving downward and gaining speed, he", options:["Lose weight","none","Speeding up","Gain weight"], answer:2},
+
+  {q:"For every 'action' force there's an instantaneous 'reaction' force that's equal in magnitude and opposite in direction.", options:["none","1st Law of Motion","Newton's 2nd law of motion","Newton's 3rd law of motion"], answer:3},
+
+  {q:"They were the one who developed the 12 Principles of Animation.", options:["Frank Thomas ans Ellie Johnston","Frank Thomas ans Ollie Johnston","Frank Thomas ans Ollie Johnstone","Frankie Thomas ans Ollie Johnston"], answer:1},
+
+  {q:"Odd rule is for straight ahead animation.", options:["True","False"], answer:0},
+
+  {q:"In animating straight ahead action, this rule is very helpful.", options:["Odd Rule","1st Law of Motion","2nd Law of Motion","Law of Motion"], answer:0},
+
+  {q:"Newton's 1st law of motion is the law of speed.", options:["True","False"], answer:1},
+
+  {q:"A 150 lbs. character can run faster than a 300 lbs. body.", options:["True","False"], answer:0},
+
+  {q:"Odd rule is the 1st law of motion by Newton.", options:["True","False"], answer:1},
+
+  {q:"It is the average location of an object's weight.", options:["Middle of the body","Center of gravity","Torso","Balance force"], answer:1},
+
+
+
+  // FORMATIVE ASSESSMENT 3
+
+{q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
+
+{q:"On bouncing ball: As the ball impacts the ground it squashes from the force of", options:["Acceleration","Momentum","Speed","Gravity"], answer:3},
+
+{q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
+
+{q:"For every action there is an equal and opposite reaction.", options:["True","False"], answer:0},
+
+{q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
+
+{q:"Any reaction is strengthened by being preceded by its opposite.", options:["True","False"], answer:0},
+
+{q:"Animating is a precise craft that requires practice, perseverance, and a certain amount of natural flair.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: as gravity pulls the ball back down the ball repeats its acceleration to the ground and", options:["Bounces","Losing speed","Squashes","Stretches"], answer:0},
+
+{q:"More drawings mean faster action.", options:["True","False"], answer:1},
+
+{q:"In squash and stretch principle the constant is of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2},
+
+{q:"It is a way of deforming an object such that it shows how rigid the object is.", options:["Squash and stretch","Anticipation","Losing weight","Gaining weight"], answer:0},
+
+{q:"Anticipation is the termination of the action.", options:["True","False"], answer:1},
+
+{q:"Ultimately, the animator must have a sense of what makes an inanimate character alive.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: once the ball reaches its peak it begins to _ and return to its original form.", options:["Stretch","Gaining weight","Slow down","Losing weight"], answer:0},
+
+{q:"Any action can be enhanced if there is anticipation before the action.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: as the ball propels it __ causing the ball to distort by stretching.", options:["Losing weight","Accelerates","Gaining weight","Speeding down"], answer:1},
+
+{q:"The anticipation is always in the opposite direction to where the main action is going to go.", options:["True","False"], answer:0},
+
+{q:"As the ball bounces it loses its", options:["Volume","Momentum","Speed","Energy"], answer:3},
+
+{q:"An object that squashes and stretches, before it settles it goes for the natural ending.", options:["Deform","Anticipation","Overshoot","Losing speed"], answer:2},
+
+{q:"On bouncing ball: the squash of the ball emphasizes a pre bounce as", options:["Weight less","Losing speed","Flattening","Anticipation"], answer:2},
+
+{q:"Through the classes of Frank Thomas and Ollie Johnston where the fundamentals of animation principles started.", options:["True","False"], answer:0},
+
+{q:"In the application of squash and stretch always consider the _ and mass of the object.", options:["Color","Form","Weight","Size"], answer:2},
+
+{q:"Stretch is used to prepare the audience for an action, and to make the action appear more realistic.", options:["True","False"], answer:0},
+
+{q:"Reaction is the preparation for the action.", options:["True","False"], answer:1},
+
+{q:"Flatten an object or character by pressure or by its own power.", options:["Straight ahead","Squash","Timing","Anticipation"], answer:1},
+
+{q:"On bouncing ball: once the ball hits the ground it tends to _.", options:["Flatten to anticipate","Flatten as squash","Anticipate","Flatten as stretch"], answer:1},
+
+{q:"It was the Disney classes of animators under ___ where principles of animation started after the 1930's.", options:["Don Graham","Frank Thomas","Ollie Johnston","Preston Blaire"], answer:0},
+
+{q:"Less drawings mean faster action.", options:["True","False"], answer:0},
+
+{q:"Squash and stretch principle should be applied on the whole head of the character.", options:["True","False"], answer:1},
+
+{q:"This principle gives weight and flexibility to drawn objects.", options:["Squash and stretch","Anticipation","Timing","Straight ahead"], answer:0},
+
+
+
+// FORMATIVE ASSESSMENT 3
+
+{q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
+
+{q:"On bouncing ball: As the ball impacts the ground it squashes from the force of", options:["Acceleration","Momentum","Speed","Gravity"], answer:3},
+
+{q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
+
+{q:"For every action there is an equal and opposite reaction.", options:["True","False"], answer:0},
+
+{q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
+
+{q:"Any reaction is strengthened by being preceded by its opposite.", options:["True","False"], answer:0},
+
+{q:"Animating is a precise craft that requires practice, perseverance, and a certain amount of natural flair.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: as gravity pulls the ball back down the ball repeats its acceleration to the ground and", options:["Bounces","Losing speed","Squashes","Stretches"], answer:0},
+
+{q:"More drawings mean faster action.", options:["True","False"], answer:1},
+
+{q:"In squash and stretch principle the constant is of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2},
+
+{q:"It is a way of deforming an object such that it shows how rigid the object is.", options:["Squash and stretch","Anticipation","Losing weight","Gaining weight"], answer:0},
+
+{q:"Anticipation is the termination of the action.", options:["True","False"], answer:1},
+
+{q:"Ultimately, the animator must have a sense of what makes an inanimate character alive.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: once the ball reaches its peak it begins to _ and return to its original form.", options:["Stretch","Gaining weight","Slow down","Losing weight"], answer:0},
+
+{q:"Any action can be enhanced if there is anticipation before the action.", options:["True","False"], answer:0},
+
+{q:"On bouncing ball: as the ball propels it __ causing the ball to distort by stretching.", options:["Losing weight","Accelerates","Gaining weight","Speeding down"], answer:1},
+
+{q:"The anticipation is always in the opposite direction to where the main action is going to go.", options:["True","False"], answer:0},
+
+{q:"As the ball bounces it loses its", options:["Volume","Momentum","Speed","Energy"], answer:3},
+
+{q:"An object that squashes and stretches, before it settles it goes for the natural ending.", options:["Deform","Anticipation","Overshoot","Losing speed"], answer:2},
+
+{q:"On bouncing ball: the squash of the ball emphasizes a pre bounce as", options:["Weight less","Losing speed","Flattening","Anticipation"], answer:2},
+
+{q:"Through the classes of Frank Thomas and Ollie Johnston where the fundamentals of animation principles started.", options:["True","False"], answer:0},
+
+{q:"In the application of squash and stretch always consider the _ and mass of the object.", options:["Color","Form","Weight","Size"], answer:2},
+
+{q:"Stretch is used to prepare the audience for an action, and to make the action appear more realistic.", options:["True","False"], answer:0},
+
+{q:"Reaction is the preparation for the action.", options:["True","False"], answer:1},
+
+{q:"Flatten an object or character by pressure or by its own power.", options:["Straight ahead","Squash","Timing","Anticipation"], answer:1},
+
+{q:"On bouncing ball: once the ball hits the ground it tends to _.", options:["Flatten to anticipate","Flatten as squash","Anticipate","Flatten as stretch"], answer:1},
+
+{q:"It was the Disney classes of animators under ___ where principles of animation started after the 1930's.", options:["Don Graham","Frank Thomas","Ollie Johnston","Preston Blaire"], answer:0},
+
+{q:"Less drawings mean faster action.", options:["True","False"], answer:0},
+
+{q:"Squash and stretch principle should be applied on the whole head of the character.", options:["True","False"], answer:1},
+
+{q:"This principle gives weight and flexibility to drawn objects.", options:["Squash and stretch","Anticipation","Timing","Straight ahead"], answer:0},
+
+
+
+// FORMATIVE ASSESSMENT 5
+
+{q:"Arcs are visible in both human and animal motion.", options:["True","False"], answer:0},
+
+{q:"Which part of a motion typically uses more frames in 'Slow In and Slow Out'?", options:["Beginning and end","Middle","Only the beginning","Only the end"], answer:0},
+
+{q:"What does 'Slow In and Slow Out' refer to in animation?", options:["Gradual acceleration and deceleration of motion","Speeding up and slowing down music","Zooming in and out","Changing colors slowly"], answer:0},
+
+{q:"Straight-line motion is more natural than arc motion.", options:["True","False"], answer:1},
+
+{q:"Arc motion is only used in 2D animation.", options:["True","False"], answer:1},
+
+{q:"Using slow-in and slow-out principle can make animations feel more lifelike.", options:["True","False"], answer:0},
+
+{q:"Which type of motion typically follows an arc?", options:["Static poses","Mechanical motion","Digital transitions","Natural motion"], answer:3},
+
+{q:"Ignoring arcs can make animation look mechanical.", options:["True","False"], answer:0},
+
+{q:"The arc principle is based on how things move in real life.", options:["True","False"], answer:0},
+
+{q:"Which animation principle is most closely related to 'Slow In and Slow Out'?", options:["Staging","Timing","Squash and Stretch","Anticipation"], answer:1},
+
+{q:"The slow-in and slow-out principle is based on real-world physics.", options:["True","False"], answer:0},
+
+{q:"Which of the following is an example of arc motion?", options:["A hand waving","A door opening linearly","A blinking cursor","A static pose"], answer:0},
+
+{q:"Arcs can be visualized using motion paths.", options:["True","False"], answer:0},
+
+{q:"Arcs are often used in character animation.", options:["True","False"], answer:0},
+
+{q:"What happens if arc motion is ignored?", options:["Motion appears stiff or unnatural","Motion becomes too slow","Motion becomes invisible","Motion appears fluid"], answer:0},
+
+{q:"Slow-in, slow-out is also known as 'ease-in/ease-out' in digital animation.", options:["True","False"], answer:0},
+
+{q:"Arcs are irrelevant in walk cycles.", options:["True","False"], answer:1},
+
+{q:"Arcs are most visible in:", options:["Character limbs","Textures","Lighting","Backgrounds"], answer:0},
+
+{q:"Which tool helps visualize arcs in animation software?", options:["Motion path","Timeline","Onion skinning","Color palette"], answer:0},
+
+{q:"Why is the arc principle important?", options:["It adds randomness","It simplifies rigging","It speeds up animation","It makes motion more natural"], answer:3},
+
+{q:"Which of the following best illustrates arc motion?", options:["A rotating cube","A blinking light","A bouncing ball","A static image"], answer:2},
+
+{q:"What happens if 'Slow In and Slow Out' is not used?", options:["Motion appears stiff or mechanical","Motion appears smooth","Motion becomes invisible","Motion becomes too fast"], answer:0},
+
+{q:"What kind of curve represents 'Slow In and Slow Out' in a graph editor?", options:["Zigzag","Ease-in/ease-out curve","Linear","Stepped"], answer:1},
+
+{q:"Arcs help make movement appear more organic.", options:["True","False"], answer:0},
+
+{q:"Which animation principle complements the arc principle?", options:["Timing","All of the above","Follow Through","Squash and Stretch"], answer:3},
+
+{q:"The arc principle is one of the 12 principles of animation.", options:["True","False"], answer:0},
+
+{q:"It is best avoided in action scenes.", options:["True","False"], answer:1},
+
+{q:"'Slow In and Slow Out' is most noticeable in:", options:["Character movements","Background transitions","Fast action scenes","Static images"], answer:0},
+
+{q:"'Slow In and Slow Out' is irrelevant in character animation.", options:["True","False"], answer:1},
+
+{q:"What does the 'Arc Principle' refer to in animation?", options:["Circular motion paths","Frame skipping","Lighting effects","Sound waves"], answer:0},
+
+{q:"
+
+
+
+// MODULE 6
+
+{q:"Follow through is based on real-world physics.", options:["True","False"], answer:0},
+
+{q:"Overlapping action can be used in facial animation.", options:["True","False"], answer:0},
+
+{q:"What does 'Follow Through' refer to in animation?", options:["The start of the movement","The main action of a character","The continuation of motion after the main action stops","A character's facial expression"], answer:2},
+
+{q:"Overlapping action can be seen in:", options:["A blinking eye","A character's hair moving after a jump","A door opening","A character standing still"], answer:1},
+
+{q:"Follow through is not necessary in short animations.", options:["True","False"], answer:1},
+
+{q:"Overlapping action helps to:", options:["Reduce frame count","Add realism and fluidity","Simplify animation","Make motion more robotic"], answer:1},
+
+{q:"What is the difference between follow through and overlapping action?", options:["Follow through is after the main action; overlapping is during","They are the same","Follow through is before the main action","Overlapping is only used in 3D animation"], answer:0},
+
+{q:"Overlapping action is the same as anticipation.", options:["True","False"], answer:1},
+
+{q:"Overlapping action means different parts of the body move at different times.", options:["True","False"], answer:0},
+
+{q:"A character's hair moving after they stop running is an example of follow through.", options:["True","False"], answer:0},
+
+{q:"Overlapping action is important for:", options:["Static scenes","Character animation","Background design","Lighting"], answer:1},
+
+{q:"What happens if follow through is not used?", options:["Motion appears natural","Motion becomes too slow","Motion appears stiff or abrupt","Motion becomes invisible"], answer:2},
+
+{q:"Which of these is NOT an example of follow through?", options:["A scarf fluttering after a stop","A coat flapping after a turn","A ponytail swinging after a jump","A character blinking"], answer:3},
+
+{q:"Overlapping action is most noticeable in:", options:["Fast, complex movements","Lighting effects","Static poses","Backgrounds"], answer:0},
+
+{q:"Overlapping action is not useful in walk cycles.", options:["True","False"], answer:1},
+
+{q:"Follow through can be applied to clothing, hair, and accessories.", options:["True","False"], answer:0},
+
+{q:"Which tool helps visualize overlapping motion?", options:["Timeline","Motion path","Graph editor","All of the above"], answer:1},
+
+{q:"Overlapping action is only used in fast movements.", options:["True","False"], answer:1},
+
+{q:"Overlapping action makes animation look more mechanical.", options:["True","False"], answer:1},
+
+{q:"Which principle is closely related to follow through?", options:["Arcs","Timing","Squash and Stretch","Secondary Action"], answer:3},
+
+{q:"Which of the following is an example of overlapping action?", options:["A character's arms swinging after the body turns","A character teleporting","A character blinking","A character standing still"], answer:0},
+
+{q:"Overlapping action helps avoid stiff animation.", options:["True","False"], answer:0},
+
+{q:"Follow through can be subtle or exaggerated depending on the style.", options:["True","False"], answer:0},
+
+{q:"Which of the following best describes overlapping action?", options:["No motion at all","All parts move together","Parts move at different times","Only facial expressions move"], answer:2},
+
+{q:"Follow through is only visible in the main body of a character.", options:["True","False"], answer:1},
+
+{q:"Follow through adds:", options:["Confusion","Delay","Realism","Speed"], answer:2},
+
+{q:"Follow through is only used in 2D animation.", options:["True","False"], answer:1},
+
+{q:"What part of a character often shows follow through?", options:["Hands","Eyes","Hair or clothing","Feet"], answer:2},
+
+{q:"Which principle helps show that different parts of the body move at different rates?", options:["Staging","Overlapping Action","Anticipation","Arcs"], answer:1},
+
+{q:"What is a common mistake when animating follow through?", options:["Ignoring timing","Using too much squash","Making all parts stop at the same time","Adding too many frames"], answer:2},
+
+{q:"Follow through happens before the main action.", options:["True","False"], answer:1},
+
+{q:"Which of the following best illustrates 'Follow Through'?", options:["A character jumping","A character standing still","A cape continuing to move after the character stops","A character blinking"], answer:2},
+
+{q:"Follow through helps show the effects of inertia.", options:["True","False"], answer:0},
+
+{q:"Follow through and overlapping action are used to:", options:["Control lighting","Add sound effects","Create more believable motion","Make animation faster"], answer:2},
+
+{q:"Follow through is most effective when:", options:["The character is idle","The character is in motion","The scene is static","The background is moving"], answer:1},
+
+{q:"Overlapping action is irrelevant in stylized animation.", options:["True","False"], answer:1},
+
+{q:"Overlapping action can be used to show weight and flexibility.", options:["True","False"], answer:0},
+
+{q:"What is 'Overlapping Action'?", options:["Actions that occur at the same time","Actions that are repeated","Actions that are mirrored","Actions that start and stop at different times"], answer:3},
+
+{q:"Follow through adds realism to motion.", options:["True","False"], answer:0},
+
+{q:"Overlapping action helps avoid stiff animation.", options:["True","False"], answer:0},
+
+
+
+// MODULE 7
+
+{q:"Exaggeration should always be used in every frame.", options:["True","False"], answer:1},
+
+{q:"Exaggeration can be applied to:", options:["Only background elements","Only body movements","Only facial expressions","Any aspect of animation"], answer:3},
+
+{q:"Secondary actions should never distract from the main action.", options:["True","False"], answer:0},
+
+{q:"Exaggeration can make an animation more expressive.", options:["True","False"], answer:0},
+
+{q:"Which principle would help make a punch look more powerful?", options:["Staging","Arcs","Exaggeration","Timing"], answer:2},
+
+{q:"What is the relationship between primary and secondary actions?", options:["Secondary actions replace primary actions","They are unrelated","Secondary actions support and enhance primary actions","Primary actions follow secondary actions"], answer:2},
+
+{q:"Which principle helps to show a character's internal thoughts or emotions?", options:["Timing","Secondary action","Solid drawing","Arcs"], answer:1},
+
+{q:"A character blinking while talking is a secondary action.", options:["True","False"], answer:0},
+
+{q:"Which of the following is a good example of exaggeration?", options:["A realistic blink","A character's eyes popping out in surprise","A subtle smile","A character walking normally"], answer:1},
+
+{q:"Secondary actions are optional but can add depth to a scene.", options:["True","False"], answer:0},
+
+{q:"A character's hair moving in the wind is a secondary action.", options:["True","False"], answer:0},
+
+{q:"Which principle would you use to make a sad character's frown more noticeable?", options:["Timing","Arcs","Exaggeration","Staging"], answer:2},
+
+{q:"A character nervously biting their nails while waiting is an example of:", options:["Follow-through","Secondary action","Squash and stretch","Exaggeration"], answer:1},
+
+{q:"Secondary actions are the same as follow-through actions.", options:["True","False"], answer:1},
+
+{q:"Secondary actions should always be more noticeable than the main action.", options:["True","False"], answer:1},
+
+{q:"A character's hair bouncing as they run is an example of:", options:["Secondary action","Primary action","Exaggeration"], answer:0},
+
+{q:"What is a poor use of secondary action?", options:["A character tapping their foot while waiting","A character scratching their head while thinking","A character dancing while explaining a serious topic","A character blinking while talking"], answer:2},
+
+{q:"Exaggeration is most effective when:", options:["Applied to every frame","Used randomly","Avoided in realistic animation","Used to emphasize key emotions or actions"], answer:3},
+
+{q:"Which principle helps to enrich the main action without stealing focus?", options:["Squash and stretch","Staging","Secondary action","Appeal"], answer:2},
+
+{q:"A character's sigh after a long day is a secondary action.", options:["True","False"], answer:0},
+
+{q:"Exaggeration is only useful in comedic scenes.", options:["True","False"], answer:1},
+
+{q:"A character slamming a door and then sighing is an example of:", options:["Secondary action","Anticipation","Timing","Follow-through"], answer:0},
+
+{q:"Exaggeration is most commonly used in:", options:["Realistic documentaries","Technical drawings","Cartoons and stylized animations","Architectural animations"], answer:2},
+
+{q:"What happens if secondary actions are too prominent?", options:["They confuse the viewer","They enhance the scene","They add realism","They improve timing"], answer:0},
+
+{q:"Exaggeration should always be extreme to be effective.", options:["True","False"], answer:1},
+
+{q:"Exaggeration should be:", options:["Avoided in serious animations","Overused in every scene","Balanced with believability","Used only in cartoons"], answer:2},
+
+{q:"Exaggeration can be applied to timing, poses, and expressions.", options:["True","False"], answer:0},
+
+{q:"Exaggeration means ignoring the laws of physics completely.", options:["True","False"], answer:1},
+
+{q:"Which of the following is NOT a goal of exaggeration?", options:["To enhance storytelling","To make the animation more expressive","To clarify the action","To confuse the viewer"], answer:3},
+
+{q:"Which of the following is NOT a secondary action?", options:["A character's hand gesture while talking","A character's eyebrow raise during a conversation","A character's main walking motion","A character's foot tapping while sitting"], answer:2},
+
+{q:"What is the main purpose of a secondary action in animation?", options:["To create confusion","To slow down the animation","To add realism and support the main action","To distract from the main action"], answer:2},
+
+{q:"Exaggeration helps make actions more readable to the audience.", options:["True","False"], answer:0},
+
+{q:"Secondary actions are not important in dialogue scenes.", options:["True","False"], answer:1},
+
+{q:"Exaggeration can help communicate a character's emotions more clearly.", options:["True","False"], answer:0},
+
+{q:"Secondary actions can reveal personality traits.", options:["True","False"], answer:0},
+
+{q:"Exaggeration should be used sparingly in realistic animations.", options:["True","False"], answer:0},
+
+{q:"A character's foot tapping while waiting is a primary action.", options:["True","False"], answer:1},
+
+{q:"Which of the following best describes exaggeration in animation?", options:["Making movements more subtle","Ignoring physics","Copying real-life motion exactly","Enhancing actions for clarity and emotion"], answer:3},
+
+{q:"Exaggeration can help:", options:["Make characters less believable","Reduce animation time","Confuse the audience","Emphasize emotions and actions"], answer:3},
+
+
+
+// MODULE 8
+
+{q:"Solid drawing is not useful in stylized animation.", options:["True","False"], answer:1},
+
+{q:"Solid drawing is only used in 3D animation.", options:["True","False"], answer:1},
+
+{q:"Appeal is important for:", options:["Audio mixing","Characters and environments","Editing","Backgrounds only"], answer:1},
+
+{q:"What can help improve staging in a scene?", options:["Excessive motion","Overlapping dialogue","Clear camera angles and lighting","Multiple focal points"], answer:2},
+
+{q:"Solid drawing is based on:", options:["Realistic anatomy and structure","Random sketching","Color palettes","Abstract shapes"], answer:0},
+
+{q:"Appeal is only about making characters cute.", options:["True","False"], answer:1},
+
+{q:"Staging is unrelated to camera angles.", options:["True","False"], answer:1},
+
+{q:"Solid drawing improves the overall quality of animation.", options:["True","False"], answer:0},
+
+{q:"Clear design contributes to appeal.", options:["True","False"], answer:0},
+
+{q:"Lighting can be used to enhance staging.", options:["True","False"], answer:0},
+
+{q:"Solid drawing contributes to:", options:["Audio clarity","Flat animation","Believable motion","Faster rendering"], answer:2},
+
+{q:"Solid drawing is based on real-world anatomy.", options:["True","False"], answer:0},
+
+{q:"Appeal is similar to:", options:["Charisma and design quality","Editing","Sound mixing","Popularity"], answer:0},
+
+{q:"Appeal refers to:", options:["Popularity","Visual charm and interest","Frame rate","Sound quality"], answer:1},
+
+{q:"Perspective is important in solid drawing.", options:["True","False"], answer:0},
+
+{q:"Appeal is unrelated to animation quality.", options:["True","False"], answer:1},
+
+{q:"Which principle makes characters more engaging?", options:["Solid drawing","Appeal","Arcs","Timing"], answer:1},
+
+{q:"Which tool helps with solid drawing?", options:["Timeline editor","Perspective grid","Color wheel","Audio mixer"], answer:1},
+
+{q:"Solid drawing contributes to believable motion.", options:["True","False"], answer:0},
+
+{q:"Solid drawing helps create:", options:["Fast animation","Realistic and believable poses","Stylized backgrounds","Flat characters"], answer:1},
+
+{q:"Which enhances appeal?", options:["Excessive detail","Personality and clarity","Random movement","Flat shapes"], answer:1},
+
+{q:"Staging should make the scene confusing.", options:["True","False"], answer:1},
+
+{q:"Staging is not necessary in short animations.", options:["True","False"], answer:1},
+
+{q:"Solid drawing helps avoid:", options:["Overlapping action","Exaggeration","Appeal","Flat and stiff animation"], answer:3},
+
+{q:"Appeal is subjective but follows design principles.", options:["True","False"], answer:0},
+
+{q:"Appeal is contributed by:", options:["Excessive detail","Random"], answer:1},
+
+
+
+// MODULE 9
+
+{q:"Solid drawing is not useful in stylized animation.", options:["True","False"], answer:1},
+
+{q:"Solid drawing is only used in 3D animation.", options:["True","False"], answer:1},
+
+{q:"Appeal is important for:", options:["Audio mixing","Characters and environments","Editing","Backgrounds only"], answer:1},
+
+{q:"What can help improve staging in a scene?", options:["Excessive motion","Overlapping dialogue","Clear camera angles and lighting","Multiple focal points"], answer:2},
+
+{q:"Solid drawing is based on:", options:["Realistic anatomy and structure","Random sketching","Color palettes","Abstract shapes"], answer:0},
+
+{q:"Appeal is only about making characters cute.", options:["True","False"], answer:1},
+
+{q:"Staging is unrelated to camera angles.", options:["True","False"], answer:1},
+
+{q:"Solid drawing improves the overall quality of animation.", options:["True","False"], answer:0},
+
+{q:"Clear design contributes to appeal.", options:["True","False"], answer:0},
+
+{q:"Lighting can be used to enhance staging.", options:["True","False"], answer:0},
+
+{q:"Solid drawing contributes to:", options:["Audio clarity","Flat animation","Believable motion","Faster rendering"], answer:2},
+
+{q:"Solid drawing is based on real-world anatomy.", options:["True","False"], answer:0},
+
+{q:"Appeal is similar to:", options:["Charisma and design quality","Editing","Sound mixing","Popularity"], answer:0},
+
+{q:"Appeal refers to:", options:["Popularity","Visual charm and interest","Frame rate","Sound quality"], answer:1},
+
+{q:"Perspective is important in solid drawing.", options:["True","False"], answer:0},
+
+{q:"Appeal is unrelated to animation quality.", options:["True","False"], answer:1},
+
+{q:"Which principle makes characters more engaging?", options:["Solid drawing","Appeal","Arcs","Timing"], answer:1},
+
+{q:"Which tool helps with solid drawing?", options:["Timeline editor","Perspective grid","Color wheel","Audio mixer"], answer:1},
+
+{q:"Solid drawing contributes to believable motion.", options:["True","False"], answer:0},
+
+{q:"Solid drawing helps create:", options:["Fast animation","Realistic and believable poses","Stylized backgrounds","Flat characters"], answer:1},
+
+{q:"Which enhances appeal?", options:["Excessive detail","Personality and clarity","Random movement","Flat shapes"], answer:1},
+
+{q:"Staging should make the scene confusing.", options:["True","False"], answer:1},
+
+{q:"Staging is not necessary in short animations.", options:["True","False"], answer:1},
+
+{q:"Solid drawing helps avoid:", options:["Overlapping action","Exaggeration","Appeal","Flat and stiff animation"], answer:3},
+
+{q:"Appeal is subjective but follows design principles.", options:["True","False"], answer:0},
+
+{q:"Appeal is contributed by:", options:["Excessive detail","Random"], answer:1}
+
+
+
+];
+
+
+
+let current = 0;
+
+
+
+function loadQuestion() {
+
+  document.getElementById("feedback").innerHTML = "";
+
+  const q = quiz[current];
+
+  document.getElementById("question").innerText = q.q;
+
+  const optionsDiv = document.getElementById("options");
+
+  optionsDiv.innerHTML = "";
+
+  q.options.forEach((opt, i) => {
+
+    const btn = document.createElement("button");
+
+    btn.innerText = opt;
+
+    btn.onclick = () => checkAnswer(i);
+
+    optionsDiv.appendChild(btn);
+
+  });
+
+}
+
+
+
+function checkAnswer(selected) {
+
+  const q = quiz[current];
+
+  if (selected === q.answer) {
+
+    document.getElementById("feedback").innerHTML = "✅ Correct!";
+
+  } else {
+
+    document.getElementById("feedback").innerHTML = "❌ Wrong! Correct answer: " + q.options[q.answer];
+
+  }
+
+}
+
+
+
+function nextQuestion() {
+
+  current++;
+
+  if (current >= quiz.length) {
+
+    document.getElementById("question").innerText = "🎉 Quiz Complete!";
+
+    document.getElementById("options").innerHTML = "";
+
+    document.getElementById("feedback").innerText = "";
+
+  } else {
+
+    loadQuestion();
+
+  }
+
+}
+
+
+
+window.onload = loadQuestion;
+
+</script>
+
+</body>
+
+</html>
