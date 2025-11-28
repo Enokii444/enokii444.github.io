@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Animation Flashcard Quiz | Artchives</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=2025112701">
+    <style>
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            background: var(--background-color);
+            padding-top: 80px;
+        }
+        .quiz-container { 
+            background: white; 
+            padding: 30px; 
+            margin: 20px auto; 
+            border-radius: 20px; 
+            max-width: 800px; 
+            box-shadow: 0 10px 30px rgba(196, 164, 132, 0.15);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        .question-card {
+            background: var(--accent-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .question-number {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .option-btn { 
+            display: block; 
+            margin: 10px 0; 
+            padding: 15px 20px; 
+            width: 100%; 
+            border: 2px solid var(--border-color);
+            border-radius: 10px; 
+            background: white;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-align: left;
+        }
+        .option-btn:hover { 
+            background: var(--secondary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .option-btn.wrong {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .feedback { 
+            margin-top: 20px; 
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .next-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .next-btn:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+        }
+        .progress-bar {
+            background: var(--border-color);
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: var(--primary-color);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .quiz-complete {
+            text-align: center;
+            padding: 40px;
+        }
+        .score-display {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="../index.html">
+                Artchives
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../index.html">Home</a>
+                <a class="nav-link" href="../gallery.html">Gallery</a>
+                <a class="nav-link" href="../about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1>2D Animation Principles Quiz</h1>
+                <p class="text-muted">Test your knowledge of animation fundamentals</p>
+            </div>
+
+            <div id="quiz-content">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number" id="question-number">Question 1 of 50</div>
+                    <div class="question-text" id="question">Loading question...</div>
+                    <div id="options"></div>
+                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <button class="next-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+                        Next Question →
+                    </button>
+                </div>
+            </div>
+
+            <div id="quiz-complete" class="quiz-complete" style="display: none;">
+                <h2>🎉 Quiz Complete!</h2>
+                <div class="score-display" id="final-score"></div>
+                <p>Great job on completing the 2D Animation Principles Quiz!</p>
+                <button class="next-btn" onclick="restartQuiz()">Take Quiz Again</button>
+                <a href="../gallery.html" class="btn btn-outline-primary ms-3">View Gallery</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quiz = [
+            // FORMATIVE ASSESSMENT 1
+            {q:"Star of theatrical Panther series.", options:["Yellow","Jetsons","Smith","Pink Phink"], answer:3},
+            {q:"A bronze-age pottery bowl depicts goats leaping.", options:["Shahr-e Sukhteh","Shre-s Shukt","Sahre- Sukteh","Shar-e Shukteh"], answer:0},
+            {q:"It is the star bear of the Yellowstone Park.", options:["Yogi Bear","Brother Bear","Bubu Bear","Luther"], answer:0},
+            {q:"The Background layer is the most bottom layer in animation.", options:["True","False"], answer:0},
+            {q:"It is the rapid succession of sequential images that minimally differ from each other.", options:["Movement","Actions","Illusion","Animation"], answer:3},
+            {q:"The longest running Animated American sitcom.", options:["Big Hero","Family Guy","The Flinstones","The Simpsons"], answer:3},
+            {q:"Walt Disney Studios developed celluloid used in layers of compositing.", options:["True","False"], answer:0},
+            {q:"It is a series of equally spaced radial slits and invented by Joseph Plateau.", options:["Thaumatrope","Praxinoscope","Zoetrope","Phenakistoscope"], answer:3},
+            {q:"Animation started during the Industrial Revolution.", options:["True","False"], answer:1},
+            {q:"Kineograph is the other name for a Flip Book.", options:["True","False"], answer:0},
+
+            // FORMATIVE ASSESSMENT 2
+            {q:"Acceleration happened when spacing change.", options:["True","False"], answer:0},
+            {q:"It is the main culprit to change the character's momentum.", options:["Inertia","Kinetics","Unbalanced force","Balanced force"], answer:2},
+            {q:"Momentum also depends on the direction of the motion so deflecting a moving object is considered a change of momentum.", options:["True","False"], answer:0},
+            {q:"The bigger the force, the quicker the momentum changes.", options:["True","False"], answer:0},
+            {q:"Timing and spacing indicates speed.", options:["Height","Speed","Weight","Acceleration"], answer:1},
+
+            // FORMATIVE ASSESSMENT 3 - Squash and Stretch
+            {q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
+            {q:"On bouncing ball: As the ball impacts the ground it squashes from the force of gravity.", options:["Acceleration","Momentum","Speed","Gravity"], answer:3},
+            {q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
+            {q:"For every action there is an equal and opposite reaction.", options:["True","False"], answer:0},
+            {q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
+
+            // FORMATIVE ASSESSMENT 4 - Arcs & Slow In/Out
+            {q:"Arcs are visible in both human and animal motion.", options:["True","False"], answer:0},
+            {q:"Which part of a motion typically uses more frames in 'Slow In and Slow Out'?", options:["Beginning and end","Middle","Only the beginning","Only the end"], answer:0},
+            {q:"What does 'Slow In and Slow Out' refer to in animation?", options:["Gradual acceleration and deceleration of motion","Speeding up and slowing down music","Zooming in and out","Changing colors slowly"], answer:0},
+            {q:"Straight-line motion is more natural than arc motion.", options:["True","False"], answer:1},
+            {q:"Using slow-in and slow-out principle can make animations feel more lifelike.", options:["True","False"], answer:0},
+
+            // FOLLOW THROUGH & OVERLAPPING ACTION
+            {q:"Follow through is based on real-world physics.", options:["True","False"], answer:0},
+            {q:"Overlapping action can be used in facial animation.", options:["True","False"], answer:0},
+            {q:"What does 'Follow Through' refer to in animation?", options:["The start of the movement","The main action of a character","The continuation of motion after the main action stops","A character's facial expression"], answer:2},
+            {q:"Overlapping action means different parts of the body move at different times.", options:["True","False"], answer:0},
+            {q:"A character's hair moving after they stop running is an example of follow through.", options:["True","False"], answer:0},
+
+            // SECONDARY ACTION & EXAGGERATION
+            {q:"Secondary actions should never distract from the main action.", options:["True","False"], answer:0},
+            {q:"Exaggeration can make an animation more expressive.", options:["True","False"], answer:0},
+            {q:"Which principle would help make a punch look more powerful?", options:["Staging","Arcs","Exaggeration","Timing"], answer:2},
+            {q:"A character blinking while talking is a secondary action.", options:["True","False"], answer:0},
+            {q:"Which of the following is a good example of exaggeration?", options:["A realistic blink","A character's eyes popping out in surprise","A subtle smile","A character walking normally"], answer:1},
+
+            // SOLID DRAWING, STAGING & APPEAL
+            {q:"Solid drawing is based on realistic anatomy and structure.", options:["True","False"], answer:0},
+            {q:"Appeal refers to visual charm and interest.", options:["Popularity","Visual charm and interest","Frame rate","Sound quality"], answer:1},
+            {q:"What can help improve staging in a scene?", options:["Excessive motion","Overlapping dialogue","Clear camera angles and lighting","Multiple focal points"], answer:2},
+            {q:"Solid drawing improves the overall quality of animation.", options:["True","False"], answer:0},
+            {q:"Clear design contributes to appeal.", options:["True","False"], answer:0},
+
+            // ADVANCED PRINCIPLES
+            {q:"Perspective is important in solid drawing.", options:["True","False"], answer:0},
+            {q:"Which principle makes characters more engaging?", options:["Solid drawing","Appeal","Arcs","Timing"], answer:1},
+            {q:"Solid drawing contributes to believable motion.", options:["True","False"], answer:0},
+            {q:"Appeal is subjective but follows design principles.", options:["True","False"], answer:0},
+            {q:"Lighting can be used to enhance staging.", options:["True","False"], answer:0},
+
+            // TIMING & SPACING
+            {q:"More drawings mean faster action.", options:["True","False"], answer:1},
+            {q:"Less drawings mean faster action.", options:["True","False"], answer:0},
+            {q:"Timing and spacing work together to create the illusion of weight.", options:["True","False"], answer:0},
+            {q:"The 12 principles of animation were developed by Disney animators.", options:["True","False"], answer:0},
+            {q:"Animation principles only apply to character animation.", options:["True","False"], answer:1},
+
+            // FINAL REVIEW QUESTIONS
+            {q:"Which principle is most important for creating believable character movement?", options:["All principles working together","Only timing","Only spacing","Only squash and stretch"], answer:0},
+            {q:"The principles of animation are guidelines, not strict rules.", options:["True","False"], answer:0},
+            {q:"Good animation requires understanding of both art and physics.", options:["True","False"], answer:0},
+            {q:"Which Disney animators are credited with developing the 12 principles?", options:["Frank Thomas and Ollie Johnston","Walt Disney and Ub Iwerks","Chuck Jones and Tex Avery","John Lasseter and Brad Bird"], answer:0},
+            {q:"The 12 principles of animation are still relevant in modern digital animation.", options:["True","False"], answer:0}
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuestion() {
+            answered = false;
+            document.getElementById("feedback").style.display = "none";
+            document.getElementById("next-btn").style.display = "none";
+            
+            const q = quiz[currentQuestion];
+            document.getElementById("question-number").innerText = `Question ${currentQuestion + 1} of ${quiz.length}`;
+            document.getElementById("question").innerText = q.q;
+            
+            // Update progress bar
+            const progress = ((currentQuestion + 1) / quiz.length) * 100;
+            document.getElementById("progress").style.width = progress + "%";
+            
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+            
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement("button");
+                btn.className = "option-btn";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(i);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected) {
+            if (answered) return;
+            answered = true;
+            
+            const q = quiz[currentQuestion];
+            const buttons = document.querySelectorAll(".option-btn");
+            const feedback = document.getElementById("feedback");
+            
+            buttons.forEach((btn, i) => {
+                btn.onclick = null; // Disable further clicks
+                if (i === q.answer) {
+                    btn.classList.add("correct");
+                } else if (i === selected && i !== q.answer) {
+                    btn.classList.add("wrong");
+                }
+            });
+            
+            if (selected === q.answer) {
+                feedback.innerHTML = "✅ Correct!";
+                feedback.className = "feedback correct";
+                score++;
+            } else {
+                feedback.innerHTML = `❌ Wrong! The correct answer is: ${q.options[q.answer]}`;
+                feedback.className = "feedback wrong";
+            }
+            
+            feedback.style.display = "block";
+            document.getElementById("next-btn").style.display = "inline-block";
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion >= quiz.length) {
+                showResults();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function showResults() {
+            document.getElementById("quiz-content").style.display = "none";
+            document.getElementById("quiz-complete").style.display = "block";
+            
+            const percentage = Math.round((score / quiz.length) * 100);
+            document.getElementById("final-score").innerText = `Your Score: ${score}/${quiz.length} (${percentage}%)`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("quiz-content").style.display = "block";
+            document.getElementById("quiz-complete").style.display = "none";
+            loadQuestion();
+        }
+
+        // Initialize quiz
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
