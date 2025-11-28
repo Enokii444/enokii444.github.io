@@ -44,7 +44,7 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 5</div>
+                    <div class="question-number" id="question-number">Question 1 of 31</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -74,11 +74,37 @@
 
     <script>
         const originalQuiz = [
-            {q:"Acceleration happened when spacing change.", options:["True","False"], answer:0},
+            {q:"Acceleration happens when spacing changes.", options:["True","False"], answer:0},
             {q:"It is the main culprit to change the character's momentum.", options:["Inertia","Kinetics","Unbalanced force","Balanced force"], answer:2},
             {q:"The bigger the force, the quicker the momentum changes.", options:["True","False"], answer:0},
             {q:"Newton's 1st law of motion is the law of speed.", options:["True","False"], answer:1},
-            {q:"Odd rule is for straight ahead animation.", options:["True","False"], answer:0}
+            {q:"Odd rule is for straight ahead animation.", options:["True","False"], answer:0},
+            {q:"What is Newton's First Law of Motion?", options:["Law of acceleration","Law of inertia","Law of action-reaction","Law of gravity"], answer:1},
+            {q:"In animation, spacing between drawings affects:", options:["Color","Speed perception","Volume","Sound"], answer:1},
+            {q:"Close spacing between drawings creates:", options:["Fast motion","Slow motion","No motion","Reverse motion"], answer:1},
+            {q:"Wide spacing between drawings creates:", options:["Slow motion","Fast motion","Static pose","Blur effect"], answer:1},
+            {q:"Momentum in animation refers to:", options:["Color intensity","Object's resistance to change in motion","Sound volume","Frame rate"], answer:1},
+            {q:"Which principle helps show weight in animation?", options:["Timing","Squash and stretch","Physics and momentum","Staging"], answer:2},
+            {q:"An object at rest stays at rest unless:", options:["Time passes","A force acts upon it","It's animated","The camera moves"], answer:1},
+            {q:"Heavy objects should have:", options:["Fast acceleration","Slow acceleration","No acceleration","Random acceleration"], answer:1},
+            {q:"Light objects should have:", options:["Slow acceleration","Fast acceleration","No acceleration","Heavy momentum"], answer:1},
+            {q:"What affects how an object moves?", options:["Its mass","Applied force","Friction","All of the above"], answer:3},
+            {q:"In animation, gravity affects:", options:["Only falling objects","All objects in motion","Only heavy objects","Only light objects"], answer:1},
+            {q:"When animating a bouncing ball, what should decrease with each bounce?", options:["Size","Color","Height","Rotation"], answer:2},
+            {q:"Air resistance in animation is used to show:", options:["Weight","Volume","Drag and realistic motion","Color"], answer:2},
+            {q:"What is the relationship between mass and acceleration?", options:["Directly proportional","Inversely proportional","No relationship","Random relationship"], answer:1},
+            {q:"A character's clothing moving is an example of:", options:["Primary action","Secondary physics","Staging","Appeal"], answer:1},
+            {q:"When a character stops suddenly, their hair should:", options:["Stop immediately","Continue moving forward","Move backward","Disappear"], answer:1},
+            {q:"What is follow-through in physics?", options:["Planning ahead","Continuing motion after the main action stops","Going backwards","Standing still"], answer:1},
+            {q:"Overlapping action is based on:", options:["Artistic choice","Physics principles","Color theory","Sound design"], answer:1},
+            {q:"Different parts of a character move at:", options:["The same speed","Different speeds","No speed","Light speed"], answer:1},
+            {q:"What creates realistic motion?", options:["Perfect timing","Understanding of physics","Bright colors","Loud sounds"], answer:1},
+            {q:"Centripetal force affects:", options:["Straight line motion","Circular motion","Static poses","Color changes"], answer:1},
+            {q:"When animating a pendulum, the motion should follow:", options:["A straight line","An arc","A square path","Random movement"], answer:1},
+            {q:"Friction in animation is used to show:", options:["Objects slowing down realistically","Bright colors","Loud sounds","Fast movement"], answer:0},
+            {q:"Conservation of energy in animation means:", options:["Energy cannot be created or destroyed","Always use the same colors","Keep the same frame rate","Maintain volume"], answer:0},
+            {q:"When a ball hits the ground, what principle applies?", options:["Action and reaction","Color theory","Sound mixing","Camera angle"], answer:0},
+            {q:"Elastic collisions in animation result in:", options:["Objects sticking together","Objects bouncing apart","Objects disappearing","Objects changing color"], answer:1}
         ];
 
         let module2Quiz = [...originalQuiz];

@@ -43,7 +43,7 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 5</div>
+                    <div class="question-number" id="question-number">Question 1 of 30</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -73,11 +73,36 @@
 
     <script>
         const originalQuiz = [
-            {q:"Material of the object was made of is not to be considered on the squash and stretch principle.", options:["True","False"], answer:1},
+            {q:"Material of the object should be considered in the squash and stretch principle.", options:["True","False"], answer:0},
             {q:"Used to increase the sense of speed and emphasize the squash by contrast.", options:["Stretch","Timing","Straight ahead","Anticipation"], answer:0},
             {q:"The technique of anticipation helps to guide the audience's eyes to where the action is about to occur.", options:["True","False"], answer:0},
             {q:"More drawings mean faster action.", options:["True","False"], answer:1},
-            {q:"In squash and stretch principle the constant is volume of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2}
+            {q:"In squash and stretch principle the constant is volume of the object.", options:["Weight","Speed","Volume","Velocity"], answer:2},
+            {q:"What is the primary purpose of squash and stretch?", options:["To change colors","To give flexibility and life to objects","To add sound effects","To change camera angles"], answer:1},
+            {q:"Which of these should remain constant in squash and stretch?", options:["Shape","Color","Volume","Position"], answer:2},
+            {q:"Squash and stretch is most effective when:", options:["Applied to rigid objects","Applied to flexible objects","Used with sound","Used with bright colors"], answer:1},
+            {q:"A bouncing ball demonstrates:", options:["Staging","Timing","Squash and stretch","Appeal"], answer:2},
+            {q:"When should squash be applied?", options:["At the moment of impact","During slow movement","When object is static","Only in 3D animation"], answer:0},
+            {q:"When should stretch be applied?", options:["When object is static","During fast movement or high acceleration","Only to backgrounds","Never"], answer:1},
+            {q:"Squash and stretch helps convey:", options:["Weight and flexibility","Color and brightness","Sound and music","Camera angles"], answer:0},
+            {q:"Which material would use the most squash and stretch?", options:["Steel","Rubber","Glass","Stone"], answer:1},
+            {q:"Which material would use the least squash and stretch?", options:["Jelly","Rubber","Steel","Flesh"], answer:2},
+            {q:"Exaggerated squash and stretch can:", options:["Break realism","Add cartoon appeal","Reduce quality","Slow down animation"], answer:1},
+            {q:"Subtle squash and stretch is used for:", options:["Cartoon style","Realistic animation","Abstract art","Static images"], answer:1},
+            {q:"The principle of squash and stretch was first developed by:", options:["Disney animators","Computer programmers","Live action directors","Sound engineers"], answer:0},
+            {q:"Squash and stretch applies to:", options:["Only characters","Only objects","Characters and objects","Only backgrounds"], answer:2},
+            {q:"When a character lands from a jump, they should:", options:["Remain the same shape","Squash","Stretch","Disappear"], answer:1},
+            {q:"When a character prepares to jump, they might:", options:["Squash down","Stretch up","Stay normal","Change color"], answer:0},
+            {q:"Facial expressions can use:", options:["Only squash","Only stretch","Both squash and stretch","Neither"], answer:2},
+            {q:"What happens if you don't maintain volume?", options:["Animation looks more realistic","Object appears to inflate or deflate","Nothing changes","Colors become brighter"], answer:1},
+            {q:"Squash and stretch is most visible in:", options:["Slow, gentle movements","Fast, dynamic movements","Static poses","Camera pans"], answer:1},
+            {q:"The amount of squash and stretch depends on:", options:["Frame rate","Object's material and speed","Background color","Sound volume"], answer:1},
+            {q:"In walk cycles, squash and stretch can be applied to:", options:["Only the legs","Only the torso","The entire body","Only the head"], answer:2},
+            {q:"Squash and stretch in character animation helps show:", options:["Personality and emotion","Camera angles","Lighting effects","Sound effects"], answer:0},
+            {q:"When should squash and stretch be avoided?", options:["In cartoon animation","In realistic animation of rigid objects","In character animation","Never"], answer:1},
+            {q:"What is the relationship between speed and deformation?", options:["No relationship","Faster movement = more deformation","Faster movement = less deformation","Only color matters"], answer:1},
+            {q:"Squash and stretch can be applied to:", options:["Body parts","Entire characters","Objects","All of the above"], answer:3},
+            {q:"The principle helps create:", options:["Static images","Illusion of life and flexibility","Bright colors","Loud sounds"], answer:1}
         ];
 
         let module3Quiz = [...originalQuiz];
