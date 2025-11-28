@@ -121,7 +121,7 @@
             document.getElementById('question').textContent = question.q;
             
             const optionsHtml = question.options.map((option, index) => 
-                `<div class="option" onclick="selectOption(${index})">${option}</div>`
+                `<div class="option-btn" onclick="selectOption(${index})">${option}</div>`
             ).join('');
             
             document.getElementById('options').innerHTML = optionsHtml;
@@ -135,7 +135,7 @@
             if (answered) return;
             
             const question = module2Quiz[currentQuestion];
-            const options = document.querySelectorAll('.option');
+            const options = document.querySelectorAll('.option-btn');
             
             options.forEach((option, index) => {
                 if (index === selectedIndex) {
