@@ -22,16 +22,16 @@
 
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">🎯 Anticipation</h1>
-            <p class="hero-subtitle">Module 4: Preparing Audiences for Action</p>
+            <h1 class="hero-title">🎯 Animation Techniques & Timing</h1>
+            <p class="hero-subtitle">Module 4: Pose-to-Pose, Straight Ahead & Timing Principles</p>
         </div>
     </section>
 
     <div class="container">
         <div class="quiz-container">
             <div class="quiz-header">
-                <h2>Module 4: Anticipation Quiz</h2>
-                <p class="text-muted">Master the art of preparing audiences for movement and action</p>
+                <h2>Module 4: Animation Techniques & Timing Quiz</h2>
+                <p class="text-muted">Master pose-to-pose animation, straight ahead techniques, and timing principles</p>
                 
                 <div class="quiz-options">
                     <label><input type="checkbox" id="randomize"> Randomize Questions</label>
@@ -43,7 +43,7 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 15</div>
+                    <div class="question-number" id="question-number">Question 1 of 34</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -58,7 +58,7 @@
                 <div class="stats-grid">
                     <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
                     <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
-                    <div class="stat-card"><span class="stat-number" id="total-questions">15</span><div class="stat-label">Total Questions</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">34</span><div class="stat-label">Total Questions</div></div>
                 </div>
                 <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
                     <h3>Review Wrong Answers:</h3>
@@ -77,21 +77,40 @@
     <script src="../js/quiz-engine.js"></script>
     <script>
         const module4Quiz = [
-            {q:"Anticipation is only used for fast movements.", options:["True","False"], answer:1},
-            {q:"What is the main purpose of anticipation in animation?", options:["To slow down animation","To prepare the audience for an action","To add more frames","To make animation longer"], answer:1},
-            {q:"Anticipation can be physical or mental.", options:["True","False"], answer:0},
-            {q:"Which is an example of anticipation?", options:["A character winding up before throwing a ball","A ball bouncing","A character standing still","A background moving"], answer:0},
-            {q:"Anticipation should always be obvious to the audience.", options:["True","False"], answer:1},
-            {q:"Without anticipation, actions can feel:", options:["More realistic","Sudden and unclear","Slower","More detailed"], answer:1},
-            {q:"Anticipation can help show a character's:", options:["Age","Intention","Background","Voice"], answer:1},
-            {q:"A blink before a surprise reaction is a form of anticipation.", options:["True","False"], answer:0},
-            {q:"Anticipation is most important for:", options:["Background elements","Secondary characters","Major actions and movements","Color choices"], answer:2},
-            {q:"Which principle works closely with anticipation?", options:["Squash and stretch","Color theory","Sound design","Camera angles"], answer:0},
-            {q:"Anticipation should match the energy of the following action.", options:["True","False"], answer:0},
-            {q:"A character looking before jumping is an example of:", options:["Follow-through","Anticipation","Staging","Timing"], answer:1},
-            {q:"Subtle anticipation can be more effective than obvious anticipation.", options:["True","False"], answer:0},
-            {q:"Anticipation helps the audience:", options:["Understand what will happen next","Remember previous scenes","Focus on details","Ignore the action"], answer:0},
-            {q:"Every action in animation requires anticipation.", options:["True","False"], answer:1}
+            {q:"Pose-to-pose animation involves starting with drawing a few key frames and then filling in the", options:["Missing movements","Missing drawings","none","In-betweens"], answer:3},
+            {q:"Thumbnails are created by the inbetweener.", options:["True","False"], answer:1},
+            {q:"Fast, wild action scenes are done this way.", options:["True","False"], answer:1},
+            {q:"Pose-to-pose is more planned out and charted with key drawings done at intervals throughout the scene.", options:["True","False"], answer:0},
+            {q:"Motion capture and rotoscoping is pose-to-pose animation.", options:["True","False"], answer:1},
+            {q:"Less drawings mean faster actions.", options:["True","False"], answer:0},
+            {q:"If there is an imaginary in-between, it is better to ignore it.", options:["True","False"], answer:1},
+            {q:"Number of drawings or frames on a given action which translates to the ___ of the action.", options:["Duration","None","Speed","Weight"], answer:0},
+            {q:"The ball loses its energy as it bounces, the 1st arch of its bounces is the", options:["Lowest","Medium height","Highest","None"], answer:2},
+            {q:"Traditional and tradigital animation key frames or key drawings should be", options:["Encircled","Italic","Bold","none"], answer:0},
+            {q:"Timing is the speed and velocity of an action.", options:["True","False"], answer:0},
+            {q:"Straight ahead works better for dramatic or emotional scenes, where composition and relation to the surroundings are of greater importance.", options:["True","False"], answer:1},
+            {q:"It is the brain of animation, the reason that animation comes to life naturally.", options:["Pose-to-pose","Timing","Straight ahead","Anticipation"], answer:1},
+            {q:"How many drawings are there in a blink?", options:["4","5","3","2"], answer:0},
+            {q:"Pose-to-pose creates a more fluid, dynamic illusion of movement, and is better for producing realistic action sequences.", options:["True","False"], answer:0},
+            {q:"What is the in-between of 9 and 17?", options:["13","15","11","14"], answer:0},
+            {q:"On the bouncing ball: more drawings on what path of the ball?", options:["none","Peak of the arch","Pick up of the arch","Bottom of the arch"], answer:3},
+            {q:"If the animator provided a breakdown, the number code of the scene should be inside a", options:["Triangle","Square","none","Circle"], answer:3},
+            {q:"The nature of the character, personality or weight of an object will influence the timing of the animation.", options:["True","False"], answer:0},
+            {q:"Key drawings should not be encircled.", options:["True","False"], answer:1},
+            {q:"More drawings mean faster actions.", options:["True","False"], answer:1},
+            {q:"Straight ahead animation means...", options:["None","Slow motion","All images are key drawings","Wild action"], answer:3},
+            {q:"The timing for a blink has equal open, half close and close.", options:["True","False"], answer:0},
+            {q:"Thumbnails are created by the inbetweener.", options:["True","False"], answer:1},
+            {q:"In-between 15, is what type of timing?", options:["Main","none","Equal","Thirds"], answer:2},
+            {q:"In the timing grid, the main in-between has the", options:["Longest stem","Shortest stem","none","Line under it"], answer:0},
+            {q:"Traditional and tradigital animation key frames or key drawings should be", options:["Italic","Encircled","none","Bold"], answer:1},
+            {q:"Motion capture and rotoscoping is pose-to-pose animation.", options:["True","False"], answer:1},
+            {q:"A man with a big tummy has a different walk cycle than those who are slim.", options:["True","False"], answer:0},
+            {q:"In-betweens are the drawings between the key frames which help to create the illusion of motion.", options:["True","False"], answer:0},
+            {q:"What kind of timing is this?", options:["Unbalance","Equal","Thirds","Balance"], answer:1},
+            {q:"It is the duration of an action.", options:["Straight ahead","Anticipation","Timing","Pose-to-pose"], answer:2},
+            {q:"Thirds in the timing grid means that the movement of the object is ___ in 3 parts.", options:["More","Equally distributed","Not equally","Less"], answer:1},
+            {q:"In-between 15, is what type of timing?", options:["Main","Equal","Thirds","None"], answer:0}
         ];
 
         window.onload = function() {
