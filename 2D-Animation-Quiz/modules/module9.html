@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 9: Appeal & Design | 2D Animation Quiz</title>
+    <title>Module 9: Traditional Animation Production | 2D Animation Quiz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,16 +22,16 @@
 
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">✨ Appeal & Design</h1>
-            <p class="hero-subtitle">Module 9: Creating Charming and Engaging Characters</p>
+            <h1 class="hero-title">🎬 Traditional Animation Production</h1>
+            <p class="hero-subtitle">Module 9: Production Process and Industry Knowledge</p>
         </div>
     </section>
 
     <div class="container">
         <div class="quiz-container">
             <div class="quiz-header">
-                <h2>Module 9: Appeal & Design Quiz</h2>
-                <p class="text-muted">Master the art of creating appealing and memorable characters</p>
+                <h2>Module 9: Traditional Animation Production Quiz</h2>
+                <p class="text-muted">Master the production process and industry fundamentals</p>
                 
                 <div class="quiz-options">
                     <label><input type="checkbox" id="randomize"> Randomize Questions</label>
@@ -43,7 +43,7 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 25</div>
+                    <div class="question-number" id="question-number">Question 1 of 50</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -58,7 +58,7 @@
                 <div class="stats-grid">
                     <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
                     <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
-                    <div class="stat-card"><span class="stat-number" id="total-questions">25</span><div class="stat-label">Total Questions</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">50</span><div class="stat-label">Total Questions</div></div>
                 </div>
                 <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
                     <h3>Review Wrong Answers:</h3>
@@ -76,31 +76,56 @@
     <script src="../js/quiz-engine.js"></script>
     <script>
         const module9Quiz = [
-            {q:"Appeal in animation refers only to making characters physically attractive.", options:["True","False"], answer:1},
-            {q:"What makes a character appealing?", options:["Complex design","Clear silhouette and personality","Realistic proportions","Muted colors"], answer:1},
-            {q:"Appeal is the same for all audiences and cultures.", options:["True","False"], answer:1},
-            {q:"Which contributes most to character appeal?", options:["Number of details","Clear design and personality","Realistic anatomy","Complex backstory"], answer:1},
-            {q:"Appeal can be achieved in villainous characters too.", options:["True","False"], answer:0},
-            {q:"A character's silhouette should be easily recognizable.", options:["True","False"], answer:0},
-            {q:"Appeal is only important for main characters.", options:["True","False"], answer:1},
-            {q:"Which design principle enhances appeal?", options:["Symmetry in all elements","Contrast and variation","Uniform shapes","Minimal personality"], answer:1},
-            {q:"Appeal in character design involves making every character cute.", options:["True","False"], answer:1},
-            {q:"What role does personality play in character appeal?", options:["No role","Minor role","Central role","Only in dialogue"], answer:2},
-            {q:"Appeal can be enhanced through:", options:["Adding more details","Clear shapes and strong poses","Realistic textures","Complex patterns"], answer:1},
-            {q:"Character appeal is purely subjective with no guidelines.", options:["True","False"], answer:1},
-            {q:"Which helps create appealing character proportions?", options:["Perfect realism","Stylized and clear shapes","Complex geometry","Random sizing"], answer:1},
-            {q:"Appeal in animation design should serve the story.", options:["True","False"], answer:0},
-            {q:"What makes a character design timeless?", options:["Following current trends","Strong fundamental appeal","Complex details","Photorealistic rendering"], answer:1},
-            {q:"Appeal can be conveyed through character movement and acting.", options:["True","False"], answer:0},
-            {q:"Which is most important for character appeal?", options:["Detailed background","Clear, strong design","Complex animation","Realistic proportions"], answer:1},
-            {q:"Appeal in design should be consistent throughout the character's appearances.", options:["True","False"], answer:0},
-            {q:"What enhances the appeal of a character's facial design?", options:["Symmetrical features","Expressive and clear features","Realistic proportions","Complex details"], answer:1},
-            {q:"Appeal is only about visual design, not personality.", options:["True","False"], answer:1},
-            {q:"Which color approach typically enhances character appeal?", options:["Monochromatic schemes","Clear, contrasting colors","Muted, realistic tones","Random color choices"], answer:1},
-            {q:"Appeal should be considered in every aspect of character creation.", options:["True","False"], answer:0},
-            {q:"What makes a character's pose appealing?", options:["Stiff, symmetrical stance","Clear, dynamic silhouette","Realistic anatomy","Complex positioning"], answer:1},
-            {q:"Appeal in character design is more important than technical skill.", options:["True","False"], answer:1},
-            {q:"The principle of appeal applies to environments and objects too.", options:["True","False"], answer:0}
+            {q:"Final output of traditional animation is usually:", options:["A storyboard","A cel","A pencil test","A film or video"], answer:3},
+            {q:"Which is NOT part of pre-production?", options:["Storyboarding","Character design","Inking","Scriptwriting"], answer:2},
+            {q:"What is the standard frame rate for traditional animation?", options:["60 fps","24 fps","30 fps","12 fps"], answer:1},
+            {q:"Backgrounds are animated in traditional animation.", options:["True","False"], answer:1},
+            {q:"Which animation technique uses live-action footage as reference?", options:["Stop-motion","Rotoscoping","Tweening","Claymation"], answer:1},
+            {q:"What is added during post-production?", options:["Keyframes","Backgrounds","Sound effects and music","Character designs"], answer:2},
+            {q:"Traditional animation is always done on paper.", options:["True","False"], answer:1},
+            {q:"Which is NOT part of post-production?", options:["Sound mixing","Editing","Compositing","Storyboarding"], answer:3},
+            {q:"Walt Disney created the first animated film.", options:["True","False – He did NOT create the first animated film."], answer:1},
+            {q:"Animators use exposure sheets to time movements.", options:["True","False"], answer:0},
+            {q:"Exposure sheets help synchronize sound and movement.", options:["True","False"], answer:0},
+            {q:"Who is considered the pioneer of traditional animation?", options:["Chuck Jones","Walt Disney","Hayao Miyazaki","John Lasseter"], answer:1},
+            {q:"Which tool is used to view animation frame-by-frame?", options:["Stylus","Projector","Light table","Scanner"], answer:2},
+            {q:"What does 'on twos' mean in animation?", options:["Two animators work together","Two layers are used","Each drawing is held for two frames","Two colors per frame"], answer:2},
+            {q:"Pencil tests are final versions of animation.", options:["True","False"], answer:1},
+            {q:"Foley artists create:", options:["Backgrounds","Voiceovers","Music","Sound effects"], answer:3},
+            {q:"Clean-up artists finalize rough sketches.", options:["True","False"], answer:0},
+            {q:"What is the process of drawing key poses called?", options:["Inbetweening","Compositing","Rotoscoping","Keyframing"], answer:3},
+            {q:"Traditional animation is slower than digital animation.", options:["True","False"], answer:0},
+            {q:"Which animation studio is famous for traditional animation?", options:["Studio Ghibli","Pixar","Illumination","DreamWorks"], answer:0},
+            {q:"What is the first step in traditional animation production?", options:["Storyboarding","Inking","Compositing","Concept Development"], answer:3},
+            {q:"Traditional animation is no longer used today.", options:["True","False"], answer:1},
+            {q:"First full-length traditional animated feature:", options:["Fantasia","Bambi","Snow White and the Seven Dwarfs","Dumbo"], answer:2},
+            {q:"Role of the clean-up artist:", options:["Refine rough animation drawings","Edit video","Add sound effects","Paint backgrounds"], answer:0},
+            {q:"A storyboard is used to:", options:["Record voiceovers","Animate characters","Visualize scenes before animation","Color backgrounds"], answer:2},
+            {q:"Character turnarounds show:", options:["Backgrounds","Views from multiple angles","Movement cycles","Expressions"], answer:1},
+            {q:"Material traditionally used for animation drawings:", options:["Canvas","Celluloid","Paperboard","Plastic sheets"], answer:1},
+            {q:"Rotoscoping uses live-action footage.", options:["True","False"], answer:0},
+            {q:"A model sheet shows character expressions and poses.", options:["True","False"], answer:0},
+            {q:"Which software is commonly used in post-production?", options:["Adobe Premiere","Toon Boom","Blender","Maya"], answer:0},
+            {q:"Compositing is done during production.", options:["True","False"], answer:0},
+            {q:"Layout artists design camera angles and backgrounds.", options:["True","False"], answer:0},
+            {q:"The director is responsible for drawing all frames.", options:["True","False"], answer:1},
+            {q:"Purpose of a dope sheet (X-sheet):", options:["Track timing and dialogue","Record sound","Paint backgrounds","Animate characters"], answer:0},
+            {q:"Storyboards are used to plan scenes visually.", options:["True","False"], answer:0},
+            {q:"Lip-syncing is part of post-production.", options:["True","False"], answer:0},
+            {q:"Which process involves tracing drawings onto cels?", options:["Rendering","Inking","Editing","Compositing"], answer:1},
+            {q:"What is lip-syncing?", options:["Editing sound","Painting cels","Matching mouth movements to dialogue","Drawing lips"], answer:2},
+            {q:"Animators draw every single frame in traditional animation.", options:["True","False"], answer:1},
+            {q:"Which role creates the initial story idea?", options:["Director","Animator","Story Artist","Editor"], answer:2},
+            {q:"Traditional animation uses digital tools exclusively.", options:["True","False"], answer:1},
+            {q:"Which document outlines the visual style and character designs?", options:["Layout","Exposure Sheet","Model Sheet","Script"], answer:2},
+            {q:"Compositing involves:", options:["Writing scripts","Drawing characters","Combining visual elements","Recording voices"], answer:2},
+            {q:"What is a pencil test?", options:["A color test","A test of drawing skills","A rough animation preview","A sound test"], answer:2},
+            {q:"Inking is done before animation.", options:["True","False"], answer:1},
+            {q:"Sound effects are added during pre-production.", options:["True","False"], answer:1},
+            {q:"What does an exposure sheet help with?", options:["Background painting","Timing and synchronization","Editing","Character design"], answer:1},
+            {q:"Inbetweening refers to:", options:["Creating backgrounds","Writing scripts","Editing sound","Drawing frames between key poses"], answer:3},
+            {q:"Layout artists primarily work on:", options:["Character animation","Editing","Backgrounds and camera angles","Sound effects"], answer:2},
+            {q:"Which department adds color to animation cels?", options:["Editing","Background","Ink and Paint","Layout"], answer:2}
         ];
 
         window.onload = function() {
@@ -110,7 +135,7 @@
 
         document.getElementById('randomize').addEventListener('change', function() {
             const randomize = this.checked;
-            quizInstance = new AnimationQuiz(module9Quiz, "Module 9: Appeal & Design", randomize);
+            quizInstance = new AnimationQuiz(module9Quiz, "Module 9: Traditional Animation Production", randomize);
         });
     </script>
 </body>

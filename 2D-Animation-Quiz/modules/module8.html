@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 8: Solid Drawing & Staging | 2D Animation Quiz</title>
+    <title>Module 8: Traditional Animation | 2D Animation Quiz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,16 +22,16 @@
 
     <section class="hero-section">
         <div class="container">
-            <h1 class="hero-title">🎨 Solid Drawing & Staging</h1>
-            <p class="hero-subtitle">Module 8: Fundamental Drawing Skills and Visual Communication</p>
+            <h1 class="hero-title">🎨 Traditional Animation Principles</h1>
+            <p class="hero-subtitle">Module 8: Solid Drawing, Staging & Appeal</p>
         </div>
     </section>
 
     <div class="container">
         <div class="quiz-container">
             <div class="quiz-header">
-                <h2>Module 8: Solid Drawing & Staging Quiz</h2>
-                <p class="text-muted">Master drawing fundamentals and clear visual storytelling</p>
+                <h2>Module 8: Traditional Animation Quiz</h2>
+                <p class="text-muted">Master solid drawing, staging, and appeal principles</p>
                 
                 <div class="quiz-options">
                     <label><input type="checkbox" id="randomize"> Randomize Questions</label>
@@ -43,7 +43,7 @@
                     <div class="progress-fill" id="progress"></div>
                 </div>
                 <div class="question-card">
-                    <div class="question-number" id="question-number">Question 1 of 30</div>
+                    <div class="question-number" id="question-number">Question 1 of 60</div>
                     <div class="question-text" id="question">Loading question...</div>
                     <div id="options"></div>
                     <div class="feedback" id="feedback" style="display: none;"></div>
@@ -58,7 +58,7 @@
                 <div class="stats-grid">
                     <div class="stat-card"><span class="stat-number" id="correct-answers">0</span><div class="stat-label">Correct Answers</div></div>
                     <div class="stat-card"><span class="stat-number" id="accuracy">0%</span><div class="stat-label">Accuracy</div></div>
-                    <div class="stat-card"><span class="stat-number" id="total-questions">30</span><div class="stat-label">Total Questions</div></div>
+                    <div class="stat-card"><span class="stat-number" id="total-questions">60</span><div class="stat-label">Total Questions</div></div>
                 </div>
                 <div id="wrong-answers-section" style="display: none; margin-top: 30px;">
                     <h3>Review Wrong Answers:</h3>
@@ -102,21 +102,47 @@
             {q:"Staging is not necessary in short animations.", options:["True","False"], answer:1},
             {q:"Solid drawing helps avoid:", options:["Overlapping action","Exaggeration","Appeal","Flat and stiff animation"], answer:3},
             {q:"Appeal is subjective but follows design principles.", options:["True","False"], answer:0},
-            {q:"Good staging directs the viewer's attention to the most important element.", options:["True","False"], answer:0},
-            {q:"Solid drawing requires understanding of weight and volume.", options:["True","False"], answer:0},
-            {q:"Staging can be achieved through composition and camera angles.", options:["True","False"], answer:0},
-            {q:"Appeal only applies to main characters, not supporting ones.", options:["True","False"], answer:1},
-            {q:"What is the main goal of staging?", options:["To show off technical skills","To present ideas clearly","To make scenes longer","To add more characters"], answer:1}
+            {q:"Appeal is contributed by:", options:["Excessive detail","Random motion","Confusing design","Clear shapes and personality"], answer:3},
+            {q:"Solid drawing emphasizes:", options:["Color theory","Flat shapes","Abstract design","3D form and volume"], answer:3},
+            {q:"Personality enhances appeal.", options:["True","False"], answer:0},
+            {q:"Which principle ensures the audience knows where to look?", options:["Appeal","Squash and stretch","Solid drawing","Staging"], answer:3},
+            {q:"Poor staging can result in:", options:["Stronger character design","Better pacing","Confused audience","Enhanced storytelling"], answer:2},
+            {q:"Staging is most closely related to:", options:["Color grading","Timing","Composition and clarity","Sound design"], answer:2},
+            {q:"Solid drawing is unrelated to character posing.", options:["True","False"], answer:1},
+            {q:"Solid drawing is most important in:", options:["Lighting","Scene transitions","Audio design","Character posing and movement"], answer:3},
+            {q:"Staging can be improved with thoughtful composition.", options:["True","False"], answer:0},
+            {q:"Staging helps guide the viewer's attention.", options:["True","False"], answer:0},
+            {q:"Staging is similar to:", options:["Acting and directing","Lighting effects","Sound mixing","Editing"], answer:0},
+            {q:"Useful technique for staging:", options:["Using silhouettes","Random camera angles","Adding noise","Increasing frame rate"], answer:0},
+            {q:"Main goal of staging:", options:["Add more characters","Clearly communicate the idea or action","Confuse the viewer","Increase frame rate"], answer:1},
+            {q:"Appeal makes characters more engaging.", options:["True","False"], answer:0},
+            {q:"Good staging helps tell the story more effectively.", options:["True","False"], answer:0},
+            {q:"What should be avoided to maintain appeal?", options:["Clear silhouettes","Balanced proportions","Expressive poses","Overly complex designs"], answer:3},
+            {q:"Clear silhouettes improve staging.", options:["True","False"], answer:0},
+            {q:"Flat shapes are preferred in solid drawing.", options:["True","False"], answer:1},
+            {q:"Which principle ensures characters feel grounded and dimensional?", options:["Timing","Staging","Appeal","Solid drawing"], answer:3},
+            {q:"Solid drawing focuses on depth and volume.", options:["True","False"], answer:0},
+            {q:"Essential skill for solid drawing:", options:["Voice acting","Sound editing","Perspective drawing","Color grading"], answer:2},
+            {q:"Appeal often includes:", options:["Clarity and personality","Complexity and confusion","Realism only","Abstract shapes"], answer:0},
+            {q:"Appeal helps:", options:["Make characters memorable","Increase rendering time","Reduce animation quality","Confuse the viewer"], answer:0},
+            {q:"What should be avoided in staging?", options:["Intentional framing","Clear focal points","Visual clutter","Simple backgrounds"], answer:2},
+            {q:"Good staging is:", options:["Fast camera movements","Clear silhouette and focus","Cluttered backgrounds","Random character placement"], answer:1},
+            {q:"Staging is about placing characters randomly.", options:["True","False"], answer:1},
+            {q:"Overly complex designs improve appeal.", options:["True","False"], answer:1},
+            {q:"Staging is only important in live-action films.", options:["True","False"], answer:1},
+            {q:"Solid drawing helps avoid stiff animation.", options:["True","False"], answer:0},
+            {q:"Appeal can be found in:", options:["Any well-designed character or object","Only human characters","Only realistic animation","Only 3D models"], answer:0},
+            {q:"Staging helps guide:", options:["The rendering process","The animator's workflow","The viewer's attention","The audio mixing"], answer:2}
         ];
 
         window.onload = function() {
             const randomize = document.getElementById('randomize').checked;
-            quizInstance = new AnimationQuiz(module8Quiz, "Module 8: Solid Drawing & Staging", randomize);
+            quizInstance = new AnimationQuiz(module8Quiz, "Module 8: Traditional Animation", randomize);
         };
 
         document.getElementById('randomize').addEventListener('change', function() {
             const randomize = this.checked;
-            quizInstance = new AnimationQuiz(module8Quiz, "Module 8: Solid Drawing & Staging", randomize);
+            quizInstance = new AnimationQuiz(module8Quiz, "Module 8: Traditional Animation", randomize);
         });
     </script>
 </body>
