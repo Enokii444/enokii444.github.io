@@ -101,13 +101,25 @@
         ];
 
         window.onload = function() {
-            const randomize = document.getElementById('randomize').checked;
-            quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
+            try {
+                console.log('Module 3 loading...');
+                console.log('Quiz data length:', module3Quiz.length);
+                const randomize = document.getElementById('randomize').checked;
+                quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
+                console.log('Module 3 loaded successfully');
+            } catch (error) {
+                console.error('Error loading Module 3:', error);
+                document.getElementById('quiz-content').innerHTML = '<div class="alert alert-danger">Error loading quiz. Please refresh the page.</div>';
+            }
         };
 
         document.getElementById('randomize').addEventListener('change', function() {
-            const randomize = this.checked;
-            quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
+            try {
+                const randomize = this.checked;
+                quizInstance = new AnimationQuiz(module3Quiz, "Module 3: Squash & Stretch", randomize);
+            } catch (error) {
+                console.error('Error reloading Module 3:', error);
+            }
         });
     </script>
 </body>

@@ -102,13 +102,25 @@
         ];
 
         window.onload = function() {
-            const randomize = document.getElementById('randomize').checked;
-            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
+            try {
+                console.log('Module 2 loading...');
+                console.log('Quiz data length:', module2Quiz.length);
+                const randomize = document.getElementById('randomize').checked;
+                quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
+                console.log('Module 2 loaded successfully');
+            } catch (error) {
+                console.error('Error loading Module 2:', error);
+                document.getElementById('quiz-content').innerHTML = '<div class="alert alert-danger">Error loading quiz. Please refresh the page.</div>';
+            }
         };
 
         document.getElementById('randomize').addEventListener('change', function() {
-            const randomize = this.checked;
-            quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
+            try {
+                const randomize = this.checked;
+                quizInstance = new AnimationQuiz(module2Quiz, "Module 2: Physics & Motion", randomize);
+            } catch (error) {
+                console.error('Error reloading Module 2:', error);
+            }
         });
     </script>
 </body>
